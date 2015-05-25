@@ -1,0 +1,30 @@
+h1
+  | List of contacts and their levels in Escalation Rules
+table
+  thead
+    tr
+      th
+        | Escalation rule
+      th
+        | Contact
+      th
+        | Level number
+      th[colspan="3"]
+  tbody
+    - @levels.each do |level|
+      tr
+        td
+          = level.escalation_rule.name
+        td
+          = level.contact.name
+        td
+          = level.level_number
+        td
+          = link_to 'Show', level
+        td
+          = link_to 'Edit', edit_level_path(level)
+        td
+          = link_to 'Destroy', level, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'Add Contact to Escalation Rule', new_level_path
+= link_to 'Back',:welcome, :method => :get

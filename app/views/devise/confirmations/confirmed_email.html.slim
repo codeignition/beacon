@@ -1,0 +1,25 @@
+- if current_user.confirmed?
+  .dark-green.row.center-block
+    .confirmation_success.center-aligned
+      | SUCCESS!
+    .confirmation_text.center-aligned
+      | Your email
+      span.teal 
+        |  #{current_user.email} 
+      | has been successfully verified.
+  .row.light-padding.center-aligned
+    .btn.solid.btn-primary onclick="window.location.href='#{alerts_path}'"
+      | PROCEED TO APP
+ 
+- else
+  .dark-green.row.center-block
+    .confirmation_success.center-aligned
+      | NOT VERIFIED!
+    .confirmation_text.center-aligned
+      | Please verify your email 
+      span.email.teal 
+        |  #{current_user.email} 
+      | by clicking on confirmation link sent to your inbox.
+        
+
+

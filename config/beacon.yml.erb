@@ -1,0 +1,11 @@
+defaults: &defaults
+  odin:
+    host: localhost
+    port: 9000
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+production:
+  <<: *defaults

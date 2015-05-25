@@ -1,0 +1,125 @@
+.alert_half {
+  border-right: 1px solid lightgray;
+  background: white;
+}
+.users_half{
+  background: white;
+}
+.modal-header{
+	background: rgb(0, 33, 47);
+    font-size: 1.5em;
+    color: lightgray;
+}
+
+.modal-content{
+  background: ghostwhite;
+  border: none !important;
+}
+.modal.fade{
+	background: rgba(0, 0, 0, 0.84);
+}
+.modal.in .modal-dialog{
+	min-width: 65%;
+}
+
+.field{
+  margin: 4% 0
+}
+.modal-body .row{
+  margin-bottom: 2%;
+}
+.field.margined{
+  margin: 3% 0% 1% 0% ;
+  padding-left: 0;
+  padding-right: 0;
+}
+.left-padding{
+  padding-left: 5%;
+}
+
+.center-aligned{
+  text-align: center
+}
+
+.italic{
+  font-style: italic
+}
+.percent-1-top-margin{
+  margin: 1% 0% 1% 0% !important;
+}
+.top-margin{
+  margin-top: 6%;
+}
+.round.h3{
+  background: #e73d4d;
+  text-align: center;
+  width: 30px;
+  border-radius: 50%;
+  font-size: 1em;
+  vertical-align: middle;
+  padding: 2%;
+  color: white;
+}
+.col-md-11.h3{
+  position: absolute;
+  bottom: 4px;
+  left: 50px;
+}
+.width-90-percent{
+  width: 90%
+}
+.added_contacts td{
+  border-top: none !important
+}
+.org_menu.active{
+  display: block;
+}
+.create_org:hover{
+  color: rgb(231, 61, 77)  !important
+}
+.plus-button{
+  border-radius: 50% !important;
+  padding: 4px 14px !important;
+  min-width: 1% !important;
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+.field-text{
+  font-size: 0.9em
+}
+.table .col-md-5{
+  background: white;
+  padding-top: 5px;
+  border-radius: 4px;
+  margin: 5px;
+  height: 30px;
+  box-shadow: 0 0px 2px 0px grey;
+}
+
+.warning .red {
+  color: #E73D4D;
+  font-size: 1.5em;
+}
+.warning .red .fa-phone{
+  color: #E73D4D;
+}
+.warning {
+  padding: 20px 0px
+}
+
+.align-left {
+  text-align: left;
+}
+
+.table>thead>tr>th {
+  border-bottom: none; 
+  padding: 20px;
+}
+
+.bline{
+  border-bottom: 1px solid lightgray;
+}
+.header .col-md-9{
+  margin-top: 10px !important;
+}

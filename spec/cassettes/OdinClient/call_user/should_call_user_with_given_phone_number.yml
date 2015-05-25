@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:9000/?phone_number=user/userd&text=boo%20yeahh
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '6'
+    body:
+      encoding: UTF-8
+      string: 200 OK
+    http_version: 
+  recorded_at: Thu, 03 Jul 2014 10:29:06 GMT
+- request:
+    method: get
+    uri: http://localhost:9000/?escalation_rule_key=0abcb702e0c732a14ce5&level_number=1&phone_number=user/userd&text=boo%20yeahh
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - Keep-Alive
+      Content-Length:
+      - '6'
+    body:
+      encoding: UTF-8
+      string: 200 OK
+    http_version: 
+  recorded_at: Thu, 10 Jul 2014 07:08:54 GMT
+recorded_with: VCR 2.9.0

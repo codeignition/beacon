@@ -1,0 +1,38 @@
+- unless @unregistered_phone_number
+  .dark-green.row.center-block
+    .confirmation_success.center-aligned
+      | SUCCESS!
+    .confirmation_text.center-aligned
+      | Your phone number
+      span.teal 
+        |  #{@phone_number} 
+      | has been successfully verified.
+  .row.light-padding.center-aligned
+    .btn.btn-primary onclick="window.location.href='#{alerts_path}'"
+      | PROCEED TO APP
+  
+- else
+  .dark-green.row.center-block
+    .confirmation_success.center-aligned
+      | UNSUCCESSFUL!
+    .confirmation_text.center-aligned
+      | Your phone number
+      span.teal 
+        |  #{@unregistered_phone_number} 
+      | has not been verified yet.
+  .row.center-aligned.light-padding 
+    span.h2.center-aligned.font-black
+      | Verify Your Phone Number
+
+  .row.center-aligned.light-padding.h3
+    | Give a missed call to 
+    span.teal
+      | +919999999999 
+    | (no carges apply) from your registered number :
+    span.teal
+      | #{@unregistered_phone_number}
+  hr
+  .row.light-padding.center-aligned
+    .btn.btn-primary onclick="window.location.href='#{check_phone_number_verification_status}'"
+        | CHECK
+

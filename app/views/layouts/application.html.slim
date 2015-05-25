@@ -1,0 +1,160 @@
+doctype html
+html[lang="en"]
+  head
+    meta[charset="utf-8"]
+    meta[http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"]
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    title
+      = content_for?(:title) ? yield(:title) : "Beacon"
+    = csrf_meta_tags
+    = stylesheet_link_tag "application", :media => "all"
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,300,300italic,400italic,500italic' rel='stylesheet' type='text/css'>
+
+    = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
+    = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
+    = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
+    = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
+    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+    = javascript_include_tag "application"
+  body
+    - if !current_user.nil?
+      .navbar.navbar-top.dark-green
+        .navbar-inner
+            .row
+              .col-md-5
+                = image_tag "beacon-logo-transparent.png", href: "/", class: "logo-small"
+              - unless current_page? confirmed_email_path or current_page? check_phone_number_verification_status_path
+
+                .col-md-2
+                  - unless (current_page? setup_1_path) or (current_page? setup_2_path)
+                    ul.nav.nav-pills.nav-justified.top-header.zero-padding
+                      li.zero-padding.dropdown.org_toggle.zero-padding
+                        a.dropdown-toggle href="#" data-toggle="dropdown" class="dropdown-toggle"
+                          | #{@current_org.name}
+                          b.caret
+                        ul.dropdown-menu.org_menu
+                          - current_user.organizations.each do |org|
+                            li.zero_padding id="#{org.id}" class="#{@current_org == org ? 'active': ''}"
+                              .row
+                                .col-md-8
+                                  | #{org.name}
+                                .col-md-4
+                                  = fa_icon 'pencil', id: "#{org.id}", class: "edit_org"
+                           
+                            hr.dark.zero-padding
+                          li.create_org.center-aligned.create_org_event
+                            | + NEW ORGANIZATION
+
+                .col-md-5
+                  .col-md-8.zero-padding
+                    ul.nav.nav-pills.nav-justified.top-header.zero-padding
+                      - unless (current_page? setup_1_path) or (current_page? setup_2_path)
+                        li.zero-padding.alert-link class="#{if current_page?(alerts_path); 'active';end}"
+                          = link_to "ALERTS", :alerts,:method => :get
+                        li.zero-padding.settings-link class="#{if current_page?(settings_path); 'active'; end}"
+                          = link_to "SETTINGS", :settings,:method => :get
+                  .col-md-4.zero-padding
+                    ul.nav.nav-pills.nav-justified.top-header.zero-padding
+                      li.zero-padding
+                        = link_to "SIGN OUT", :destroy_user_session, :method => :delete
+    - else
+      .navbar.navbar-top.dark-green.fixed
+        .navbar-inner
+          .row
+            .col-md-5
+              = image_tag "beacon-logo-transparent.png", href: "/", class: "logo-small"
+
+            .col-md-3.col-md-offset-4
+              .col-md-8.zero-padding
+                ul.nav.nav-pills.no-border.nav-justified.top-header.zero-padding
+                  li.zero-padding.signin.float-right
+                    a href="#signin" 
+                      | SIGN IN
+                  li.zero-padding.signup.float-right
+                    a href="#signin"
+                      | SIGN UP
+                    
+    .container.zero-padding class="#{current_user.nil? ? 'full-height no-overflow' : 'full-percent-height-content'}"
+      .row.zero-padding
+        = bootstrap_flash
+        = yield
+      - if current_user.nil? 
+        footer
+          .row
+            .col-md-2.take_tour
+              | TAKE TOUR
+            .col-md-4.col-md-offset-6.align-right
+              | © CodeIgnition Software Solution Pvt. Ltd. 2015
+    - unless current_user.nil? 
+      footer
+        .row
+          .col-md-2.take_tour
+            | TAKE TOUR
+          .col-md-4.col-md-offset-6.align-right
+            | © CodeIgnition Software Solution Pvt. Ltd. 2015
+
+- if current_user 
+  - current_user.organizations.each do |org|
+      .modal.fade.edit_org role="dialog" aria-labelledby="ModalLabel" id="edit_org_modal_#{org.id}"  
+        .modal-dialog.modal-lg
+          .modal-content
+            .modal-header
+              button type="button" class="close close_button" data-dismiss="modal" aria-label="Close"
+                span aria-hidden="true" &times;
+              .modal-title
+                | EDIT ORGANIZATION
+
+            = form_for(org) do |f|
+              .modal-body 
+                .row
+                  .col-md-4
+                    .field.align-right
+                      .label NAME
+                  .col-md-4
+                    .input
+                      = f.text_field :name, class: "input", value: "#{org.name}"
+              .modal-footer
+                .row
+                  .col-md-4
+                  .col-md-4
+                    .edit_actions
+                      = f.submit "SAVE CHANGES", class: "btn solid create_org_button" ,id: "edit_organization_#{org.id}"
+                      div
+                        button class="btn no-border show_confirmation"
+                          | DELETE ORGANIZATION  
+                .confirmation
+                  .row
+                    .col-md-6.text
+                      | Are you sure you want to delete this organization?
+                    .col-md-6
+                      button class="btn solid delete_org" id="delete_org_#{org.id}"
+                        | DELETE
+                      button class="btn solid grey cancel_delete"
+                        | CANCEL    
+.modal.fade.edit_org role="dialog" aria-labelledby="ModalLabel" id="create_org_modal"  
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        button type="button" class="close close_button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+        .modal-title
+          | CREATE ORGANIZATION
+
+      = form_for(Organization.new) do |f|
+        .modal-body 
+          .row
+            .col-md-4
+              .field.align-right
+                .label NAME
+            .col-md-4
+              .input
+                = f.text_field :name, class: "input", PLACEHOLDER: "ORGANIZATION"
+        .modal-footer
+          .row
+            .col-md-4
+            .col-md-4
+              .edit_actions
+                = f.submit "CREATE ORGANIZATION", class: "btn solid create_org_button" ,id: "new_organization"
+- if current_user and !current_user.tour_taken and !(current_page? setup_1_path) and !(current_page? confirmed_email_path)              
+  input.show_tour type='hidden'
+

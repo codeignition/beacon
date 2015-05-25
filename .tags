@@ -1,0 +1,133 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+APP_PATH	bin/rails	/^APP_PATH = File.expand_path('..\/..\/config\/application',  __FILE__)$/;"	c
+AddUserIdToContact	db/migrate/20140614202152_add_user_id_to_contact.rb	/^class AddUserIdToContact < ActiveRecord::Migration$/;"	c
+AddUsernameToAdmin	db/migrate/20140613114204_add_username_to_admin.rb	/^class AddUsernameToAdmin < ActiveRecord::Migration$/;"	c
+AddUsernameToUsers	db/migrate/20140613114116_add_username_to_users.rb	/^class AddUsernameToUsers < ActiveRecord::Migration$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Beacon
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+Beacon	config/application.rb	/^module Beacon$/;"	m
+BeaconSettings	config/initializers/a_beacon.rb	/^BeaconSettings = Hashie::Mash.new settings_hash[Rails.env]$/;"	c
+CallLog	app/models/call_log.rb	/^class CallLog < ActiveRecord::Base$/;"	c
+CallNextLevelController	app/controllers/call_next_level_controller.rb	/^class CallNextLevelController < ApplicationController$/;"	c
+CallNextLevelHelper	app/helpers/call_next_level_helper.rb	/^module CallNextLevelHelper$/;"	m
+CallUserController	app/controllers/call_user_controller.rb	/^class CallUserController < ApplicationController$/;"	c
+CallUserHelper	app/helpers/call_user_helper.rb	/^module CallUserHelper$/;"	m
+Complaint	app/models/complaint.rb	/^class Complaint < ActiveRecord::Base$/;"	c
+ComplaintController	app/controllers/complaint_controller.rb	/^class ComplaintController < ApplicationController$/;"	c
+ComplaintHelper	app/helpers/complaint_helper.rb	/^module ComplaintHelper$/;"	m
+Contact	app/models/contact.rb	/^class Contact < ActiveRecord::Base$/;"	c
+ContactsController	app/controllers/contacts_controller.rb	/^class ContactsController < ApplicationController$/;"	c
+ContactsHelper	app/helpers/contacts_helper.rb	/^module ContactsHelper$/;"	m
+ControllerMacros	spec/support/controller_macros.rb	/^module ControllerMacros$/;"	m
+CreateCallLogs	db/migrate/20140704085802_create_call_logs.rb	/^class CreateCallLogs < ActiveRecord::Migration$/;"	c
+CreateComplaints	db/migrate/20140712063412_create_complaints.rb	/^class CreateComplaints < ActiveRecord::Migration$/;"	c
+CreateContacts	db/migrate/20140614091950_create_contacts.rb	/^class CreateContacts < ActiveRecord::Migration$/;"	c
+CreateEscalationRules	db/migrate/20140621110859_create_escalation_rules.rb	/^class CreateEscalationRules < ActiveRecord::Migration$/;"	c
+CreateLevels	db/migrate/20140621110842_create_levels.rb	/^class CreateLevels < ActiveRecord::Migration$/;"	c
+CreateOrganizationUsers	db/migrate/20150506073506_create_organization_users.rb	/^class CreateOrganizationUsers < ActiveRecord::Migration$/;"	c
+CreateOrganizations	db/migrate/20150506073203_create_organizations.rb	/^class CreateOrganizations < ActiveRecord::Migration$/;"	c
+DeviseCreateUsers	db/migrate/20140613100501_devise_create_users.rb	/^class DeviseCreateUsers < ActiveRecord::Migration$/;"	c
+EscalationRule	app/models/escalation_rule.rb	/^class EscalationRule < ActiveRecord::Base$/;"	c
+EscalationRulesController	app/controllers/escalation_rules_controller.rb	/^class EscalationRulesController < ApplicationController$/;"	c
+EscalationRulesHelper	app/helpers/escalation_rules_helper.rb	/^module EscalationRulesHelper$/;"	m
+Level	app/models/level.rb	/^class Level < ActiveRecord::Base$/;"	c
+LevelsController	app/controllers/levels_controller.rb	/^class LevelsController < ApplicationController$/;"	c
+LevelsHelper	app/helpers/levels_helper.rb	/^module LevelsHelper$/;"	m
+OdinClient	lib/clients/odin_client.rb	/^class OdinClient$/;"	c
+OdinClientController	app/controllers/odin_client_controller.rb	/^class OdinClientController < ApplicationController$/;"	c
+OdinClientHelper	app/helpers/odin_client_helper.rb	/^module OdinClientHelper$/;"	m
+Organization	app/models/organization.rb	/^class Organization < ActiveRecord::Base$/;"	c
+OrganizationUser	app/models/organization_user.rb	/^class OrganizationUser < ActiveRecord::Base$/;"	c
+RegistrationsController	app/controllers/registrations_controller.rb	/^class RegistrationsController < Devise::RegistrationsController$/;"	c
+User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+VCR	spec/support/vcr.rb	/^class VCR::Cassette$/;"	c
+WelcomeController	app/controllers/welcome_controller.rb	/^class WelcomeController < ApplicationController$/;"	c
+after_sign_in_path_for	app/controllers/application_controller.rb	/^  def after_sign_in_path_for(resource_or_scope)$/;"	f	class:ApplicationController
+after_sign_out_path_for	app/controllers/application_controller.rb	/^  def after_sign_out_path_for(resource_or_scope)$/;"	f	class:ApplicationController
+call_log	app/controllers/odin_client_controller.rb	/^  def call_log$/;"	f	class:OdinClientController
+call_log	app/models/complaint.rb	/^has_one :call_log$/;"	f
+call_next_level_params	app/controllers/call_next_level_controller.rb	/^  def call_next_level_params$/;"	f	class:CallNextLevelController
+call_user	lib/clients/odin_client.rb	/^    def call_user phone_number,text,rule_key,level_number,complaint_id$/;"	f	class:OdinClient
+call_user_params	app/controllers/call_user_controller.rb	/^  def call_user_params$/;"	f	class:CallUserController
+caller	app/controllers/call_user_controller.rb	/^  def caller$/;"	f	class:CallUserController
+change	db/migrate/20140613100501_devise_create_users.rb	/^  def change$/;"	f	class:DeviseCreateUsers
+change	db/migrate/20140613114116_add_username_to_users.rb	/^  def change$/;"	f	class:AddUsernameToUsers
+change	db/migrate/20140613114204_add_username_to_admin.rb	/^  def change$/;"	f	class:AddUsernameToAdmin
+change	db/migrate/20140614091950_create_contacts.rb	/^  def change$/;"	f	class:CreateContacts
+change	db/migrate/20140614202152_add_user_id_to_contact.rb	/^  def change$/;"	f	class:AddUserIdToContact
+change	db/migrate/20140621110842_create_levels.rb	/^  def change$/;"	f	class:CreateLevels
+change	db/migrate/20140621110859_create_escalation_rules.rb	/^  def change$/;"	f	class:CreateEscalationRules
+change	db/migrate/20140704085802_create_call_logs.rb	/^  def change$/;"	f	class:CreateCallLogs
+change	db/migrate/20140712063412_create_complaints.rb	/^  def change$/;"	f	class:CreateComplaints
+change	db/migrate/20150506073203_create_organizations.rb	/^  def change$/;"	f	class:CreateOrganizations
+change	db/migrate/20150506073506_create_organization_users.rb	/^  def change$/;"	f	class:CreateOrganizationUsers
+complaint	app/models/escalation_rule.rb	/^  has_many :complaint$/;"	f
+complaints	app/models/user.rb	/^  has_many :complaints$/;"	f
+configure_permitted_parameters	app/controllers/application_controller.rb	/^  def configure_permitted_parameters$/;"	f	class:ApplicationController
+contact	app/models/level.rb	/^  belongs_to :contact$/;"	f
+contact_params	app/controllers/contacts_controller.rb	/^    def contact_params$/;"	f	class:ContactsController
+contacts	app/models/user.rb	/^  has_many :contacts$/;"	f
+create	app/controllers/contacts_controller.rb	/^  def create$/;"	f	class:ContactsController
+create	app/controllers/escalation_rules_controller.rb	/^  def create$/;"	f	class:EscalationRulesController
+create	app/controllers/levels_controller.rb	/^  def create$/;"	f	class:LevelsController
+create	app/controllers/registrations_controller.rb	/^  def create$/;"	f	class:RegistrationsController
+create_complaint	app/controllers/complaint_controller.rb	/^    def create_complaint escalation_rule_id,user_id$/;"	f	class:ComplaintController
+create_connection	lib/clients/odin_client.rb	/^  def self.create_connection$/;"	F
+create_rule_key	app/models/escalation_rule.rb	/^  def create_rule_key$/;"	f	class:EscalationRule
+current_org	app/controllers/application_controller.rb	/^  def current_org$/;"	f	class:ApplicationController
+current_org=	app/controllers/application_controller.rb	/^  def current_org=(id)$/;"	f	class:ApplicationController
+defaults	app/models/user.rb	/^  def defaults$/;"	f	class:User
+destroy	app/controllers/contacts_controller.rb	/^  def destroy$/;"	f	class:ContactsController
+destroy	app/controllers/escalation_rules_controller.rb	/^  def destroy$/;"	f	class:EscalationRulesController
+destroy	app/controllers/levels_controller.rb	/^  def destroy$/;"	f	class:LevelsController
+edit	app/controllers/contacts_controller.rb	/^  def edit$/;"	f	class:ContactsController
+edit	app/controllers/escalation_rules_controller.rb	/^  def edit$/;"	f	class:EscalationRulesController
+edit	app/controllers/levels_controller.rb	/^  def edit$/;"	f	class:LevelsController
+escalation_rule	app/models/complaint.rb	/^belongs_to :escalation_rule$/;"	f
+escalation_rule	app/models/level.rb	/^  belongs_to :escalation_rule$/;"	f
+escalation_rule_params	app/controllers/escalation_rules_controller.rb	/^  def escalation_rule_params$/;"	f	class:EscalationRulesController
+escalation_rules	app/models/user.rb	/^  has_many :escalation_rules$/;"	f
+find_first_by_auth_conditions	app/models/user.rb	/^  def self.find_first_by_auth_conditions(warden_conditions)$/;"	F	class:User
+home	app/controllers/application_controller.rb	/^  def home$/;"	f	class:ApplicationController
+index	app/controllers/complaint_controller.rb	/^    def index$/;"	f	class:ComplaintController
+index	app/controllers/contacts_controller.rb	/^  def index$/;"	f	class:ContactsController
+index	app/controllers/escalation_rules_controller.rb	/^  def index$/;"	f	class:EscalationRulesController
+level_params	app/controllers/levels_controller.rb	/^    def level_params$/;"	f	class:LevelsController
+levels	app/models/contact.rb	/^  has_many :levels$/;"	f
+levels	app/models/escalation_rule.rb	/^  has_many :levels$/;"	f
+login_admin	spec/support/controller_macros.rb	/^  def login_admin$/;"	f	class:ControllerMacros
+login_user	spec/support/controller_macros.rb	/^  def login_user$/;"	f	class:ControllerMacros
+new	app/controllers/contacts_controller.rb	/^  def new$/;"	f	class:ContactsController
+new	app/controllers/escalation_rules_controller.rb	/^  def new$/;"	f	class:EscalationRulesController
+new	app/controllers/levels_controller.rb	/^  def new$/;"	f	class:LevelsController
+next_call	app/controllers/call_next_level_controller.rb	/^  def next_call$/;"	f	class:CallNextLevelController
+notify	app/controllers/complaint_controller.rb	/^    def notify complaint_id$/;"	f	class:ComplaintController
+odin_client_params	app/controllers/odin_client_controller.rb	/^  def odin_client_params$/;"	f	class:OdinClientController
+organization	app/models/organization_user.rb	/^	belongs_to :organization$/;"	f
+organization_users	app/models/organization.rb	/^	has_many :organization_users$/;"	f
+organization_users	app/models/user.rb	/^  has_many :organization_users$/;"	f
+organizations	app/models/user.rb	/^  has_many :organizations, through: :organization_users$/;"	f
+result	app/controllers/welcome_controller.rb	/^  def result$/;"	f	class:WelcomeController
+rule_contacts	app/models/escalation_rule.rb	/^  def rule_contacts$/;"	f	class:EscalationRule
+sanitized_name	spec/support/vcr.rb	/^  def sanitized_name$/;"	f	class:VCR
+set_contact	app/controllers/contacts_controller.rb	/^    def set_contact$/;"	f	class:ContactsController
+set_escalation_rule	app/controllers/escalation_rules_controller.rb	/^  def set_escalation_rule$/;"	f	class:EscalationRulesController
+set_level	app/controllers/levels_controller.rb	/^    def set_level$/;"	f	class:LevelsController
+set_organization	app/controllers/welcome_controller.rb	/^  def set_organization$/;"	f	class:WelcomeController
+show	app/controllers/contacts_controller.rb	/^  def show$/;"	f	class:ContactsController
+show	app/controllers/escalation_rules_controller.rb	/^  def show$/;"	f	class:EscalationRulesController
+show	app/controllers/levels_controller.rb	/^  def show$/;"	f	class:LevelsController
+update	app/controllers/contacts_controller.rb	/^  def update$/;"	f	class:ContactsController
+update	app/controllers/escalation_rules_controller.rb	/^  def update$/;"	f	class:EscalationRulesController
+update	app/controllers/levels_controller.rb	/^  def update$/;"	f	class:LevelsController
+user	app/models/complaint.rb	/^belongs_to :user$/;"	f
+user	app/models/contact.rb	/^  belongs_to :user$/;"	f
+user	app/models/escalation_rule.rb	/^  belongs_to :user$/;"	f
+user	app/models/organization_user.rb	/^	belongs_to :user$/;"	f
+users	app/models/organization.rb	/^	has_many :users, through: :organization_users$/;"	f

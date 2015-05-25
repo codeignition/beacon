@@ -1,0 +1,440 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require font-awesome
+ */
+
+body {
+  font-weight: 200;
+  color: #8c8c8c;
+  font-family: 'Roboto', sans-serif;
+  background: whitesmoke;
+}
+.logo-small{
+   height: 70px;
+   padding: 1%;
+}
+
+.anchor-menu {
+  position: fixed;
+  right: 25px;
+  top: 50%;
+}
+.zero-padding{
+  padding: 0px !important;
+  margin: 0px !important
+}
+.container {
+  width: 100%
+}
+
+ul.anchor-menu a {
+  color: lightgray;
+  font-size: 0.6em;
+}
+
+ul.anchor-menu li.active  a{
+  font-size: 0.9em;
+  color: rgb(231, 61, 77);
+}
+ul.anchor-menu {
+  text-align: center;
+  list-style-type: none;
+}
+
+.row .logo {
+  color: rgb(155, 155, 155);
+  height: 130px;
+}
+
+.logo-landing {
+  margin-top: 15vh;
+}
+
+.row .tagline{
+
+  font-size: 3em;
+  line-height: 1.5em;
+  font-weight: 400;
+}
+
+.row.feature{
+  padding-top: 15vh;
+}
+.h1.large{
+  font-size: 3em
+}
+.tagline.small{
+  font-size: 2em
+}
+
+.logo-signin{
+  height: 110px;
+}
+.btn.login-anchor{
+  font-size: 1.2em;
+  width: 60%;
+  margin-top: 40vh;
+}
+
+.logo-side {
+  background: whitesmoke;
+}
+
+.color-red {
+  color: rgb(228, 31, 68)
+}
+
+.row {
+  margin: 0px;
+}
+
+.nav-pills.top-header{
+  padding-top: 10px !important;
+  width: 100%;
+}
+
+.navbar.navbar-top {
+  border-radius: 0px;
+  margin-bottom: 0px
+}
+.nav-pills>li>a{
+  background-color: transparent;
+  color: lightgray;
+}
+.nav-pills>li.active>a{
+  background-color: transparent;
+  color: lightgray;
+}
+.nav-pills>li.active>a:hover{
+  background-color: transparent;
+  color: whitesmoke;
+}
+.nav-pills>li.active>a:focus{
+  background-color: transparent;
+  color: whitesmoke;
+}
+.nav-pills>li>a:focus{
+  background-color: transparent;
+  color: whitesmoke;
+}
+a {
+  text-decoration: initial;
+}
+
+.btn.no-border>a:hover{
+  color: red;
+}
+.nav-pills>li>a:hover{
+  background-color: transparent;
+  color: whitesmoke;
+}
+.btn {
+  border-radius: 4px;
+  border: 2px solid #e73d4d;
+  background: transparent;
+  padding: 10px 12px;
+  color: #e73d4d;
+  min-width: 100px;
+}
+.btn:hover{
+  background: #e73d4d;
+  border: 2px solid #e73d4d;
+}
+.btn.solid.grey {
+  background: lightgray;
+  border: 1px solid lightgray;
+}
+.btn:focus{
+  outline: none !important;
+}
+.btn>a{
+  color: #e73d4d;
+}
+.btn>a:hover{
+  color: whitesmoke;
+
+}
+.btn.solid{
+    background: #e73d4d;
+    color: whitesmoke;
+}
+.btn.no-border{
+  border:none;
+}
+.btn.no-border:hover{
+  border:none;
+  color: red;
+  background: transparent;
+}
+.float-right{
+  float: right;
+} 
+h3, .h3{
+  margin-top: 0px;
+  font-size: 1.3em;
+  font-weight: 200;
+  line-height: 1.3em;
+}
+
+.full_page_scroll .section {
+  height: 100vh;
+}
+h1, .h1{
+  font-size: 1.8em;
+  margin-top: 0;
+}
+.h1.black {
+  margin-left: 15px;
+  color: rgb(65, 65, 65);
+}
+.h4 {
+  font-weight: 200;
+  font-size: 1em;
+  line-height: 1.7em;
+}
+.header{
+  padding: 20px 0%;
+  background: ghostwhite;
+}
+.h2 {
+  margin-top: 0px;
+  font-size: 1.7em;
+  font-weight: 200;
+}
+.table>tbody>tr>td {
+  vertical-align: middle;
+  padding: 20px;
+}
+
+.close span{
+  color: white;
+  font-size: 1.5em;
+}
+.label{
+  color: #09836C;
+  padding: 0;
+  font-size: 1em;
+}
+select:focus {
+  outline: none;
+}
+
+hr{
+  border-top: 1px solid lightgray;
+}
+
+.feature-image{
+  width: 70%;
+}
+select {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 2vh;
+  border-radius: 4px;
+  border: 1px solid grey;
+  background: transparent;
+  padding: 10px;
+}
+.headline{
+  margin-bottom: 6%;
+  font-size: 1.42em;
+}
+.modal-footer {
+  text-align: center;
+}
+.modal-body {
+  overflow-y: auto;
+  max-height: 500px !important;
+}
+.modal-footer input {
+  text-align: center;
+}
+.level_select {
+  height: inherit;
+  width: 50px;
+  color: teal;
+  border: none;
+}
+.level_select:focus {
+  height: inherit;
+  width: 50px;
+  border: none;
+}
+.fa-minus-circle:hover {
+  color: rgb(160, 0, 0);
+  cursor: pointer;
+}
+.fa-minus-circle {
+  padding-top: 5px;
+}
+}
+.minus-circle {
+  text-align: right
+}
+.modal tbody{
+  border-top: none !important;
+}
+.modal td{
+  border-top: none !important;
+  vertical-align: top !important;
+}
+.modal tr{
+  border-top: none !important;
+}
+.confirmation{
+  display: none;
+  height: 80px;
+  margin-top: auto;
+  min-width: 100%;
+}
+.confirmation .row{
+  padding: 20px;
+}
+.confirmation .row .col-md-7.text{
+  margin-top: 10px;
+  font-size: 1.1em;
+  text-align: right;
+}
+.confirmation .row .col-md-6.text{
+  margin-top: 10px;
+  font-size: 1.2em;
+  text-align: right;
+}
+table.table.zero-padding td{
+  padding-left: 0px;
+}
+.api_key_text{
+  font-style: italic;
+}
+table.table tr:hover .h2, table.table tr:hover .h3 {
+  color: rgb(65, 65, 65);
+}
+.edit_button:hover {
+  color: teal;
+  cursor: pointer;
+}
+.align-right{
+  text-align: right;
+}
+.no-overflow{
+  overflow: hidden
+}
+.phone-image {
+  padding-left: 4%;
+}
+
+.light-margin{
+  margin: 2%
+}
+.nav-justified>.dropdown .dropdown-menu{
+  width: 100%;
+  top: 99%;
+  border: 1px solid whitesmoke;
+  border-top: none;
+  border-radius: 0px;
+  box-shadow: none;
+  text-align: center;
+  padding: 0px;
+  
+}
+
+.dropdown-menu li{
+  padding: 20px 0px;
+  color: lightgray;
+  background: rgb(50, 62, 74)
+}
+.dropdown-menu li.active{
+  border: none;
+  color: #09836C ;
+}
+.dropdown-menu li:hover{
+  color: white;
+  background: rgb(28, 39, 51);
+}
+
+
+.org_active{
+  background: rgb(25, 33, 42);
+}
+
+.navbar.navbar-top .nav-pills>li{
+  padding-top: 6px !important;
+  height: 60px;
+}
+hr.dark{
+    border-top: 1px solid #19212A;
+}
+
+.back-ghostwhite {
+  background: ghostwhite;
+}
+
+.gainsboro{
+  color: gainsboro;
+}
+
+a .btn:hover, a:-webkit-any-link{
+  text-decoration: none;
+}
+  
+.fp-tableCell{
+  position: relative;
+}
+
+.row.slide-down-anchor {
+  position: absolute;
+  bottom: 2%;
+  text-align: center;
+  width: 100%;
+  font-size: 2em;
+}
+
+.row.slide-down-anchor a{
+  color: teal;
+}
+
+.learn-more{
+  font-size: 0.5em;
+}
+
+.trial{
+  line-height: 2.3em
+}
+
+.navbar.fixed{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background: transparent;
+}
+.nav-pills.no-border li{
+  border-bottom: none;
+}
+.nav-pills.no-border li a{
+  border-bottom: none;
+  color: grey;
+}
+.nav-pills.no-border li a:hover{
+  border-bottom: none;
+  color: grey;
+}
+
+footer {
+  background: rgb(28, 39, 51);
+  height: 30px;
+  color: lightgray;
+  padding: 6px;
+}

@@ -1,0 +1,2 @@
+module CallUserHelper
+end

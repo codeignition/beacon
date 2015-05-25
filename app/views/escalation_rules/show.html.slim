@@ -1,0 +1,18 @@
+h3  = "Name: #{@escalation_rule.name}"
+h3  = "Rule Key: #{@escalation_rule.rule_key}"
+table.table.table-hover
+  tr
+    th Level Number
+    th Contact Name
+    th Contact Number
+  - @escalation_rule.levels.order(level_number: :asc).each do |level|
+    tr
+      td = level.level_number
+      td = level.contact.name
+      td = level.contact.phone_number
+      td
+         = link_to 'Delete',level, method: :delete, data: { confirm: 'Are you sure?' }
+      td
+         = link_to 'Edit', edit_level_path(level)
+.btn.btn-default
+  = link_to 'Back', root_path

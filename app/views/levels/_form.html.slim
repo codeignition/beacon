@@ -1,0 +1,24 @@
+= form_for(@level) do |f|
+  - if @level.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@level.errors.count, "error")
+        |  prohibited this level from being saved:
+      ul
+        - @level.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = f.label :escalation_rule
+    br
+    = f.collection_select(:escalation_rule_id, current_user.escalation_rules, :id, :name, :prompt => "Select Escalation Rule")
+  .field
+    = f.label :contact
+    br
+    = f.collection_select(:contact_id, current_user.contacts, :id, :name, :prompt => "Select Contact")
+  .field
+    = f.label :level_number
+    br
+    = f.number_field :level_number
+  .actions
+    = f.submit "Save"

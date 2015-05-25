@@ -1,0 +1,65 @@
+.dark-green.row.center-block
+  .confirmation_success.center-aligned
+    | WELCOME TO BEACON!
+  .confirmation_text.center-aligned
+    | Account verification mail has been sent to 
+    span.teal 
+      |  #{current_user.email} 
+.width-90-percent.center-block
+  .row.light-padding.center-block.center-aligned
+    .col-md-12.zero-padding
+      span.h1.font-black
+          | Complete Profile & Continue 
+   
+  .row
+    .col-md-4.align-right
+      .field
+        .row.zero-padding
+          .label ORGANIZATION 
+
+    .col-md-8
+      = form_for(@current_org) do |f|
+        .input
+          .row.zero-padding
+            .col-md-6.zero-padding
+              = f.text_field :name, class: "input", value: "#{@current_org.name}"
+
+
+
+    = form_for(@new_contact) do |f|
+      .row
+        .col-md-4.align-right
+          .field
+            .row.zero-padding
+              .label NAME
+        .col-md-8
+          .input
+            .row.zero-padding
+              .col-md-6.zero-padding
+                = f.text_field :name, class: "input", placeholder: "me"
+              .col-md-6.left-padding.italic
+                | To recieve Beacon notifications add yourself & verify your phone number. 
+
+      .row
+        .col-md-4.align-right
+          .field
+            .row.zero-padding
+              .label PHONE NUMBER 
+
+        .col-md-8
+          .input
+              .row.zero-padding
+                .col-md-6.zero-padding
+                  = f.text_field :phone_number, class: "input", placeholder: "+1 1234567890"
+                .col-md-6.left-padding.italic
+                  | Phone numbers must be verified by giving a missed call to +91 9999999999.
+
+      = f.text_field :email_id, class: "input", value: "#{current_user.email}", type: "hidden"
+      .row 
+        .col-md-4
+        .col-md-8
+          .col-md-6.zero-padding
+            = f.submit "CONTINUE", class: "btn solid go_to_step_3__button" 
+   
+          
+        

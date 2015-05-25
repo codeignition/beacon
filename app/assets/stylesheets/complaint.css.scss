@@ -1,0 +1,23 @@
+// Place all the styles related to the complaint controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.alerts_table td{
+  padding: 1% !important
+}
+
+.escalation_rule{
+  font-size: 1.5em
+}
+
+.fa-times{
+  color: red
+}
+
+.fa-check{
+  color: green
+}
+
+.fa-phone{
+  color: yellow
+}

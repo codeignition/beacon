@@ -1,0 +1,17 @@
+p#notice
+  = notice
+p
+  strong
+    | Escalation rule:
+  = @level.escalation_rule.name
+p
+  strong
+    | Contact:
+  = @level.contact.name
+p
+  strong
+    | Level number:
+  = @level.level_number
+= link_to 'Edit', edit_level_path(@level)
+|  | 
+= link_to 'Back', welcome_path

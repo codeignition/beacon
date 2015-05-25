@@ -1,0 +1,32 @@
+.row.header.bline
+  .col-md-9.zero-padding
+    span.h1.black
+      | ALERTS 
+    span.h2
+      | #{@complaints.count} 
+          
+
+.row.light-margin
+  .span4
+    table.table.table-hover.alerts_table
+      - @complaints.each do |complaint|
+        tr
+          td
+            .escalation_rule  
+              - if complaint.status == 'success'
+                = fa_icon "check"
+              - elsif complaint.status == 'failure'
+                = fa_icon "times"
+              - else
+                = fa_icon "phone"
+
+          td
+            .escalation_rule 
+              = complaint.escalation_rule.name
+              
+          td = complaint.call_log
+          td = complaint.ip_address
+          td 
+            span.time
+              =complaint.created_at
+

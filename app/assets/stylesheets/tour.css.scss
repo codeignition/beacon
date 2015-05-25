@@ -1,0 +1,123 @@
+.introjs-tooltip{
+  direction: ltr;
+  background-color: rgb(29, 166, 145);
+  color: whitesmoke;
+  min-width: 350px;
+  min-height: 175px;
+}
+
+.font-normal{
+  font-weight: 400;
+}
+
+.introjs-prevbutton{
+  background: rgba(8, 1, 1, 0.14) !important;
+  color: white !important;
+  border: none !important;
+  padding: 8px 12px !important;
+}
+
+.highlighted-class{
+  background: transparent;
+  border: none;
+  border-radius: 0px;
+  box-shadow: none;
+}
+.introjs-arrow.top {
+  top: -30px;
+  border-bottom-color: rgb(29, 166, 145);
+  border-bottom: 15px solid rgb(29, 166, 145);
+  margin-left: 150px; 
+}
+.introjs-arrow {
+  border: 18px solid white;
+}
+tr.introjs-showElement{
+  border: none;
+  color: white
+}
+tr.introjs-showElement .font-black{
+  color: white;
+  border: none;
+}
+
+.introjs-button{
+  border-radius: 2px;
+  border: 2px solid whitesmoke;
+  background: whitesmoke;
+  padding: 5px 12px;
+  color: rgb(29, 166, 145);
+  min-width: 75px;
+  text-shadow: none;
+  text-align: center;
+  font-weight: 200;
+  font-size: 1em;
+  margin: 3px;
+}
+
+.introjs-skipbutton{
+  position: absolute;
+  top: -125px;
+  right: -5px;
+  min-width: 0px;
+  padding: 0px;
+  background: transparent;
+  color: rgb(29, 166, 145);
+  border: none;
+}
+
+.introjs-skipbutton i{
+  color: rgb(0, 77, 77);
+}
+.introjs-skipbutton:hover, .introjs-skipbutton:focus {
+  background: transparent !important;
+  border: none !important;
+}
+
+.introjs-button:hover{
+  background: whitesmoke;
+  border: 2px solid whitesmoke;
+  box-shadow: none;
+}
+.introjs-button.solid.grey {
+  background: lightgray;
+  border: 1px solid lightgray;
+}
+.introjs-button:focus{
+  outline: none !important;
+}
+.introjs-button>a{
+  color: #e73d4d;
+}
+.introjs-button>a:hover{
+  color: whitesmoke;
+
+}
+.introjs-button.solid{
+    background: #e73d4d;
+    color: whitesmoke;
+}
+.introjs-button.no-border{
+  border:none;
+}
+.introjs-button.no-border:hover{
+  border:none;
+  color: red;
+  background: transparent;
+}
+.take_tour{
+  cursor: pointer;
+}
+
+.introjs-tooltipbuttons {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.introjs-tooltiptext{
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
+.introjs-donebutton {
+  float: right;
+}
