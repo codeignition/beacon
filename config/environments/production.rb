@@ -72,6 +72,16 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
   config.action_mailer.default_url_options = { :host => Rails.application.secrets["host_url"] }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address   => "smtp.mandrillapp.com",
+    :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
+    :enable_starttls_auto => true, # detects and uses STARTTLS
+    :user_name => "mehak@codeignition.co",
+    :password  => "yq8yr2jSJMZ7D0m1_9dPpg", # SMTP password is any valid API key
+    :authentication => 'login', # Mandrill supports 'plain' or 'login'
+    :domain => 'getbeacon.in'# your domain to identify your server when connecting
+  }
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
