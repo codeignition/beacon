@@ -5497,3 +5497,190 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-26 11:22:16
 
 
 Started GET "/assets/beacon-logo-transparent.png" for 127.0.0.1 at 2015-05-26 11:22:16 +0530
+DEPRECATION WARNING: Devise.allow_insecure_sign_in_after_confirmation= is deprecated and has no effect. (called from allow_insecure_sign_in_after_confirmation= at (eval):6)
+
+
+Started GET "/settings" for 127.0.0.1 at 2015-05-26 11:27:33 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#result as HTML
+  [1m[35mUser Load (1.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 18  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mOrganization Load (0.9ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = 19  ORDER BY "organizations"."id" ASC LIMIT 1[0m
+  [1m[35mOrganization Load (0.4ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = 19  ORDER BY "organizations"."id" ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "organizations".* FROM "organizations"  WHERE "organizations"."id" = 19  ORDER BY "organizations"."id" ASC LIMIT 1
+  [1m[36m (0.9ms)[0m  [1mSELECT COUNT(*) FROM "escalation_rules"  WHERE "escalation_rules"."organization_id" = $1[0m  [["organization_id", 19]]
+  [1m[35mEscalationRule Load (0.2ms)[0m  SELECT "escalation_rules".* FROM "escalation_rules"  WHERE "escalation_rules"."organization_id" = $1  [["organization_id", 19]]
+  [1m[36mLevel Load (0.3ms)[0m  [1mSELECT "levels".* FROM "levels"  WHERE "levels"."escalation_rule_id" = $1 AND "levels"."level_number" = 1[0m  [["escalation_rule_id", 22]]
+  [1m[35mContact Load (0.9ms)[0m  SELECT  "contacts".* FROM "contacts"  WHERE "contacts"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "contacts"  WHERE "contacts"."organization_id" = $1[0m  [["organization_id", 19]]
+  [1m[35mContact Load (0.2ms)[0m  SELECT "contacts".* FROM "contacts"  WHERE "contacts"."organization_id" = $1  [["organization_id", 19]]
+  [1m[36mLevel Load (0.2ms)[0m  [1mSELECT "levels".* FROM "levels"  WHERE "levels"."contact_id" = $1[0m  [["contact_id", 17]]
+  [1m[35mEscalationRule Load (0.2ms)[0m  SELECT  "escalation_rules".* FROM "escalation_rules"  WHERE "escalation_rules"."id" = $1 LIMIT 1  [["id", 22]]
+  [1m[36mLevel Load (0.2ms)[0m  [1mSELECT "levels".* FROM "levels"  WHERE "levels"."contact_id" = $1[0m  [["contact_id", 18]]
+  [1m[35mLevel Load (0.2ms)[0m  SELECT "levels".* FROM "levels"  WHERE "levels"."contact_id" = $1  [["contact_id", 20]]
+  [1m[36mLevel Load (0.3ms)[0m  [1mSELECT "levels".* FROM "levels"  WHERE "levels"."escalation_rule_id" = $1[0m  [["escalation_rule_id", 22]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "contacts".* FROM "contacts"  WHERE "contacts"."id" = $1 LIMIT 1  [["id", 17]]
+  Rendered welcome/result.html.slim within layouts/application (136.9ms)
+  [1m[36mOrganization Load (1.8ms)[0m  [1mSELECT "organizations".* FROM "organizations" INNER JOIN "organization_users" ON "organizations"."id" = "organization_users"."organization_id" WHERE "organization_users"."user_id" = $1[0m  [["user_id", 18]]
+Completed 200 OK in 2104ms (Views: 1890.8ms | ActiveRecord: 21.0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/complaint.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/confirmations.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/call_user.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/call_next_level.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/contacts.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/devise.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/escalation_rules.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/introjs-rtl.min.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/levels.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/odin_client.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/organizations.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/introjs.min.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/tour.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/welcome.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/font-awesome.css?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/moment.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/call_next_level.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/call_user.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/complaint.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/confirmations.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/contacts.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/escalation_rules.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/intro.min.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/jquery.fullPage.min.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/levels.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/odin_client.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/organizations.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/tour.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/welcome.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+
+
+Started GET "/assets/beacon-logo-transparent.png" for 127.0.0.1 at 2015-05-26 11:27:36 +0530
+DEPRECATION WARNING: Devise.allow_insecure_sign_in_after_confirmation= is deprecated and has no effect. (called from allow_insecure_sign_in_after_confirmation= at (eval):6)
+DEPRECATION WARNING: Devise.allow_insecure_sign_in_after_confirmation= is deprecated and has no effect. (called from allow_insecure_sign_in_after_confirmation= at (eval):6)

@@ -33,10 +33,10 @@ body {
 }
 .zero-padding{
   padding: 0px !important;
-  margin: 0px !important
+  margin: 0px !important;
 }
 .container {
-  width: 100%
+  width: 100%;
 }
 
 ul.anchor-menu a {
@@ -73,10 +73,10 @@ ul.anchor-menu {
   padding-top: 15vh;
 }
 .h1.large{
-  font-size: 3em
+  font-size: 3em;
 }
 .tagline.small{
-  font-size: 2em
+  font-size: 2em;
 }
 
 .logo-signin{
@@ -93,7 +93,7 @@ ul.anchor-menu {
 }
 
 .color-red {
-  color: rgb(228, 31, 68)
+  color: rgb(228, 31, 68);
 }
 
 .row {
@@ -107,7 +107,7 @@ ul.anchor-menu {
 
 .navbar.navbar-top {
   border-radius: 0px;
-  margin-bottom: 0px
+  margin-bottom: 0px;
 }
 .nav-pills>li>a{
   background-color: transparent;
@@ -281,7 +281,7 @@ select {
 }
 }
 .minus-circle {
-  text-align: right
+  text-align: right;
 }
 .modal tbody{
   border-top: none !important;
@@ -329,14 +329,14 @@ table.table tr:hover .h2, table.table tr:hover .h3 {
   text-align: right;
 }
 .no-overflow{
-  overflow: hidden
+  overflow: hidden;
 }
 .phone-image {
   padding-left: 4%;
 }
 
 .light-margin{
-  margin: 2%
+  margin: 2%;
 }
 .nav-justified>.dropdown .dropdown-menu{
   width: 100%;
@@ -353,7 +353,7 @@ table.table tr:hover .h2, table.table tr:hover .h3 {
 .dropdown-menu li{
   padding: 20px 0px;
   color: lightgray;
-  background: rgb(50, 62, 74)
+  background: rgb(50, 62, 74);
 }
 .dropdown-menu li.active{
   border: none;
@@ -410,7 +410,7 @@ a .btn:hover, a:-webkit-any-link{
 }
 
 .trial{
-  line-height: 2.3em
+  line-height: 2.3em;
 }
 
 .navbar.fixed{
