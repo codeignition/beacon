@@ -59,7 +59,15 @@
         tr
           td
             .h3.font-black
-              = contact.name
+              span
+                = contact.name
+              span
+                |   
+              span
+                - if contact.unverified?
+                  = fa_icon 'phone', class: 'back-red', "data-toggle" => "tooltip", "data-placement" => "right", title: "#{contact.phone_number}"
+                - else
+                  = fa_icon 'phone', class: 'back-grey', "data-toggle" => "tooltip", "data-placement" => "right", title: "#{contact.phone_number}"
           td
             .rk
               | #{contact.levels.map(&:escalation_rule).compact.to_set.count}

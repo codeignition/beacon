@@ -438,3 +438,10 @@ footer {
   color: lightgray;
   padding: 6px;
 }
+
+.back-red{
+  color: #e73d4d;
+}
+.back-grey{
+  color: lightgrey;
+}

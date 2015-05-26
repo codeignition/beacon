@@ -18,6 +18,6 @@ $( document ).ready(->
     ) 
     $('form.edit_organization').submit()
   )
-
+  $('[data-toggle="tooltip"]').tooltip()
 
 )
