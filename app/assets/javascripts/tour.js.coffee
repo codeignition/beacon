@@ -1,3 +1,4 @@
+
 $( document ).ready(->  
   intro = introJs()
   intro.setOptions(
@@ -85,13 +86,13 @@ $( document ).ready(->
       dataType: 'json'
     )  
   $('.take_tour').on('click', ->
-    sendRequest( "/toggle_tour/" , 'GET', null)
+    sendRequest( root_path + "/toggle_tour/" , 'GET', null)
   ) 
   intro.oncomplete(->
-    sendRequest( "/toggle_tour/" , 'GET', null)
+    sendRequest( root_path + "/toggle_tour/" , 'GET', null)
   )
   intro.onexit(->
-    sendRequest( "/toggle_tour/" , 'GET', null)
+    sendRequest( root_path + "/toggle_tour/" , 'GET', null)
   )
   intro.onafterchange((targetElement)->
     if intro._currentStep == 0
@@ -109,8 +110,8 @@ $( document ).ready(->
 
   )
   if $('.show_tour').length > 0
-    if window.location.pathname != '/settings'
-      window.location.pathname = '/settings'
+    if window.location.pathname != root_path + '/settings'
+      window.location.pathname = root_path + '/settings'
     intro.start()
 
 )

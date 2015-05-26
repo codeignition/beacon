@@ -17,6 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
+var root_path = '/beacon'
 $( document ).ready(function() {
   var makeId = function(n)
   {
@@ -126,9 +127,9 @@ $( document ).ready(function() {
     data = {escalation_rule: {name: name, contacts: added_contacts}}
     edit = this.id.match(/edit_escalation_rule_(\d+)/)
     if (edit != null) {
-      sendRequest( "/escalation_rules/" + edit[1], 'PUT', data)
+      sendRequest( root_path + "/escalation_rules/" + edit[1], 'PUT', data)
     }else{
-      sendRequest( "/escalation_rules/" , 'POST', data)
+      sendRequest( root_path + "/escalation_rules/" , 'POST', data)
     }
   })
 
@@ -139,9 +140,9 @@ $( document ).ready(function() {
     data = {organization: {name: name}}
     edit = this.id.match(/edit_organization_(\d+)/)
     if (edit != null) {
-      sendRequest( "/organizations/" + edit[1], 'PUT', data)
+      sendRequest( root_path + "/organizations/" + edit[1], 'PUT', data)
     }else{
-      sendRequest( "/organizations/" , 'POST', data)
+      sendRequest( root_path + "/organizations/" , 'POST', data)
     }
   }) 
 
@@ -158,13 +159,13 @@ $( document ).ready(function() {
   $(".delete_escalation_rule").on('click', function(event){
     event.preventDefault()
     id = this.id.match(/delete_escalation_rule_(\d+)/)
-    sendRequest( "/escalation_rules/" + id[1], 'DELETE', null)
+    sendRequest( root_path + "/escalation_rules/" + id[1], 'DELETE', null)
  }) 
 
   $(".delete_org").on('click', function(event){
     event.preventDefault()
     id = this.id.match(/delete_org_(\d+)/)
-    sendRequest( "/organizations/" + id[1], 'DELETE', null)
+    sendRequest( root_path + "/organizations/" + id[1], 'DELETE', null)
  }) 
   $('.org_toggle').on('mouseover', function(){
     hoverShow(this)
@@ -191,7 +192,7 @@ $( document ).ready(function() {
 
   $('.org_menu li .col-md-8').on('click', function(){
     data = {id: $(this).attr('id')}
-    sendRequest( "/set_org/", 'POST', data)
+    sendRequest( root_path + "/set_org/", 'POST', data)
   })
   var activateMenu = function(_this){
     $(_this).siblings().each(function(i, el){
