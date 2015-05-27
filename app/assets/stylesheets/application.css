@@ -246,6 +246,8 @@ select {
   border: 1px solid grey;
   background: transparent;
   padding: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 .headline{
   margin-bottom: 6%;

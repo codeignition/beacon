@@ -1,0 +1,3 @@
+mailer:
+  confirmation_instructions:
+    subject: 'Welcome to beacon! - Verification Email.'

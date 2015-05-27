@@ -17,7 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
-var root_path = '/beacon'
+var root_path = '/'
 $( document ).ready(function() {
   var makeId = function(n)
   {
@@ -72,7 +72,7 @@ $( document ).ready(function() {
         "<option class='level_select' value='3'>Q3</option>" +
         "<option class='level_select' value='4'>Q4</option>" +
         "<option class='level_select' value='5'>Q5</option>" +
-        "</select></span>" +
+        "<i class='fa fa_arrow float-right'><i></select></span>" +
         "<span class='contact_name' id='" + _this.value + "'>"+ contact + "</span>" +
         "<span class='minus-circle'> <i id='" + newId + "' class='fa fa-minus-circle delete_contact float-right'></i></span></div>")
     }

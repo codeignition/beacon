@@ -36,6 +36,9 @@ class ContactsController < ApplicationController
           Level.create(escalation_rule: @escalation_rule, contact_id: @contact.id, level_number: 1)
         end 
         @user.send_confirmation_instructions if @old_user.nil?
+        OnboardingMailer.send_invitation_email(
+          @user, @contact.name, current_user.contacts.first.name,
+          @contact.phone_number, current_org.name).deliver!
         format.html { redirect_to settings_path, notice: 'Team Member was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else
