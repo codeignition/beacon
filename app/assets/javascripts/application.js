@@ -17,7 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
-var root_path = '/'
+var root_path = '/beacon'
 $( document ).ready(function() {
   var makeId = function(n)
   {
@@ -237,7 +237,7 @@ $( document ).ready(function() {
       password_confirmation: $(this).parents('form').find('#user_password_confirmation').val()
     }}
     if (data['user']['password_confirmation'] === data['user']['password']){
-      if (data['user']['password'].length > 8){
+      if (data['user']['password'].length >= 8){
         $.ajax({
           type: 'POST',
           url: '/users',
