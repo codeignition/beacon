@@ -17,7 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
-var root_path = '/beacon'
+var root_path = '/'
 $( document ).ready(function() {
   var makeId = function(n)
   {
@@ -228,7 +228,57 @@ $( document ).ready(function() {
   }
   $('.anchor-menu li').on('click', function(){
     activateMenu(this)
-  }) 
+  })
+  $('.sign-up').on('click', function(event){
+    event.preventDefault()
+    data = {user: {
+      email: $(this).parents('form').find('#user_email').val(),
+      password: $(this).parents('form').find('#user_password').val(),
+      password_confirmation: $(this).parents('form').find('#user_password_confirmation').val()
+    }}
+    if (data['user']['password_confirmation'] === data['user']['password']){
+      if (data['user']['password'].length > 8){
+        $.ajax({
+          type: 'POST',
+          url: '/users',
+          data: data,
+          success: function(){
+            window.location.pathname = '/setup/1'
+          },
+          error: function(){ $('.flash').show();
+            $('.flash .message').html('Email Address already exists.')},
+          dataType: 'json'
+        });  
+      }else{
+        $('.flash').show();
+        $('.flash .message').html('Password must be atleast 8 characters long')
+      }
+    }else{
+      $('.flash').show();
+      $('.flash .message').html('Password and password confirmation fields do not match.')
+    }
+  })
+  $('.sign-in').on('click', function(event){
+    event.preventDefault()
+    data = {user: {
+      login: $(this).parents('form').find('#user_login').val(),
+      password: $(this).parents('form').find('#user_password').val()
+    }}
+    $.ajax({
+      type: 'POST',
+      url: '/users/sign_in',
+      data: data,
+      success: function(){
+        window.location.pathname = '/setup/1/'
+      },
+      error: function(){ $('.flash').show();
+        $('.flash .message').html('Email & password combo does not exist.')},
+      dataType: 'json'
+    });  
+  })
+  $('.close_flash_button').on('click', function(){
+    $('.flash').slideUp()
+  })
 });
 
 

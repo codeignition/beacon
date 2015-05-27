@@ -172,7 +172,7 @@
                   div
                     = f.password_field :password, autocomplete: "off", placeholder: "PASSWORD"
 
-                  = f.submit "SIGN IN" , class:  "button"
+                  = f.submit "SIGN IN" , class:  "sign-in button"
             .tab-pane.sign-up-form role="tabpanel" id="sign-up-form"
               = form_for("user", as: "user", url: user_registration_path) do |f|
                 .input-group.login.center-block
@@ -182,7 +182,7 @@
                     = f.password_field :password, autocomplete: "off", placeholder: "PASSWORD"
                   div
                     = f.password_field :password_confirmation, autocomplete: "off", placeholder: "RE-ENTER PASSWORD"
-                  = f.submit "SIGN UP" , class:  "button"
+                  = f.submit "SIGN UP" , class:  "sign-up button"
       .headline
         | Let us know your feedback & queries
         .btn

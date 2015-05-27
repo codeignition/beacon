@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :contacts
   resources :organizations
 
-  devise_for :users, :controllers => {:registrations => "registrations", :confirmations => "confirmations"}
+  devise_for :users, :controllers => {sessions: "sessions", :registrations => "registrations", :confirmations => "confirmations"}
 
   devise_scope :user do
     root to: "application#home"

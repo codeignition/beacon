@@ -445,3 +445,20 @@ footer {
 .back-grey{
   color: lightgrey;
 }
+.flash{
+  position: fixed;
+  width: 100%;
+  display: none;
+  padding: 10px;
+  background: rgb(226, 60, 76);
+  color: white;
+  box-shadow: 0px 0px 1px 0px grey;
+  z-index: 100000;
+}
+.close_flash_button{
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  font-size: 1em;
+  opacity: 0.9;
+}
