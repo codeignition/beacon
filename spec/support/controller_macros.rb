@@ -10,6 +10,9 @@ module ControllerMacros
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       user = FactoryGirl.create(:user)
+      organization = create :organization
+      user.organizations = [organization]
+      user.save
       sign_in user
     end
   end

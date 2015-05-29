@@ -8,4 +8,9 @@ class Contact < ActiveRecord::Base
   def unverified?
     self.confirmed_at ? false : true
   end
+
+  def confirm
+    self.confirmed_at = Time.now
+    self.save!
+  end
 end

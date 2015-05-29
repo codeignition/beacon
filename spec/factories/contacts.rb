@@ -4,6 +4,5 @@ FactoryGirl.define do
     name "String"
     phone_number "0000000000"
     email_id "example@email.com"
-    user_id 
   end
 end
