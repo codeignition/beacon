@@ -34,7 +34,7 @@ class ContactsController < ApplicationController
         if current_org.escalation_rules.empty?
           @escalation_rule = current_org.escalation_rules.create(name: 'Sample Rule')
           Level.create(escalation_rule: @escalation_rule, contact_id: @contact.id, level_number: 1)
-        end 
+        end
         @user.send_confirmation_instructions if @old_user.nil?
         OnboardingMailer.send_invitation_email(
           @user, @contact.name, current_user.contacts.first.name,
