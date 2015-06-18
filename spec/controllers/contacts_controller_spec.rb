@@ -25,7 +25,7 @@ RSpec.describe ContactsController, :type => :controller do
       contact.user=subject.current_user
       contact.save
       get :index, {},valid_session
-      expect(assigns(:contacts)).to eq([contact])
+      expect(assigns(:contacts)).to eq(subject.current_user.contacts)
     end
   end
 
