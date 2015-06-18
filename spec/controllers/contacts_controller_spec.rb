@@ -133,7 +133,7 @@ RSpec.describe ContactsController, :type => :controller do
     it "redirects to the contacts list" do
       contact = Contact.create! valid_attributes
       delete :destroy, {:id => contact.to_param}, valid_session
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(settings_path)
     end
   end
 end
