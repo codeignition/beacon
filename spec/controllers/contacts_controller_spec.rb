@@ -99,7 +99,7 @@ RSpec.describe ContactsController, :type => :controller do
       it "redirects to the contact" do
         contact = Contact.create! valid_attributes
         put :update, {:id => contact.to_param, :contact => valid_attributes}, valid_session
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(settings_path)
       end
     end
 
