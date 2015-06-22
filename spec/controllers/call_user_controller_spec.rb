@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe CallUserController, :type => :controller do
 
   let(:escalation_rule_valid_attributes){{
-    :name => "sasasa"
+    :name => "sasasa",
+    :organization =>(create :organization)
   }}
 
 

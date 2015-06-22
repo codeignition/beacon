@@ -30,7 +30,6 @@ RSpec.describe OdinClientController, :type => :controller do
       expect(contact.confirmed_at).to be_nil
       post :verify_contact, {:phone_number => contact.phone_number}, valid_session
       contact.reload
-
       expect(contact.confirmed_at).to_not be_nil
       expect(response.status).to eq 200
     end

@@ -107,15 +107,6 @@ RSpec.describe EscalationRulesController, :type => :controller do
         expect(response).to redirect_to(escalation_rule)
       end
     end
-
-    describe "with invalid params" do
-      it "assigns the escalation_rule as @escalation_rule" do
-        @escalation_rule = EscalationRule.create! valid_attributes
-        @escalation_rule.user_id=subject.current_user.id
-        put :update, {:id => @escalation_rule.to_param, :escalation_rule => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
-      end
-    end
   end
 
   describe "DELETE destroy" do
