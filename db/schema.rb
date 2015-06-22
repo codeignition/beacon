@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622085316) do
+ActiveRecord::Schema.define(version: 20150622115645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,9 @@ ActiveRecord::Schema.define(version: 20150622085316) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"
+    t.boolean  "airplane_mode_on"
+    t.datetime "airplane_mode_start_time"
+    t.datetime "airplane_mode_end_time"
   end
 
   create_table "levels", force: true do |t|
