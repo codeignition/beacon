@@ -26,9 +26,10 @@ RSpec.describe OdinClientController, :type => :controller do
 
   context "POST verify phonenumber" do
     it "should verify the given contact number" do
-      contact = create :contact
+      number = "9716810944"
+      contact = create :contact,phone_number: "0#{number}"
       expect(contact.confirmed_at).to be_nil
-      post :verify_contact, {:phone_number => contact.phone_number}, valid_session
+      post :verify_contact, {:phone_number => number}, valid_session
       contact.reload
       expect(contact.confirmed_at).to_not be_nil
       expect(response.status).to eq 200
