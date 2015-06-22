@@ -6,7 +6,7 @@ class OdinClientController < ApplicationController
     render nothing: true
   end
 
-   def verify_contact
+  def verify_contact
     contact = Contact.where(phone_number: "0#{params[:phone_number]}").first
     contact.confirm if  !contact.nil? and contact.unverified?
     render nothing: true
