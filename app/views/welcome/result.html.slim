@@ -3,11 +3,11 @@
     .row.header.bline
       .col-md-9.zero-padding
         span.h1.black
-          | GROUPS 
+          | GROUPS
         span.h2
-          | #{@current_org.escalation_rules.count} 
+          | #{@current_org.escalation_rules.count}
 
-          
+
       .col-md-3
         .btn.btn-primary.create_rule.float-right.plus-button
           | +
@@ -16,35 +16,35 @@
         tr
           th
             .label GROUP NAME
-          th 
+          th
             .label API KEY
-          th 
+          th
             .label QUEUE 1 MEMBERS
-          th 
+          th
       tbody.light-padding
         - @escalation_rules.each_with_index do | escalation_rule, i|
-          tr 
-            td 
-              .h3.font-black 
+          tr
+            td
+              .h3.font-black
                 = escalation_rule.name
             td
               .rule_key
                 | #{escalation_rule.rule_key}
             td
-              
+
               = escalation_rule.queue_one_members.map(&:name).join(', ')
-            td 
-              .edit_button.edit_rule_button id="#{escalation_rule.id}" 
+            td
+              .edit_button.edit_rule_button id="#{escalation_rule.id}"
                  = fa_icon 'pencil'
-  
+
   .col-md-4.users_half.full-percent-height-content.zero-padding
     .row.header.bline
       .col-md-9.zero-padding
         span.h1.black
-          | TEAM MEMBERS 
+          | TEAM MEMBERS
         span.h2
-          | #{@contacts.count} 
-      .col-md-3 
+          | #{@contacts.count}
+      .col-md-3
         .btn.btn-primary.create_contact.float-right.plus-button
           | +
     table.table.light-padding.tm-table
@@ -52,9 +52,9 @@
         tr
           th
             .label NAME
-          th 
+          th
             .label GROUPS
-          th 
+          th
       - @contacts.each do |contact|
         tr
           td
@@ -62,7 +62,7 @@
               span
                 = contact.name
               span
-                |   
+                |
               span
                 - if contact.unverified?
                   = fa_icon 'phone', class: 'back-red', "data-toggle" => "tooltip", "data-placement" => "right", title: "#{contact.phone_number}"
@@ -72,10 +72,10 @@
             .rk
               | #{contact.levels.map(&:escalation_rule).compact.to_set.count}
           td
-            .edit_button.contact_edit_button id="#{contact.id}" 
+            .edit_button.contact_edit_button id="#{contact.id}"
               = fa_icon 'pencil'
 // create alert group modal
-.modal.fade.create_alert_rule role="dialog" aria-labelledby="ModalLabel" 
+.modal.fade.create_alert_rule role="dialog" aria-labelledby="ModalLabel"
   .modal-dialog.modal-lg
     .modal-content
       .modal-header
@@ -89,7 +89,7 @@
           .row
             .col-md-4
               .label GROUP NAME
-              .field-text.top-margin 
+              .field-text.top-margin
                 | Group's API key will be #{@current_org.token}/api_key
             .col-md-4
               .input.top-margin
@@ -97,7 +97,7 @@
           hr
           .row
             .col-md-4
-                .label 
+                .label
                   | TEAM MEMBERS
                 .field-text.top-margin
                   | Team members must verify their phone number to receive any alert.
@@ -111,13 +111,33 @@
                       | #{c.name}
           .row
             .col-md-2
-              .label ESCALATION TREE 
+              .label ESCALATION TREE
             .col-md-10
               .input.top-margin
                 .table.zero-padding.added_contacts
                 th
                 th
-                 
+          .row
+            .col-md-4
+              .label
+                | AIRPLANE MODE
+          .row
+            .col-md-4
+              .field-text.top-margin
+                - if !@airplane_mode_on
+                  | Receive calls round the clock
+                - else
+                  | Set airplane mode for this group.
+                  | Beacon will NOT call any team member between these hours.
+            .col-md-1
+            .col-md-2
+              .onoffswitch
+                input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch"
+                label class="onoffswitch-label" for="myonoffswitch"
+                  span class="onoffswitch-inner"
+                  span class="onoffswitch-switch"
+
+
         .modal-footer
           .row
             .col-md-4
