@@ -17,7 +17,7 @@
 //= require turbolinks
 //= require_tree .
 
-var root_path = '/'
+var root_path = ''
 $( document ).ready(function() {
   var makeId = function(n)
   {
