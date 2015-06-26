@@ -1,4 +1,16 @@
 $( document ).ready(->
+  $('#airplane_mode_switch').change ->
+    if $('#airplane_mode_switch').prop('checked') == true
+      $('#on_mode_message').removeClass 'hide'
+      $('#off_mode_message').addClass 'hide'
+      $('#timepickers').removeClass 'hide'
+    else
+      $('#off_mode_message').removeClass 'hide'
+      $('#on_mode_message').addClass 'hide'
+      $('#timepickers').addClass 'hide'
+
+  $('#start_time_picker').timepicker()
+  $('#end_time_picker').timepicker()
   $('.contact_form input').on('keyup', ->
     redButton = ($('#contact_phone_number').val() != '') * ($('#contact_email_id').val() != '') * ($('#contact_name').val() != '')
     if redButton

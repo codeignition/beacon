@@ -98,7 +98,7 @@ $( document ).ready(function() {
         location.reload()
       },
       dataType: 'json'
-    });  
+    });
   }
 
   var sendRequest = function(url, typeOfRequest,data){
@@ -110,21 +110,24 @@ $( document ).ready(function() {
         location.reload()
       },
       dataType: 'json'
-    });  
+    });
   }
+
   $(".create_group_button").on('click', function(event){
     event.preventDefault()
     form = $('form#'+ this.id)
     name = form.find('#escalation_rule_name').val()
+    airplane_mode = $('#airplane_mode_onoffswitch').prop('checked')
+    start_time = 
+    end_time = 
     added_contacts = []
     form.find(".table .col-md-5").each(function(i, el){
       added_contacts.push({
         id: $(el).find('.contact_name')[0].id ,
         level: $(el).find('.level_select').val()
       })
-
     })
-    data = {escalation_rule: {name: name, contacts: added_contacts}}
+    data = {escalation_rule: {name: name, airplane_mode_on: airplane_mode, airplane_mode_start_time: start_time, airplane_mode_end_time: end_time, contacts: added_contacts}}
     edit = this.id.match(/edit_escalation_rule_(\d+)/)
     if (edit != null) {
       sendRequest( root_path + "/escalation_rules/" + edit[1], 'PUT', data)
