@@ -137,8 +137,6 @@
                 label.onoffswitch-label for="airplane_mode_switch"
                   span.onoffswitch-inner
                   span.onoffswitch-switch
-            #hello.col-md-3.hide
-              | Hello
           .row
             .col-md-9
               .col-md-3
@@ -174,15 +172,15 @@
             .row
               .col-md-4
                 .label GROUP NAME
-                .field-text.top-margin 
+                .field-text.top-margin
                   | Group's API key is #{er.rule_key}
               .col-md-4
                 .input.top-margin
-                  = f.text_field :name, class: "input", value: "#{er.name}"          
+                  = f.text_field :name, class: "input", value: "#{er.name}"
             hr
             .row
               .col-md-4
-                  .label 
+                  .label
                     | TEAM MEMBERS
                   .field-text.top-margin
                     | Team members must verify their phone number to receive any alert.
@@ -214,7 +212,39 @@
                           | #{x[1].name} 
                         span.minus-circle.float-right
                          = fa_icon "minus-circle", class: "delete_contact"
-                  
+            .row
+              .col-md-4
+                .label
+                  | AIRPLANE MODE
+            .row
+              .col-md-4
+                .field-text.top-margin
+                  #off_mode_message_edit
+                    | Receive calls round the clock
+                  #on_mode_message_edit.hide
+                    | Set airplane mode for this group.
+                    | Beacon will NOT call any team member between these hours.
+              .col-md-1
+              .col-md-2
+                .onoffswitch
+                  input#airplane_mode_switch_edit.onoffswitch-checkbox name="onoffswitch_edit" type="checkbox"
+                  label.onoffswitch-label for="airplane_mode_switch_edit"
+                    span.onoffswitch-inner
+                    span.onoffswitch-switch
+            .row
+              .col-md-9
+                .col-md-3
+                .col-md-9
+                  .row
+                    #timepickers_edit.hide
+                      .col-md-3
+                      .col-md-3
+                        input#start_time_picker_edit.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
+                      .col-md-1
+                        .bottom-margin to
+                      .col-md-3
+                        input#end_time_picker_edit.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
+
 
           .modal-footer
             .row
