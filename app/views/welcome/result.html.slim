@@ -125,7 +125,7 @@
           .row
             .col-md-4
               .field-text.top-margin
-                #off_mode_message.hide
+                #off_mode_message
                   | Receive calls round the clock
                 #on_mode_message.hide
                   | Set airplane mode for this group.
@@ -133,7 +133,7 @@
             .col-md-1
             .col-md-2
               .onoffswitch
-                input#airplane_mode_switch.onoffswitch-checkbox name="onoffswitch" type="checkbox"
+                input#airplane_mode_switch.onoffswitch-checkbox name="onoffswitch" type="checkbox" /
                 label.onoffswitch-label for="airplane_mode_switch"
                   span.onoffswitch-inner
                   span.onoffswitch-switch
@@ -145,13 +145,13 @@
               .col-md-9
                 .row
                   #timepickers.hide
-                  .col-md-3
-                  .col-md-3
-                    input#start_time_picker.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
-                  .col-md-1
-                    .bottom-margin to
-                  .col-md-3
-                    input#end_time_picker.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
+                    .col-md-3
+                    .col-md-3
+                      input#start_time_picker.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
+                    .col-md-1
+                      .bottom-margin to
+                    .col-md-3
+                      input#end_time_picker.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
 
         .modal-footer
           .row

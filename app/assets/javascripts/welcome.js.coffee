@@ -1,4 +1,5 @@
 $( document ).ready(->
+
   $('#airplane_mode_switch').change ->
     if $('#airplane_mode_switch').prop('checked') == true
       $('#on_mode_message').removeClass 'hide'

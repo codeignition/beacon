@@ -117,9 +117,9 @@ $( document ).ready(function() {
     event.preventDefault()
     form = $('form#'+ this.id)
     name = form.find('#escalation_rule_name').val()
-    airplane_mode = $('#airplane_mode_onoffswitch').prop('checked')
-    start_time = 
-    end_time = 
+    airplane_mode = $('#airplane_mode_switch').prop('checked')
+    start_time = $('#start_time_picker').timepicker('getSecondsFromMidnight')
+    end_time = $('#end_time_picker').timepicker('getSecondsFromMidnight')
     added_contacts = []
     form.find(".table .col-md-5").each(function(i, el){
       added_contacts.push({
