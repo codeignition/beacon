@@ -18,6 +18,7 @@ gem 'puma'
 gem 'byebug'
 gem "font-awesome-rails"
 gem 'momentjs-rails'
+gem 'activesupport'
 
 group :test do
   gem 'shoulda-matchers'
