@@ -48,8 +48,8 @@ RSpec.describe CallUserController, :type => :controller do
       it 'does not call user between start_time and end_time' do
         escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
         escalation_rule.airplane_mode_on = true
-        escalation_rule.airplane_mode_start_time = Time.now-3600
-        escalation_rule.airplane_mode_end_time = Time.now+3600
+        escalation_rule.airplane_mode_start_time = (Time.now-3600).seconds_since_midnight
+        escalation_rule.airplane_mode_end_time = (Time.now+3600).seconds_since_midnight
         escalation_rule.save
         contact = Contact.create! contact_valid_attributes
         contact.save
@@ -62,8 +62,8 @@ RSpec.describe CallUserController, :type => :controller do
       it 'adds a complain with status "airplane mode on" between start_time and end_time' do
         escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
         escalation_rule.airplane_mode_on = true
-        escalation_rule.airplane_mode_start_time = Time.now-3600
-        escalation_rule.airplane_mode_end_time = Time.now+3600
+        escalation_rule.airplane_mode_start_time = (Time.now-3600).seconds_since_midnight
+        escalation_rule.airplane_mode_end_time = (Time.now+3600).seconds_since_midnight
         escalation_rule.save
         contact = Contact.create! contact_valid_attributes
         contact.save

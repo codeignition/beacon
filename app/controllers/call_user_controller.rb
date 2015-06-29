@@ -3,7 +3,7 @@ class CallUserController < ApplicationController
     @escalation_rule = EscalationRule.find_by rule_key: params[:rule_key]
     if @escalation_rule.nil?
       head :bad_request
-    elsif @escalation_rule.airplane_mode_on && (@escalation_rule.airplane_mode_start_time <= Time.now) && (Time.now <= @escalation_rule.airplane_mode_end_time)
+    elsif @escalation_rule.airplane_mode_on && (@escalation_rule.airplane_mode_start_time <= Time.now.seconds_since_midnight) && (Time.now.seconds_since_midnight <= @escalation_rule.airplane_mode_end_time)
       @complaint = ComplaintController.create_complaint @escalation_rule.id, @escalation_rule.organization_id, request.ip
       @complaint.status = "Airplane Mode ON"
       render nothing: true
