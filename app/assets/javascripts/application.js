@@ -116,10 +116,18 @@ $( document ).ready(function() {
   $(".create_group_button").on('click', function(event){
     event.preventDefault()
     form = $('form#'+ this.id)
+    edit = this.id.match(/edit_escalation_rule_(\d+)/)
     name = form.find('#escalation_rule_name').val()
-    airplane_mode = $('#airplane_mode_switch').prop('checked')
-    start_time = $('#start_time_picker').timepicker('getSecondsFromMidnight')
-    end_time = $('#end_time_picker').timepicker('getSecondsFromMidnight')
+    if(edit == null){
+      airplane_mode = $('#airplane_mode_switch').prop('checked')
+      start_time = $('#start_time_picker').timepicker('getSecondsFromMidnight')
+      end_time = $('#end_time_picker').timepicker('getSecondsFromMidnight')
+    }
+    else{
+      airplane_mode = $('#airplane_mode_switch_edit').prop('checked')
+      start_time = $('#start_time_picker_edit').timepicker('getSecondsFromMidnight')
+      end_time = $('#end_time_picker_edit').timepicker('getSecondsFromMidnight')
+    }
     added_contacts = []
     form.find(".table .col-md-5").each(function(i, el){
       added_contacts.push({
@@ -128,7 +136,6 @@ $( document ).ready(function() {
       })
     })
     data = {escalation_rule: {name: name, airplane_mode_on: airplane_mode, airplane_mode_start_time: start_time, airplane_mode_end_time: end_time, contacts: added_contacts}}
-    edit = this.id.match(/edit_escalation_rule_(\d+)/)
     if (edit != null) {
       sendRequest( root_path + "/escalation_rules/" + edit[1], 'PUT', data)
     }else{
