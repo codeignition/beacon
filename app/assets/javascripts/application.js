@@ -56,6 +56,7 @@ $( document ).ready(function() {
     openModal('#edit_contact_modal_' + this.id)
   });
   $('.edit_rule_button').on('click', function(){
+    window.er_id=this.id
     openModal('#edit_rule_modal_' + this.id)
   });
 
@@ -118,15 +119,22 @@ $( document ).ready(function() {
     form = $('form#'+ this.id)
     edit = this.id.match(/edit_escalation_rule_(\d+)/)
     name = form.find('#escalation_rule_name').val()
+    er_id = window.er_id
     if(edit == null){
       airplane_mode = $('#airplane_mode_switch').prop('checked')
       start_time = $('#start_time_picker').timepicker('getSecondsFromMidnight')
       end_time = $('#end_time_picker').timepicker('getSecondsFromMidnight')
     }
     else{
-      airplane_mode = $('#airplane_mode_switch_edit').prop('checked')
-      start_time = $('#start_time_picker_edit').timepicker('getSecondsFromMidnight')
-      end_time = $('#end_time_picker_edit').timepicker('getSecondsFromMidnight')
+      airplane_mode = $('#airplane_mode_switch_edit_'+er_id).prop('checked')
+      if(airplane_mode==true){
+        start_time = $('#start_time_picker_edit_'+er_id).timepicker('getSecondsFromMidnight')
+        end_time = $('#end_time_picker_edit_'+er_id).timepicker('getSecondsFromMidnight')
+      }
+      else{
+        start_time=0
+        end_time=0
+      }
     }
     added_contacts = []
     form.find(".table .col-md-5").each(function(i, el){

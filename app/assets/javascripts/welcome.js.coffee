@@ -19,46 +19,49 @@ $( document ).ready(->
       $('#off_mode_message').removeClass 'hide'
       $('#on_mode_message').addClass 'hide'
       $('#timepickers').addClass 'hide'
+    return
 
   $('#start_time_picker').timepicker(step:15)
   $('#end_time_picker').timepicker(step:15)
 
-
-  mode = document.querySelector('#airplane_mode_switch_edit')
-  if mode.dataset.er_mode
-    $('#airplane_mode_switch_edit').prop('checked', true)
-  else
-    $('#airplane_mode_switch_edit').prop('checked', false)
-
-  if $('#airplane_mode_switch_edit').prop('checked') == true
-    $('#on_mode_message_edit').removeClass 'hide'
-    $('#off_mode_message_edit').addClass 'hide'
-    $('#timepickers_edit').removeClass 'hide'
-  else
-    $('#off_mode_message_edit').removeClass 'hide'
-    $('#on_mode_message_edit').addClass 'hide'
-    $('#timepickers_edit').addClass 'hide'
-
-  $('#airplane_mode_switch_edit').change ->
-    if $('#airplane_mode_switch_edit').prop('checked') == true
-      $('#on_mode_message_edit').removeClass 'hide'
-      $('#off_mode_message_edit').addClass 'hide'
-      $('#timepickers_edit').removeClass 'hide'
+  er_id = window.er_id
+  airplane_mode_switch = document.querySelector('#airplane_mode_switch_edit_'+er_id)
+  if er_id!= null && airplane_mode_switch!=null
+    if airplane_mode_switch.dataset.er_mode == "true"
+      $('#airplane_mode_switch_edit_'+er_id).prop('checked', true)
     else
-      $('#off_mode_message_edit').removeClass 'hide'
-      $('#on_mode_message_edit').addClass 'hide'
-      $('#timepickers_edit').addClass 'hide'
+      $('#airplane_mode_switch_edit_'+er_id).prop('checked', false)
 
-  start_time_seconds_since_midnight = mode.dataset.er_mode_start_time
-  start_time_hours = parseInt(start_time_seconds_since_midnight / 3600)
-  start_time_minutes = parseInt((start_time_seconds_since_midnight % 3600) / 60)
-  end_time_seconds_since_midnight = mode.dataset.er_mode_end_time
-  end_time_hours = parseInt(end_time_seconds_since_midnight / 3600)
-  end_time_minutes = parseInt((end_time_seconds_since_midnight % 3600) / 60)
-  $('#start_time_picker_edit').timepicker(step:15)
-  $('#start_time_picker_edit').timepicker('setTime', new Date(2015, 1, 1, start_time_hours, start_time_minutes,0))
-  $('#end_time_picker_edit').timepicker(step:15)
-  $('#end_time_picker_edit').timepicker('setTime', new Date(2015, 1, 1, end_time_hours, end_time_minutes,0))
+    if $('#airplane_mode_switch_edit_'+er_id).prop('checked') == true
+      $('#on_mode_message_edit_'+er_id).removeClass 'hide'
+      $('#off_mode_message_edit_'+er_id).addClass 'hide'
+      $('#timepickers_edit_'+er_id).removeClass 'hide'
+    else
+      $('#off_mode_message_edit_'+er_id).removeClass 'hide'
+      $('#on_mode_message_edit_'+er_id).addClass 'hide'
+      $('#timepickers_edit_'+er_id).addClass 'hide'
+
+    $('#airplane_mode_switch_edit_'+er_id).change ->
+      if $('#airplane_mode_switch_edit_'+er_id).prop('checked') == true
+        $('#on_mode_message_edit_'+er_id).removeClass('hide')
+        $('#off_mode_message_edit_'+er_id).addClass ('hide')
+        $('#timepickers_edit_'+er_id).removeClass('hide')
+      else
+        $('#off_mode_message_edit_'+er_id).removeClass 'hide'
+        $('#on_mode_message_edit_'+er_id).addClass 'hide'
+        $('#timepickers_edit_'+er_id).addClass('hide')
+      return
+
+    start_time_seconds_since_midnight = mode.dataset.er_mode_start_time
+    start_time_hours = parseInt(start_time_seconds_since_midnight / 3600)
+    start_time_minutes = parseInt((start_time_seconds_since_midnight % 3600) / 60)
+    end_time_seconds_since_midnight = mode.dataset.er_mode_end_time
+    end_time_hours = parseInt(end_time_seconds_since_midnight / 3600)
+    end_time_minutes = parseInt((end_time_seconds_since_midnight % 3600) / 60)
+    $('#start_time_picker_edit_'+er_id).timepicker(step:15)
+    $('#start_time_picker_edit_'+er_id).timepicker('setTime', new Date(2015, 1, 1, start_time_hours, start_time_minutes,0))
+    $('#end_time_picker_edit_'+er_id).timepicker(step:15)
+    $('#end_time_picker_edit_'+er_id).timepicker('setTime', new Date(2015, 1, 1, end_time_hours, end_time_minutes,0))
 
   $('.contact_form input').on('keyup', ->
     redButton = ($('#contact_phone_number').val() != '') * ($('#contact_email_id').val() != '') * ($('#contact_name').val() != '')
