@@ -18,6 +18,70 @@
 //= require_tree .
 
 var root_path = ''
+
+var airplane_mode_edit_switch_handle;
+
+airplane_mode_edit_switch_handle = function(er_id) {
+  if (!$('#airplane_mode_switch_edit_' + er_id).prop('checked')) {
+    change_onoffswitch_state(er_id, true);
+  } else {
+    change_onoffswitch_state(er_id, false);
+  }
+};
+
+var set_onoffswitch;
+
+set_onoffswitch = function(er_id) {
+  var end_time_hours, end_time_minutes, end_time_seconds_since_midnight, start_time_hours, start_time_minutes, start_time_seconds_since_midnight;
+  if ($('#airplane_mode_switch_edit_'+er_id).data('er_mode') == true) {
+    $('#airplane_mode_switch_edit_' + er_id).prop('checked', true);
+    $('#on_mode_message_edit_' + er_id).removeClass('hide');
+    $('#off_mode_message_edit_' + er_id).addClass('hide');
+    $('#timepickers_edit_' + er_id).removeClass('hide');
+    $('#start_time_picker_edit_' + er_id).timepicker({
+      step: 15
+    });
+    $('#end_time_picker_edit_' + er_id).timepicker({
+      step: 15
+    });
+    start_time_seconds_since_midnight = $('#airplane_mode_switch_edit_'+er_id).data('er_mode_start_time');
+    start_time_hours = parseInt(start_time_seconds_since_midnight / 3600);
+    start_time_minutes = parseInt(start_time_seconds_since_midnight % 3600 / 60);
+    end_time_seconds_since_midnight = $('#airplane_mode_switch_edit_'+er_id).data('er_mode_end_time');
+    end_time_hours = parseInt(end_time_seconds_since_midnight / 3600);
+    end_time_minutes = parseInt(end_time_seconds_since_midnight % 3600 / 60);
+    $('#start_time_picker_edit_' + er_id).timepicker('setTime', new Date(2015, 1, 1, start_time_hours, start_time_minutes, 0));
+    $('#end_time_picker_edit_' + er_id).timepicker('setTime', new Date(2015, 1, 1, end_time_hours, end_time_minutes, 0));
+  } else {
+    $('#airplane_mode_switch_edit_' + er_id).prop('checked', false);
+    $('#on_mode_message_edit_' + er_id).addClass('hide');
+    $('#off_mode_message_edit_' + er_id).removeClass('hide');
+    $('#timepickers_edit_' + er_id).addClass('hide');
+  }
+};
+
+var change_onoffswitch_state;
+
+change_onoffswitch_state = function(er_id, bool) {
+  if (!bool) {
+    $('#on_mode_message_edit_' + er_id).removeClass('hide');
+    $('#off_mode_message_edit_' + er_id).addClass('hide');
+    $('#timepickers_edit_' + er_id).removeClass('hide');
+    $('#start_time_picker_edit_' + er_id).timepicker({
+      step: 15
+    });
+    $('#end_time_picker_edit_' + er_id).timepicker({
+      step: 15
+    });
+  } else {
+    $('#on_mode_message_edit_' + er_id).addClass('hide');
+    $('#off_mode_message_edit_' + er_id).removeClass('hide');
+    $('#timepickers_edit_' + er_id).addClass('hide');
+  }
+};
+
+
+
 $( document ).ready(function() {
   var makeId = function(n)
   {
@@ -56,8 +120,8 @@ $( document ).ready(function() {
     openModal('#edit_contact_modal_' + this.id)
   });
   $('.edit_rule_button').on('click', function(){
-    window.er_id=this.id
     openModal('#edit_rule_modal_' + this.id)
+    set_onoffswitch(this.id)
   });
 
 
@@ -119,13 +183,13 @@ $( document ).ready(function() {
     form = $('form#'+ this.id)
     edit = this.id.match(/edit_escalation_rule_(\d+)/)
     name = form.find('#escalation_rule_name').val()
-    er_id = window.er_id
-    if(edit == null){
+    if(edit === null){
       airplane_mode = $('#airplane_mode_switch').prop('checked')
       start_time = $('#start_time_picker').timepicker('getSecondsFromMidnight')
       end_time = $('#end_time_picker').timepicker('getSecondsFromMidnight')
     }
     else{
+      er_id = this.id.substring(this.id.length-2, this.id.length)
       airplane_mode = $('#airplane_mode_switch_edit_'+er_id).prop('checked')
       if(airplane_mode==true){
         start_time = $('#start_time_picker_edit_'+er_id).timepicker('getSecondsFromMidnight')

@@ -212,35 +212,31 @@
                           | #{x[1].name} 
                         span.minus-circle.float-right
                          = fa_icon "minus-circle", class: "delete_contact"
-            .row id="er_#{er.id}" data-er_id="#{er.id}"
+            .row
               .col-md-4
                 .label
                   | AIRPLANE MODE
             .row
               .col-md-4
                 .field-text.top-margin
-                  .hide id="off_mode_message_edit_#{er.id}"
+                  div.hide id="off_mode_message_edit_#{er.id}"
                     | Receive calls round the clock
-                  .hide id="on_mode_message_edit_#{er.id}"
+                  div.hide id="on_mode_message_edit_#{er.id}"
                     | Set airplane mode for this group.
                     | Beacon will NOT call any team member between these hours.
               .col-md-1
               .col-md-2
                 .onoffswitch
-                  input.onoffswitch-checkbox id="airplane_mode_switch_edit_#{er.id}" name="onoffswitch_edit" type="checkbox" data-er_mode="#{er.airplane_mode_on}" data-er_mode_start_time="#{er.airplane_mode_start_time}" data-er_mode_end_time="#{er.airplane_mode_end_time}"
+                  input.onoffswitch-checkbox id="airplane_mode_switch_edit_#{er.id}" onclick="airplane_mode_edit_switch_handle('#{er.id}');" name="onoffswitch_edit" type="checkbox" data-er_mode="#{er.airplane_mode_on}" data-er_mode_start_time="#{er.airplane_mode_start_time}" data-er_mode_end_time="#{er.airplane_mode_end_time}"
                   label.onoffswitch-label for="airplane_mode_switch_edit_#{er.id}"
                     span.onoffswitch-inner
                     span.onoffswitch-switch
-            p "#{er.id}"
-            p "#{er.airplane_mode_on}"
-            p "#{er.airplane_mode_start_time}"
-            p "#{er.airplane_mode_end_time}"
             .row
               .col-md-9
                 .col-md-3
                 .col-md-9
                   .row
-                    .hide id="timepickers_edit_#{er.id}"
+                    div.hide id="timepickers_edit_#{er.id}"
                       .col-md-3
                       .col-md-3
                         input.time.ui-timepicker-input id="start_time_picker_edit_#{er.id}" autocomplete="on" style=("min-height: 30px") type="text"
