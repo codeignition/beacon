@@ -82,9 +82,12 @@ ul.anchor-menu {
   height: 110px;
 }
 .btn.login-anchor{
-  font-size: 1.2em;
-  width: 60%;
-  margin-top: 40vh;
+  position: fixed;
+  bottom: 81.5%;
+  width: 30%;
+  left: 35%;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .logo-side {
