@@ -9,11 +9,11 @@
             | Real Time Voice Call 
           span.teal
             | Alerts
+        .trial.align-center
+          | 1 month free trial
         a href="#signin"
           .btn.solid.login-anchor.center-block 
               | GET STARTED
-        .trial.align-center
-          | 1 month free trial
 
     .row.slide-down-anchor
       a.learn-more href="#features#1"
@@ -33,15 +33,18 @@
       .col-md-10.col-md-offset-1.align-center.font-black
         .headline
           | Beacon is a simple API driven service that calls you & your IT team in real time with voice alerts.
-        .row
-          .col-md-3
-            = image_tag "lp-1.svg", class: "feature-image" 
-          .col-md-3.align-left.h4
-            | Beacon is an API add-on that sits as a layer on top of your existing monitoring setup, that makes Voice Recorded Calls to you & your team with calling rules that you control
-          .col-md-3
-            = image_tag "lp-2.svg", class: "feature-image" 
-          .col-md-3.align-left.h4
-            | Beacon isn’t a replacement for your existing monitoring setup, and only makes calls when notifications for your Email, SMS & Apps are also triggered
+        .col-md-6
+          .row
+            .col-md-6
+              = image_tag "lp-1.svg", class: "feature-image" 
+            .col-md-6.align-left.h4
+              | Beacon is an API add-on that sits as a layer on top of your existing monitoring setup, that makes Voice Recorded Calls to you & your team with calling rules that you control
+        .col-md-6
+          .row
+            .col-md-6
+              = image_tag "lp-2.svg", class: "feature-image" 
+            .col-md-6.align-left.h4
+              | Beacon isn’t a replacement for your existing monitoring setup, and only makes calls when notifications for your Email, SMS & Apps are also triggered
     .row.slide-down-anchor
       a href="#features#2"
         = fa_icon "angle-down"
