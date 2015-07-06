@@ -65,11 +65,11 @@ html[lang="en"]
       .navbar.navbar-top.dark-green.fixed
         .navbar-inner
           .row
-            .col-md-5
+            .col-xs-5.col-md-5
               = image_tag "beacon-logo-transparent.png", href: "/", class: "logo-small"
 
-            .col-md-3.col-md-offset-4
-              .col-md-8.zero-padding
+            .col-xs-3.col-xs-offset-2.col-md-3.col-md-offset-4
+              .col-xs-8.col-md-8.zero-padding
                 ul.nav.nav-pills.no-border.nav-justified.top-header.zero-padding
                   li.zero-padding.signin.float-right
                     a href="#signin" 
@@ -97,7 +97,7 @@ html[lang="en"]
           .col-md-4.col-md-offset-6.align-right
             | © CodeIgnition Software Solution Pvt. Ltd. 2015
 
-- if current_user 
+- if current_user
   - current_user.organizations.each do |org|
       .modal.fade.edit_org role="dialog" aria-labelledby="ModalLabel" id="edit_org_modal_#{org.id}"  
         .modal-dialog.modal-lg
