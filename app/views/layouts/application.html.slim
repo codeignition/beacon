@@ -25,11 +25,11 @@ html[lang="en"]
       .navbar.navbar-top.dark-green
         .navbar-inner
             .row
-              .col-md-5
+              .col-xs-5.col-md-5
                 = image_tag "beacon-logo-transparent.png", href: "/", class: "logo-small"
               - unless current_page? confirmed_email_path or current_page? check_phone_number_verification_status_path
 
-                .col-md-2
+                .col-xs-2.col-md-2
                   - unless (current_page? setup_1_path) or (current_page? setup_2_path)
                     ul.nav.nav-pills.nav-justified.top-header.zero-padding
                       li.zero-padding.dropdown.org_toggle.zero-padding
@@ -44,20 +44,19 @@ html[lang="en"]
                                   | #{org.name}
                                 .col-md-4
                                   = fa_icon 'pencil', id: "#{org.id}", class: "edit_org"
-                           
                             hr.dark.zero-padding
                           li.create_org.center-aligned.create_org_event
                             | + NEW ORGANIZATION
 
-                .col-md-5
-                  .col-md-8.zero-padding
+                .col-xs-5.col-md-5
+                  .col-xs-8.col-md-8.zero-padding
                     ul.nav.nav-pills.nav-justified.top-header.zero-padding
                       - unless (current_page? setup_1_path) or (current_page? setup_2_path)
                         li.zero-padding.alert-link class="#{if current_page?(alerts_path); 'active';end}"
                           = link_to "ALERTS", :alerts,:method => :get
                         li.zero-padding.settings-link class="#{if current_page?(settings_path); 'active'; end}"
                           = link_to "SETTINGS", :settings,:method => :get
-                  .col-md-4.zero-padding
+                  .col-xs-4.col-md-4.zero-padding
                     ul.nav.nav-pills.nav-justified.top-header.zero-padding
                       li.zero-padding
                         = link_to "SIGN OUT", :destroy_user_session, :method => :delete
@@ -85,16 +84,16 @@ html[lang="en"]
       - if current_user.nil? 
         footer
           .row
-            .col-md-2.take_tour
+            .col-xs-2.col-md-2.take_tour
               | TAKE TOUR
-            .col-md-4.col-md-offset-6.align-right
+            .col-xs-4.col-xs-offset-6.col-md-4.col-md-offset-6.align-right.copyright
               | © CodeIgnition Software Solution Pvt. Ltd. 2015
     - unless current_user.nil? 
       footer
         .row
-          .col-md-2.take_tour
+          .col-xs-3.col-md-2.take_tour
             | TAKE TOUR
-          .col-md-4.col-md-offset-6.align-right
+          .col-xs-9.col-md-4.col-md-offset-6.align-right.copyright
             | © CodeIgnition Software Solution Pvt. Ltd. 2015
 
 - if current_user
@@ -134,7 +133,7 @@ html[lang="en"]
                       button class="btn solid delete_org" id="delete_org_#{org.id}"
                         | DELETE
                       button class="btn solid grey cancel_delete"
-                        | CANCEL    
+                        | CANCEL
 .modal.fade.edit_org role="dialog" aria-labelledby="ModalLabel" id="create_org_modal"  
   .modal-dialog.modal-lg
     .modal-content
@@ -145,7 +144,7 @@ html[lang="en"]
           | CREATE ORGANIZATION
 
       = form_for(Organization.new) do |f|
-        .modal-body 
+        .modal-body
           .row
             .col-md-4
               .field.align-right

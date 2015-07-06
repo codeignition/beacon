@@ -479,12 +479,13 @@ hr{
     margin-bottom: 2vh;
   }
   .light-padding{
-    padding: 0;
+    padding: 2%;
   }
   .row.feature{
     padding-top: 9vh;
   }
   .h1{
+    font-size: 5vmin;
     margin-bottom: 1vmin;
   }
   .h4{
@@ -495,5 +496,35 @@ hr{
   }
   .nav-pills.top-header{
     padding-top:0;
+  }
+  .confirmation_success{
+    font-size: 5vmin;
+  }
+  .confirmation_text{
+    font-size: 3vmin;
+    margin-bottom: 2%;
+    margin-top: 1%;
+  }
+  .confirmation_info_text{
+    font-size: 2.8vmin;
+    padding:1%;
+  }
+  .navbar.navbar-top .nav-pills > li {
+    font-size: 2vmin;
+  }
+  .nav > li > a {
+    padding: 1vmin 1vmin;
+  }
+  .take_tour{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .copyright{
+    padding-left:0;
+    padding-right:0;
+    font-size: 3vmin;
+  }
+  footer{
+    margin-bottom:0;
   }
 }

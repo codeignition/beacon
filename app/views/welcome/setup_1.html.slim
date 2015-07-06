@@ -12,12 +12,12 @@
           | Complete Profile & Continue 
    
   .row
-    .col-md-4.align-right
+    .col-xs-4.col-md-4.align-right
       .field
         .row.zero-padding
           .label ORGANIZATION 
 
-    .col-md-8
+    .col-xs-8.col-md-8
       = form_for(@current_org) do |f|
         .input
           .row.zero-padding
@@ -28,37 +28,37 @@
 
     = form_for(@new_contact) do |f|
       .row
-        .col-md-4.align-right
+        .col-xs-4.col-md-4.align-right
           .field
             .row.zero-padding
               .label NAME
-        .col-md-8
+        .col-xs-8.col-md-8
           .input
             .row.zero-padding
-              .col-md-6.zero-padding
+              .col-xs-12.col-md-6.zero-padding
                 = f.text_field :name, class: "input", placeholder: "me"
-              .col-md-6.left-padding.italic
+              .col-md-6.left-padding.italic.confirmation_info_text
                 | To recieve Beacon notifications add yourself & verify your phone number. 
 
       .row
-        .col-md-4.align-right
+        .col-xs-4.col-md-4.align-right
           .field
             .row.zero-padding
               .label PHONE NUMBER 
 
-        .col-md-8
+        .col-xs-8.col-md-8
           .input
               .row.zero-padding
                 .col-md-6.zero-padding
                   = f.text_field :phone_number, class: "input", placeholder: "+1 1234567890"
-                .col-md-6.left-padding.italic
-                  | Phone numbers must be verified by giving a missed call to +91 9999999999.
+                .col-md-6.left-padding.italic.confirmation_info_text
+                  | Phone numbers must be verified by giving a missed call to +91 8067037500.
 
       = f.text_field :email_id, class: "input", value: "#{current_user.email}", type: "hidden"
       .row 
-        .col-md-4
-        .col-md-8
-          .col-md-6.zero-padding
+        .col-xs-4.col-md-4
+        .col-xs-8.col-md-8
+          .col-xs-12.col-md-6.zero-padding
             = f.submit "CONTINUE", class: "btn solid go_to_step_3__button" 
    
           
