@@ -50,14 +50,14 @@ html[lang="en"]
 
                 .col-xs-5.col-md-5
                   .col-xs-8.col-md-8.zero-padding
-                    ul.nav.nav-pills.nav-justified.top-header.zero-padding
+                    ul.nav.nav-pills.nav-justified.top-header.zero-padding.mobile_hide
                       - unless (current_page? setup_1_path) or (current_page? setup_2_path)
                         li.zero-padding.alert-link class="#{if current_page?(alerts_path); 'active';end}"
                           = link_to "ALERTS", :alerts,:method => :get
                         li.zero-padding.settings-link class="#{if current_page?(settings_path); 'active'; end}"
                           = link_to "SETTINGS", :settings,:method => :get
                   .col-xs-4.col-md-4.zero-padding
-                    ul.nav.nav-pills.nav-justified.top-header.zero-padding
+                    ul.nav.nav-pills.nav-justified.top-header.zero-padding.mobile_hide
                       li.zero-padding
                         = link_to "SIGN OUT", :destroy_user_session, :method => :delete
     - else

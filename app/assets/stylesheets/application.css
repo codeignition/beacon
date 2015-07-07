@@ -469,8 +469,17 @@ hr{
   margin-top:2.8vmin;
   margin-bottom:2.8vmin;
 }
+.mobile_show{
+  display:none;
+}
 
 @media only screen and (max-device-width: 480px) {
+  .mobile_hide{
+    display:none;
+  }
+  .header{
+    padding: 2vmin;
+  }
   .logo-small{
     height: 11vmin;
     padding: 1%;
@@ -488,8 +497,17 @@ hr{
     font-size: 5vmin;
     margin-bottom: 1vmin;
   }
+  .h2{
+    font-size: 4vmin;
+  }
+  .h3{
+    font-size: 3vmin;
+  }
   .h4{
     font-size: 2vmin;
+  }
+  .label{
+    font-size: 3vmin;
   }
   .align-left{
     text-align: center;
@@ -526,5 +544,9 @@ hr{
   }
   footer{
     margin-bottom:0;
+  }
+  .introjs-tooltip{
+    min-width:85vw;
+    min-height:35vh;
   }
 }
