@@ -209,7 +209,7 @@
                 #on_mode_message.hide
                   | Beacon will NOT make calls between these hours.
             .col-md-1
-            .col-xs-offset-3.col-md-2
+            .col-xs-offset-3.col-md-2.col-md-offset-0
               .onoffswitch.light_padding
                 input#airplane_mode_switch.onoffswitch-checkbox name="onoffswitch" type="checkbox" /
                 label.onoffswitch-label for="airplane_mode_switch"
@@ -306,7 +306,7 @@
                   div.hide id="on_mode_message_edit_#{er.id}"
                     | Beacon will NOT make calls between these hours.
               .col-md-1
-              .col-xs-offset-3.col-md-2
+              .col-xs-offset-3.col-md-2.col-md-offset-0
                 .onoffswitch
                   input.onoffswitch-checkbox id="airplane_mode_switch_edit_#{er.id}" onclick="airplane_mode_edit_switch_handle('#{er.id}');" name="onoffswitch_edit" type="checkbox" data-er_mode="#{er.airplane_mode_on}" data-er_mode_start_time="#{er.airplane_mode_start_time}" data-er_mode_end_time="#{er.airplane_mode_end_time}"
                   label.onoffswitch-label for="airplane_mode_switch_edit_#{er.id}"
