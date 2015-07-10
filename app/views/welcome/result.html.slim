@@ -252,7 +252,9 @@
             .row
               .col-md-4
                 .label GROUP NAME
-                .field-text.top-margin
+                .field-text.top-margin.mobile_hide
+                  | Group's API key is #{er.rule_key}
+                .field-text.mobile_show
                   | Group's API key is #{er.rule_key}
               .col-md-4
                 .input.top-margin
@@ -263,7 +265,7 @@
                   .label
                     | TEAM MEMBERS
                   .field-text.top-margin
-                    | Team members must verify their phone number to receive any alert.
+                    | Only with verified numbers
               .col-md-4
                 .input.top-margin
                   select.add_contact_edit id="#{er.id}"
@@ -302,10 +304,9 @@
                   div.hide id="off_mode_message_edit_#{er.id}"
                     | Receive calls round the clock
                   div.hide id="on_mode_message_edit_#{er.id}"
-                    | Set airplane mode for this group.
-                    | Beacon will NOT call any team member between these hours.
+                    | Beacon will NOT make calls between these hours.
               .col-md-1
-              .col-md-2
+              .col-xs-offset-3.col-md-2
                 .onoffswitch
                   input.onoffswitch-checkbox id="airplane_mode_switch_edit_#{er.id}" onclick="airplane_mode_edit_switch_handle('#{er.id}');" name="onoffswitch_edit" type="checkbox" data-er_mode="#{er.airplane_mode_on}" data-er_mode_start_time="#{er.airplane_mode_start_time}" data-er_mode_end_time="#{er.airplane_mode_end_time}"
                   label.onoffswitch-label for="airplane_mode_switch_edit_#{er.id}"
@@ -313,18 +314,17 @@
                     span.onoffswitch-switch
             .row
               .col-md-9
-                .col-md-3
+                .col-xs-0.col-md-3
                 .col-md-9
                   .row
                     div.hide id="timepickers_edit_#{er.id}"
-                      .col-md-3
-                      .col-md-3
+                      .col-xs-0.col-md-3
+                      .col-xs-5.col-md-3
                         input.time.ui-timepicker-input id="start_time_picker_edit_#{er.id}" autocomplete="on" style=("min-height: 30px") type="text"
-                      .col-md-1
+                      .col-xs-2.col-md-1
                         .bottom-margin to
-                      .col-md-3
+                      .col-xs-5.col-md-3
                         input.time.ui-timepicker-input id="end_time_picker_edit_#{er.id}" autocomplete="on" style=("min-height: 30px") type="text"
-
 
           .modal-footer
             .row
