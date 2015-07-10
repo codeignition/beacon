@@ -17,16 +17,17 @@
                 = fa_icon "check"
               - elsif complaint.status == 'failure'
                 = fa_icon "times"
+              - elsif complaint.status == 'airplane_mode_on'
+                =fa_icon 'plane'
               - else
                 = fa_icon "phone"
 
           td
-            .escalation_rule 
+            .escalation_rule
               = complaint.escalation_rule.name
-              
           td = complaint.call_log
           td = complaint.ip_address
-          td 
+          td
             span.time
               =complaint.created_at
 

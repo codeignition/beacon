@@ -5,7 +5,7 @@ class CallUserController < ApplicationController
       head :bad_request
     elsif @escalation_rule.airplane_mode_on && (@escalation_rule.airplane_mode_start_time <= Time.now.seconds_since_midnight) && (Time.now.seconds_since_midnight <= @escalation_rule.airplane_mode_end_time)
       @complaint = ComplaintController.create_complaint @escalation_rule.id, @escalation_rule.organization_id, request.ip
-      @complaint.status = "Airplane Mode ON"
+      @complaint.status = "airplane_mode_on"
       render nothing: true
     else
       @complaint = ComplaintController.create_complaint @escalation_rule.id, @escalation_rule.organization_id, request.ip
