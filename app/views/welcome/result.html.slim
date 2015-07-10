@@ -1,16 +1,16 @@
 .row.zero-padding
-  .col-md-8.alert_half.full-percent-height-content.zero-padding
+  .col-md-8.alert_half.full-percent-height-content.zero-padding.mobile_hide
     .row.header.bline
       .col-xs-9.col-md-9.zero-padding
         span.h1.black
           | GROUPS
         span.h2
-          | #{@current_org.escalation_rules.count}
+          |&nbsp#{@current_org.escalation_rules.count}
 
 
       .col-xs-3.col-md-3
-        .btn.btn-primary.create_rule.float-right.plus-button
-          | +
+        .btn.solid.grey.btn-primary.create_rule.float-right.plus-button
+          | + NEW
     table.table.groups-table
       thead.light-padding
         tr
@@ -37,16 +37,16 @@
               .edit_button.edit_rule_button id="#{escalation_rule.id}"
                  = fa_icon 'pencil'
 
-  .col-md-4.users_half.full-percent-height-content.zero-padding
+  .col-md-4.users_half.full-percent-height-content.zero-padding.mobile_hide
     .row.header.bline
       .col-md-9.zero-padding
         span.h1.black
           | TEAM MEMBERS
         span.h2
-          | #{@contacts.count}
+          |&nbsp#{@contacts.count}
       .col-md-3
-        .btn.btn-primary.create_contact.float-right.plus-button
-          | +
+        .btn.solid.grey.btn-primary.create_contact.float-right.plus-button
+          | + NEW
     table.table.light-padding.tm-table
       thead
         tr
@@ -74,6 +74,82 @@
           td
             .edit_button.contact_edit_button id="#{contact.id}"
               = fa_icon 'pencil'
+
+  .col-xs-12.mobile_show
+    .row.header.bline
+      .col-xs-12.zero-padding
+        span.h1.black
+          | GROUPS
+        span.h2
+          |&nbsp#{@current_org.escalation_rules.count}
+        .btn.solid.grey.btn-primary.create_rule.plus-button
+          | + NEW
+        #group_menu_up.fa_menu_icon.float-right onclick="menu_icon_click_handle('group_up');"
+          =fa_icon 'angle-up'
+        #group_menu_down.fa_menu_icon.float-right.hide onclick="menu_icon_click_handle('group_down');"
+          =fa_icon 'angle-down'
+    table.table.groups-table
+      thead.light-padding.scrollable
+        tr
+          th
+            .label GROUP NAME & API KEY
+          th
+            .label QUEUE 1 MEMBERS
+          th
+      tbody.light-padding.scrollable
+        - @escalation_rules.each_with_index do | escalation_rule, i|
+          tr
+            td
+              .h3.font-black
+                = escalation_rule.name
+              .rule_key
+                | #{escalation_rule.rule_key}
+            td
+              = escalation_rule.queue_one_members.map(&:name).join(', ')
+            td
+              .edit_button.edit_rule_button.float-right id="#{escalation_rule.id}"
+                 = fa_icon 'pencil'
+    .row.header.bline.tline
+      .col-xs-12.zero-padding
+        span.h1.black
+          | TEAM MEMBERS
+        span.h2
+          |&nbsp#{@contacts.count}
+        .btn.solid.grey.btn-primary.create_contac2.plus-button
+          | + NEW
+        #team_menu_up.fa_menu_icon.float-right.hide onclick="menu_icon_click_handle('team_up');"
+          =fa_icon 'angle-up'
+        #team_menu_down.fa_menu_icon.float-right onclick="menu_icon_click_handle('team_down');"
+          =fa_icon 'angle-down'
+    table.table.light-padding.tm-table.hide
+      thead
+        tr
+          th
+            .label NAME
+          th
+            .label GROUPS
+          th
+      - @contacts.each do |contact|
+        tr
+          td
+            .h3.font-black
+              span
+                = contact.name
+              span
+                |
+              span
+                - if contact.unverified?
+                  = fa_icon 'phone', class: 'back-red', "data-toggle" => "tooltip", "data-placement" => "right", title: "#{contact.phone_number}"
+                - else
+                  = fa_icon 'phone', class: 'back-grey', "data-toggle" => "tooltip", "data-placement" => "right", title: "#{contact.phone_number}"
+          td
+            .rk
+              | #{contact.levels.map(&:escalation_rule).compact.to_set.count}
+          td
+            .edit_button.contact_edit_button.float-right id="#{contact.id}"
+              = fa_icon 'pencil'
+
+
 // create alert group modal
 .modal.fade.create_alert_rule role="dialog" aria-labelledby="ModalLabel"
   .modal-dialog.modal-lg
@@ -89,8 +165,11 @@
           .row
             .col-md-4
               .label GROUP NAME
-              .field-text.top-margin
-                | Group's API key will be #{@current_org.token}/api_key
+              .field-text.mobile_show
+                br
+                | Group's API key will be #{@current_org.token}/group_name
+              .field-text.top-margin.mobile_hide
+                | Group's API key will be #{@current_org.token}/group_name
             .col-md-4
               .input.top-margin
                 = f.text_field :name, class: "input", placeholder: "eg. Datadog Alert 1 or Mail Server Alert"
@@ -100,7 +179,7 @@
                 .label
                   | TEAM MEMBERS
                 .field-text.top-margin
-                  | Team members must verify their phone number to receive any alert.
+                  | Only with verified numbers
             .col-md-4
               .input.top-margin
                 select.add_contact
@@ -124,34 +203,35 @@
                 | AIRPLANE MODE
           .row
             .col-md-4
-              .field-text.top-margin
+              .field-text
                 #off_mode_message
                   | Receive calls round the clock
                 #on_mode_message.hide
-                  | Set airplane mode for this group.
-                  | Beacon will NOT call any team member between these hours.
+                  | Beacon will NOT make calls between these hours.
             .col-md-1
-            .col-md-2
-              .onoffswitch
+            .col-xs-offset-3.col-md-2
+              .onoffswitch.light_padding
                 input#airplane_mode_switch.onoffswitch-checkbox name="onoffswitch" type="checkbox" /
                 label.onoffswitch-label for="airplane_mode_switch"
                   span.onoffswitch-inner
                   span.onoffswitch-switch
           .row
             .col-md-9
-              .col-md-3
+              .col-xs-0.col-md-3
               .col-md-9
                 .row
                   #timepickers.hide
-                    .col-md-3
-                    .col-md-3
+                    .col-xs-0.col-md-3
+                    .col-xs-5.col-md-3
                       input#start_time_picker.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
-                    .col-md-1
+                    .col-xs-2.col-md-1
                       .bottom-margin to
-                    .col-md-3
+                    .col-xs-5.col-md-3
                       input#end_time_picker.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
+          .row.light_padding.mobile_show
+            =f.submit "CREATE", class: "btn solid create_group_button", id: "new_escalation_rule"
 
-        .modal-footer
+        .modal-footer.mobile_hide
           .row
             .col-md-4
             .col-md-4

@@ -80,7 +80,41 @@ change_onoffswitch_state = function(er_id, bool) {
   }
 };
 
-
+var menu_icon_click_handle;
+menu_icon_click_handle = function(state){
+  if(state=='group_up'){
+    $('.groups-table').addClass('hide');
+    $('.tm-table').removeClass('hide');
+    $('#group_menu_up').addClass('hide');
+    $('#group_menu_down').removeClass('hide');
+    $('#team_menu_up').removeClass('hide');
+    $('#team_menu_down').addClass('hide');
+  }
+  if(state=='group_down'){
+    $('.groups-table').removeClass('hide');
+    $('.tm-table').addClass('hide');
+    $('#group_menu_up').removeClass('hide');
+    $('#group_menu_down').addClass('hide');
+    $('#team_menu_up').addClass('hide');
+    $('#team_menu_down').removeClass('hide');
+  }
+  if(state=='team_up'){
+    $('.tm-table').addClass('hide');
+    $('.groups-table').removeClass('hide');
+    $('#team_menu_up').addClass('hide');
+    $('#team_menu_down').removeClass('hide');
+    $('#group_menu_up').removeClass('hide');
+    $('#group_menu_down').addClass('hide');
+  }
+  if(state=='team_down'){
+    $('.tm-table').removeClass('hide');
+    $('.groups-table').addClass('hide');
+    $('#team_menu_up').removeClass('hide');
+    $('#team_menu_down').addClass('hide');
+    $('#group_menu_up').addClass('hide');
+    $('#group_menu_down').removeClass('hide');
+  }
+};
 
 $( document ).ready(function() {
   var makeId = function(n)

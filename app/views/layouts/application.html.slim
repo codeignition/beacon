@@ -25,13 +25,13 @@ html[lang="en"]
       .navbar.navbar-top.dark-green
         .navbar-inner
             .row
-              .col-xs-5.col-md-5
+              .col-xs-3.col-md-5.top_nav_bar
                 = image_tag "beacon-logo-transparent.png", href: "/", class: "logo-small"
-              - unless current_page? confirmed_email_path or current_page? check_phone_number_verification_status_path
 
-                .col-xs-2.col-md-2
+              - unless current_page? confirmed_email_path or current_page? check_phone_number_verification_status_path
+                .col-xs-6.col-md-2.top_nav_bar
                   - unless (current_page? setup_1_path) or (current_page? setup_2_path)
-                    ul.nav.nav-pills.nav-justified.top-header.zero-padding
+                    ul.nav.nav-pills.nav-justified.top-header.zero-padding.mobile_hide
                       li.zero-padding.dropdown.org_toggle.zero-padding
                         a.dropdown-toggle href="#" data-toggle="dropdown" class="dropdown-toggle"
                           | #{@current_org.name}
@@ -40,26 +40,62 @@ html[lang="en"]
                           - current_user.organizations.each do |org|
                             li.zero_padding id="#{org.id}" class="#{@current_org == org ? 'active': ''}"
                               .row
-                                .col-md-8
+                                .col-md-9
                                   | #{org.name}
-                                .col-md-4
+                                .col-md-3
                                   = fa_icon 'pencil', id: "#{org.id}", class: "edit_org"
                             hr.dark.zero-padding
                           li.create_org.center-aligned.create_org_event
                             | + NEW ORGANIZATION
 
-                .col-xs-5.col-md-5
-                  .col-xs-8.col-md-8.zero-padding
-                    ul.nav.nav-pills.nav-justified.top-header.zero-padding.mobile_hide
+                    ul.nav.nav-pills.nav-justified.top-header.zero-padding.mobile_show
+                      li.zero-padding.dropdown.org_toggle.zero-padding
+                        a.dropdown-toggle.top_nav_bar href="#" data-toggle="dropdown" class="dropdown-toggle" class="h3"
+                          | #{@current_org.name} &nbsp
+                          b.caret
+                        ul.dropdown-menu.org_menu class="h3"
+                          - current_user.organizations.each do |org|
+                            li.zero_padding id="#{org.id}" class="#{@current_org == org ? 'active': ''}"
+                              .row
+                                .col-xs-7.col-xs-offset-1.col-md-8
+                                  | #{org.name}
+                                .col-xs-4.col-md-4
+                                  = fa_icon 'pencil', id: "#{org.id}", class: "edit_org"
+                            hr.dark.zero-padding
+                          li.create_org.center-aligned.create_org_event
+                            | + NEW ORGANIZATION
+
+
+                nav.navbar.navbar-default.mobile_show
+                  .navbar-header
+                    button.navbar-toggle data-target="#settings-dropdown-collapse" data-toggle="collapse" type="button"
+                      span.sr-only Toggle navigation
+                      span.icon-bar
+                      span.icon-bar
+                      span.icon-bar
+                  #settings-dropdown-collapse.collapse.navbar-collapse
+                    ul.nav.nav-pills.nav-justified.list-inline.settings_dropdown
+                      - unless (current_page? setup_1_path) or (current_page? setup_2_path)
+                        li.zero-padding.alert-link class="#{if current_page?(alerts_path); 'active';end}" style="margin-left: 10vmin; margin-right: 0vmin;"
+                          = link_to "ALERTS", :alerts,:method => :get
+                        li.zero-padding.settings-link class="#{if current_page?(settings_path); 'active'; end}"
+                          = link_to "SETTINGS", :settings,:method => :get
+                      li.zero-padding
+                        = link_to "SIGN OUT", :destroy_user_session, :method => :delete
+                .col-md-5.top_nav_bar.mobile_hide
+                  .col-md-8.zero-padding
+                    ul.nav.nav-pills.nav-justified.top-header.zero-padding
                       - unless (current_page? setup_1_path) or (current_page? setup_2_path)
                         li.zero-padding.alert-link class="#{if current_page?(alerts_path); 'active';end}"
                           = link_to "ALERTS", :alerts,:method => :get
                         li.zero-padding.settings-link class="#{if current_page?(settings_path); 'active'; end}"
                           = link_to "SETTINGS", :settings,:method => :get
-                  .col-xs-4.col-md-4.zero-padding
-                    ul.nav.nav-pills.nav-justified.top-header.zero-padding.mobile_hide
+                  .col-md-4.zero-padding
+                    ul.nav.nav-pills.nav-justified.top-header.zero-padding
                       li.zero-padding
                         = link_to "SIGN OUT", :destroy_user_session, :method => :delete
+
+
     - else
       .navbar.navbar-top.dark-green.fixed
         .navbar-inner

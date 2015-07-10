@@ -78,11 +78,12 @@
   color: rgb(231, 61, 77)  !important
 }
 .plus-button{
-  border-radius: 50% !important;
-  padding: 4px 14px !important;
-  min-width: 1% !important;
-  font-size: 1.7em;
-  font-weight: bold;
+  margin: 0.5vmin !important;
+  padding: 0.5vmin !important;
+  padding-left: 0vmin !important;
+  padding-right: 0vmin !important;
+  font-size: 3vmin;
+  font-weight: 400;
 }
 
 .field-text{
@@ -116,7 +117,9 @@
   border-bottom: none; 
   padding: 20px;
 }
-
+.tline{
+  border-top: 1px solid lightgray;
+}
 .bline{
   border-bottom: 1px solid lightgray;
 }
