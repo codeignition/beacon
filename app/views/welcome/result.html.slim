@@ -115,7 +115,7 @@
           | TEAM MEMBERS
         span.h2
           |&nbsp#{@contacts.count}
-        .btn.solid.grey.btn-primary.create_contac2.plus-button
+        .btn.solid.grey.btn-primary.create_contact.plus-button
           | + NEW
         #team_menu_up.fa_menu_icon.float-right.hide onclick="menu_icon_click_handle('team_up');"
           =fa_icon 'angle-up'
@@ -358,23 +358,29 @@
       = form_for(@new_contact) do |f|
         .modal-body
           .row
-            .col-md-4.zero-padding
-              .field.align-right
+            .col-md-4
+              .field.align-right.mobile_hide
+                .label NAME
+              .field.mobile_show
                 .label NAME
             .col-md-4
               .input
                 = f.text_field :name, class: "input", placeholder: "John Doe or Jane Doe"
           .row
-            .col-md-4.zero-padding
-              .field.align-right
+            .col-md-4
+              .field.align-right.mobile_hide
+                .label EMAIL
+              .field.mobile_show
                 .label EMAIL
             .col-md-4
               .input
                 = f.text_field :email_id, class: "input", placeholder: "john.doe@emaple.com or jane.doe@example.com"
           .row
-            .col-md-4.zero-padding
-              .field.align-right
-                .label PHONE NUMBER 
+            .col-md-4
+              .field.align-right.mobile_hide
+                .label PHONE NUMBER
+              .field.mobile_show
+                .label PHONE NUMBER
             .col-md-4
               .input
                 = f.text_field :phone_number, class: "input", placeholder: "+1 1234567890"
@@ -419,22 +425,28 @@
           .modal-body
             .row
               .col-md-4
-                .field.align-right
+                .field.align-right.mobile_hide
+                  .label NAME
+                .field.mobile_show
                   .label NAME
               .col-md-4
                 .input
                   = f.text_field :name, class: "input", value: "#{contact.name}"
             .row
               .col-md-4
-                .field.align-right
+                .field.align-right.mobile_hide
+                  .label EMAIL
+                .field.mobile_show
                   .label EMAIL
               .col-md-4
                 .input
                   = f.text_field :email_id, class: "input", value: "#{contact.email_id}"
             .row
               .col-md-4
-                .field.align-right
-                  .label PHONE NUMBER 
+                .field.align-right.mobile_hide
+                  .label PHONE NUMBER
+                .field.mobile_show
+                  .label PHONE NUMBER
               .col-md-4
                 .input
                   = f.text_field :phone_number, class: "input", value: "#{contact.phone_number}"

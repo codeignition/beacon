@@ -329,6 +329,12 @@ table.table tr:hover .h2, table.table tr:hover .h3 {
 .align-right{
   text-align: right;
 }
+.align-left{
+  text-align: left;
+}
+.align-center{
+  text-align: center;
+}
 .no-overflow{
   overflow: hidden;
 }
@@ -526,9 +532,6 @@ hr{
   }
   .label{
     font-size: 3vmin;
-  }
-  .align-left{
-    text-align: center;
   }
   .nav-pills.top-header{
     padding-top:0;
