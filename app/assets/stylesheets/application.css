@@ -599,12 +599,13 @@ hr{
   }
   .settings_dropdown{
     display: -webkit-box;
+    width: 100%;
     padding-left: 2vmin;
     padding-top: 0;
     padding-bottom: 0;
     margin-top: 1vmin;
     margin-bottom: 0.5vmin;
-    line-height: 10vmin;
+    line-height: 5vmin;
   }
   .icon-bar{
     color: gray;
@@ -655,5 +656,8 @@ hr{
     position: fixed;
     width: 100%;
     top: 85.75%;
+  }
+  .width_one_third{
+    width: 33.33%;
   }
 }

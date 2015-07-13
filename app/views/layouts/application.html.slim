@@ -76,11 +76,11 @@ html[lang="en"]
                   #settings-dropdown-collapse.collapse.navbar-collapse
                     ul.nav.nav-pills.nav-justified.list-inline.settings_dropdown
                       - unless (current_page? setup_1_path) or (current_page? setup_2_path)
-                        li.zero-padding.alert-link class="#{if current_page?(alerts_path); 'active';end}" style="margin-left: 10vmin; margin-right: 0vmin;"
+                        li.zero-padding.alert-link.width_one_third class="#{if current_page?(alerts_path); 'active';end}" style="margin-left: 10vmin; margin-right: 0vmin;"
                           = link_to "ALERTS", :alerts,:method => :get
-                        li.zero-padding.settings-link class="#{if current_page?(settings_path); 'active'; end}"
+                        li.zero-padding.settings-link.width_one_third class="#{if current_page?(settings_path); 'active'; end}"
                           = link_to "SETTINGS", :settings,:method => :get
-                      li.zero-padding
+                      li.zero-padding.width_one_third
                         = link_to "SIGN OUT", :destroy_user_session, :method => :delete
                 .col-md-5.top_nav_bar.mobile_hide
                   .col-md-8.zero-padding
