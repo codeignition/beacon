@@ -228,14 +228,12 @@
                       .bottom-margin to
                     .col-xs-5.col-md-3
                       input#end_time_picker.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
-          .row.light_padding.mobile_show
-            =f.submit "CREATE", class: "btn solid create_group_button", id: "new_escalation_rule"
 
-        .modal-footer.mobile_hide
-          .row
-            .col-md-4
-            .col-md-4
-                = f.submit "CREATE RULE", class: "btn solid create_group_button", id: "new_escalation_rule"
+          .modal-footer
+            .row
+              .col-md-4
+              .col-md-4
+                  = f.submit "CREATE RULE", class: "btn solid create_group_button", id: "new_escalation_rule"
 
 - @escalation_rules.each do |er|
   .modal.fade.edit_alert_rule role="dialog" aria-labelledby="ModalLabel" id="edit_rule_modal_#{er.id}"  
@@ -326,25 +324,25 @@
                       .col-xs-5.col-md-3
                         input.time.ui-timepicker-input id="end_time_picker_edit_#{er.id}" autocomplete="on" style=("min-height: 30px") type="text"
 
-          .modal-footer
-            .row
-              .col-md-4
-              .col-md-4
-                .edit_actions
-                  = f.submit "EDIT GROUP", class: "btn solid create_group_button" ,id: "edit_escalation_rule_#{er.id}"
-                  div
-                    button class="btn no-border show_confirmation"
-                      | DELETE GROUP
-                
-            .confirmation
+            .modal-footer
               .row
-                .col-md-6.text
-                  | Are you sure you want to delete this group?
-                .col-md-6
-                  button class="btn solid delete_escalation_rule" id="delete_escalation_rule_#{er.id}"
-                    | DELETE
-                  button class="btn solid grey cancel_delete"
-                    | CANCEL
+                .col-md-4
+                .col-md-4
+                  .edit_actions
+                    = f.submit "EDIT GROUP", class: "btn solid create_group_button" ,id: "edit_escalation_rule_#{er.id}"
+                    div
+                      button class="btn no-border show_confirmation"
+                        | DELETE GROUP
+                
+              .confirmation
+                .row
+                  .col-md-6.text
+                    | Are you sure you want to delete this group?
+                  .col-md-6
+                    button class="btn solid delete_escalation_rule" id="delete_escalation_rule_#{er.id}"
+                      | DELETE
+                    button class="btn solid grey cancel_delete"
+                      | CANCEL
 
 .modal.fade.create_contact_modal role="dialog" aria-labelledby="ModalLabel" 
   .modal-dialog.modal-lg
