@@ -651,4 +651,9 @@ hr{
   .modal-body{
     padding: 2vmin;
   }
+  .force_at_bottom{
+    position: fixed;
+    width: 100%;
+    top: 85.75%;
+  }
 }
