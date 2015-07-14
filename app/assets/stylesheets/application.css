@@ -62,10 +62,14 @@ ul.anchor-menu {
 }
 
 .row .tagline{
-  font-size: 6.5vmin;
+  font-size: 6vmin;
   line-height: 1.5em;
   font-weight: 400;
 }
+
+/*.tagline{*/
+  /*margin-top: 8vmin;*/
+/*}*/
 
 .row.feature{
   padding-top: 15vh;
@@ -78,7 +82,7 @@ ul.anchor-menu {
 }
 
 .logo-signin{
-  height: 110px;
+  height: 26vmin;
 }
 .btn.login-anchor{
   margin-top: 32vh;
@@ -403,7 +407,7 @@ a .btn:hover, a:-webkit-any-link{
 
 .row.slide-down-anchor {
   position: absolute;
-  bottom: 2%;
+  bottom: 4%;
   text-align: center;
   width: 100%;
   font-size: 4vh;
@@ -446,6 +450,9 @@ footer {
   height: 30px;
   color: lightgray;
   padding: 6px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
 
 .back-red{
@@ -658,5 +665,15 @@ hr{
   }
   .width_one_third{
     width: 33.33%;
+  }
+  .row.slide-down-anchor{
+    bottom: 7%;
+  }
+  .nav-pills{
+    padding: 1vmin;
+    padding-top: 10vmin;
+  }
+  .zero-right-padding{
+    padding-right: 0 !important;
   }
 }

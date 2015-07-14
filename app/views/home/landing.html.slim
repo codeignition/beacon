@@ -35,15 +35,15 @@
           | Beacon is a simple API driven service that calls you & your IT team in real time with voice alerts.
         .col-md-6
           .row
-            .col-md-6
+            .col-xs-3.col-xs-offset-1.col-md-6.col-md-offset-0
               = image_tag "lp-1.svg", class: "feature-image" 
-            .col-md-6.align-left.h4
+            .col-xs-6.col-md-6.align-left.h4
               | Beacon is an API add-on that sits as a layer on top of your existing monitoring setup, that makes Voice Recorded Calls to you & your team with calling rules that you control
         .col-md-6
           .row
-            .col-md-6
+            .col-xs-3.col-xs-offset-1.col-md-6.col-md-offset-0
               = image_tag "lp-2.svg", class: "feature-image" 
-            .col-md-6.align-left.h4
+            .col-xs-6.col-md-6.align-left.h4
               | Beacon isn’t a replacement for your existing monitoring setup, and only makes calls when notifications for your Email, SMS & Apps are also triggered
     .row.slide-down-anchor
       a href="#features#2"
@@ -63,9 +63,9 @@
         .headline
           | Integrate Beacon in your monitoring setup right away in 9 simple steps. It’s Free.
         .row
-          .col-md-2
+          .col-xs-3.col-xs-offset-1.col-md-2.col-md-offset-0
             = image_tag "lp-3.svg", class: "feature-image" 
-          .col-md-2.align-left.h4
+          .col-xs-6.col-md-2.align-left.h4
             div
               = fa_icon 'check' , class: 'teal'
               |  Free Email Sign Up
@@ -76,9 +76,9 @@
             div
               = fa_icon 'check', class: 'teal'
               |  Free Missed Call Verification
-          .col-md-2
+          .col-xs-3.col-xs-offset-1.col-md-2.col-md-offset-0
             = image_tag "lp-4.svg", class: "feature-image" 
-          .col-md-2.align-left.h4
+          .col-xs-6.col-md-2.align-left.h4
             div
               = fa_icon 'check', class: 'teal'
               |  Create a Group for an IT incident
@@ -88,9 +88,9 @@
             div
               = fa_icon 'check', class: 'teal'
               |  Set up Escalation Tree & Recipent Levels
-          .col-md-2
+          .col-xs-3.col-xs-offset-1.col-md-2.col-md-offset-0
             = image_tag "lp-5.svg", class: "feature-image" 
-          .col-md-2.align-left.h4
+          .col-xs-6.col-md-2.align-left.h4
             div
               = fa_icon 'check', class: 'teal'
               |  Add API key to existing alerts
@@ -118,33 +118,41 @@
         .headline
           | This is Beacon’s Beta Release with the Features below. More to come soon.
         .row
-          .col-md-2
-            = image_tag "lp-6.svg", class: "feature-image" 
-          .col-md-2.align-left.h4
-            | Real Time Beacon Calls are Q1 activated as soon as the Incident API is Q2 triggered & stop when call is picked
+          .col-xs-6.col-md-4.zero-right-padding
+            .col-xs-4.col-md-6
+              = image_tag "lp-6.svg", class: "feature-image" 
+            .col-xs-8.col-md-6.align-left.h4.zero-right-padding
+              | Real Time Beacon Calls are Q1 activated as soon as the Incident API is Q2 triggered & stop when call is picked
 
-          .col-md-2
-            = image_tag "lp-7.svg", class: "feature-image" 
-          .col-md-2.align-left.h4
-            | Custom Escalations Assign Team Members to Calling Queues for every Group in your Organization
-          .col-md-2
-            = image_tag "lp-8.svg", class: "feature-image" 
-          .col-md-2.align-left.h4
-            | No Spam Calls Beacon Calls are only made to Verified Numbers & stop as soon as Any Team Member answers them
+          .col-xs-6.col-md-4.zero-right-padding
+            .col-xs-4.col-md-6
+              = image_tag "lp-7.svg", class: "feature-image" 
+            .col-xs-8.col-md-6.align-left.h4.zero-right-padding
+              | Custom Escalations Assign Team Members to Calling Queues for every Group in your Organization
 
-        .row
-          .col-md-2
-            = image_tag "lp-9.svg", class: "feature-image" 
-          .col-md-2.align-left.h4
-            | Tracking Beacon tracks IP address of Incident API & also which Team Members answered Calls and when
-          .col-md-2
-            = image_tag "lp-10.svg", class: "feature-image" 
-          .col-md-2.align-left.h4
-            | Voice Message Customize the recorded voice message played for each Beacon when it is answered
-          .col-md-2
-            = image_tag "lp-11.svg", class: "feature-image" 
-          .col-md-2.align-left.h4
-            | Future Releases Integrations with popular Monitoring Apps & Control of Call Escalation Loops and Time Delays
+          .col-xs-6.col-md-4.zero-right-padding
+            .col-xs-4.col-md-6
+              = image_tag "lp-8.svg", class: "feature-image" 
+            .col-xs-8.col-md-6.align-left.h4.zero-right-padding
+              | No Spam Calls Beacon Calls are only made to Verified Numbers & stop as soon as Any Team Member answers them
+
+          .col-xs-6.col-md-4.zero-right-padding
+            .col-xs-4.col-md-6
+              = image_tag "lp-9.svg", class: "feature-image" 
+            .col-xs-8.col-md-6.align-left.h4.zero-right-padding
+              | Tracking Beacon tracks IP address of Incident API & also which Team Members answered Calls and when
+
+          .col-xs-6.col-md-4.zero-right-padding
+            .col-xs-4.col-md-6
+              = image_tag "lp-10.svg", class: "feature-image" 
+            .col-xs-8.col-md-6.align-left.h4.zero-right-padding
+              | Voice Message Customize the recorded voice message played for each Beacon when it is answered
+
+          .col-xs-6.col-md-4.zero-right-padding
+            .col-xs-4.col-md-6
+              = image_tag "lp-11.svg", class: "feature-image" 
+            .col-xs-8.col-md-6.align-left.h4.zero-right-padding
+              | Future Releases Integrations with popular Monitoring Apps & Control of Call Escalation Loops and Time Delays
     .row.slide-down-anchor
       a href="#signin"
         = fa_icon "angle-down"
@@ -158,7 +166,7 @@
             .tagline.small.align-center
               span.gainsboro
                 | Login to your Beacon Account
-        .col-md-6.col-md-offset-3
+        .col-xs-12.col-xs-offset-0.col-md-6.col-md-offset-3
           ul.nav.nav-pills.nav-justified.center-block
             li.active role="tab" aria-controls="sign-in-form" data-toggle="tab"  data-target="#sign-in-form" SIGN IN
             li role="tab" aria-controls="sign-up-form" data-toggle="tab" data-target="#sign-up-form" SIGN UP
@@ -182,10 +190,10 @@
                   div
                     = f.password_field :password_confirmation, autocomplete: "off", placeholder: "RE-ENTER PASSWORD"
                   = f.submit "SIGN UP" , class:  "sign-up button"
-      .headline
-        | Let us know your feedback & queries
-        .btn
-          | Tweet to @codeignition
+          .headline
+            | Let us know your feedback & queries
+            .btn
+              | Tweet to @codeignition
 
 ul.anchor-menu
     li data-anchor="landing"
