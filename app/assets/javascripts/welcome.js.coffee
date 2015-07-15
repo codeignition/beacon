@@ -1,8 +1,5 @@
 $( document ).ready(->
 
-  $('.tm-table').addClass 'hidden-sm'
-  $('.tm-table').addClass 'hidden-xs'
-
   $('#airplane_mode_switch').prop('checked', false)
   if $('#airplane_mode_switch').prop('checked') == true
     $('#on_mode_message').removeClass 'hide'

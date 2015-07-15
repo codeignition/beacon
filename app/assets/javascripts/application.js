@@ -83,50 +83,24 @@ change_onoffswitch_state = function(er_id, bool) {
 var menu_icon_click_handle;
 menu_icon_click_handle = function(state){
   if(state=='group_up'){
-    $('.tm-table').removeClass('hidden-sm');
-    $('.tm-table').removeClass('hidden-xs');
     $('.groups-table').addClass('hide');
-    $('.alert_half').removeClass('full-percent-height-content');
-    $('.tm-table').removeClass('hide');
     $('#group_menu_up').addClass('hide');
     $('#group_menu_down').removeClass('hide');
-    $('#team_menu_up').removeClass('hide');
-    $('#team_menu_down').addClass('hide');
-    $('#team_table_header').removeClass('force_at_bottom');
   }
   if(state=='group_down'){
-    $('.tm-table').removeClass('hidden-sm');
-    $('.tm-table').removeClass('hidden-xs');
     $('.groups-table').removeClass('hide');
-    $('.tm-table').addClass('hide');
     $('#group_menu_up').removeClass('hide');
     $('#group_menu_down').addClass('hide');
-    $('#team_menu_up').addClass('hide');
-    $('#team_menu_down').removeClass('hide');
-    $('#team_table_header').addClass('force_at_bottom');
   }
   if(state=='team_up'){
-    $('.tm-table').removeClass('hidden-sm');
-    $('.tm-table').removeClass('hidden-xs');
     $('.tm-table').addClass('hide');
-    $('.groups-table').removeClass('hide');
     $('#team_menu_up').addClass('hide');
     $('#team_menu_down').removeClass('hide');
-    $('#group_menu_up').removeClass('hide');
-    $('#group_menu_down').addClass('hide');
-    $('#team_table_header').addClass('force_at_bottom');
   }
   if(state=='team_down'){
-    $('.tm-table').removeClass('hidden-sm');
-    $('.tm-table').removeClass('hidden-xs');
     $('.tm-table').removeClass('hide');
-    $('.groups-table').addClass('hide');
-    $('.alert_half').removeClass('full-percent-height-content');
     $('#team_menu_up').removeClass('hide');
     $('#team_menu_down').addClass('hide');
-    $('#group_menu_up').addClass('hide');
-    $('#group_menu_down').removeClass('hide');
-    $('#team_table_header').removeClass('force_at_bottom');
   }
 };
 

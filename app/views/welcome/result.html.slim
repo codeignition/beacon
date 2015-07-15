@@ -46,7 +46,7 @@
                  = fa_icon 'pencil'
 
   .col-xs-12.col-md-4.users_half.full-percent-height-content.zero-padding
-    #team_table_header.row.header.bline.force_at_bottom
+    #team_table_header.row.header.bline
       .col-xs-6.col-md-9.zero-padding
         span.h1.black
           | TEAM MEMBERS
@@ -56,9 +56,9 @@
         .btn.solid.grey.btn-primary.create_contact.float-right.plus-button
           | + NEW
       .col-xs-3.hidden-md.hidden-lg
-        #team_menu_up.fa_menu_icon.float-right.hide onclick="menu_icon_click_handle('team_up');"
+        #team_menu_up.fa_menu_icon.float-right onclick="menu_icon_click_handle('team_up');"
           =fa_icon 'angle-up'
-        #team_menu_down.fa_menu_icon.float-right onclick="menu_icon_click_handle('team_down');"
+        #team_menu_down.fa_menu_icon.float-right.hide onclick="menu_icon_click_handle('team_down');"
           =fa_icon 'angle-down'
 
     table.table.light-padding.tm-table
