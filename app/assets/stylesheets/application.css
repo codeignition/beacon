@@ -631,6 +631,8 @@ hr{
   }
   .plus-button{
     margin-left: 3vmin !important;
+    margin-top: 2vmin !important;
+    margin-bottom: 1vmin !important;
   }
   .table{
     margin-bottom: 45px;
@@ -650,6 +652,7 @@ hr{
   }
   .fa_menu_icon{
     font-size: large;
+    margin-top: 2vmin !important;
   }
   thead, tbody{
     position: block !important;
