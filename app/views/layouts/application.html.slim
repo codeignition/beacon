@@ -30,7 +30,7 @@ html[lang="en"]
                 = image_tag "favicon-header.png", href: "/", class: "logo-small hidden-md hidden-lg"
 
               - unless current_page? confirmed_email_path or current_page? check_phone_number_verification_status_path
-                .col-xs-5.col-md-2.top-header
+                .col-xs-5.col-md-3.top-header
                   - unless (current_page? setup_1_path) or (current_page? setup_2_path)
                     ul.nav.nav-pills.nav-justified.top-header.zero-padding
                       li.zero-padding.dropdown.org_toggle.zero-padding
@@ -41,15 +41,15 @@ html[lang="en"]
                           - current_user.organizations.each do |org|
                             li.zero_padding id="#{org.id}" class="#{@current_org == org ? 'active': ''}"
                               .row
-                                .col-md-9
+                                .col-xs-9.col-md-9.h3
                                   | #{org.name}
-                                .col-md-3
+                                .col-xs-3.col-md-3.h3
                                   = fa_icon 'pencil', id: "#{org.id}", class: "edit_org"
                             hr.dark.zero-padding
-                          li.create_org.center-aligned.create_org_event
+                          li.create_org.center-aligned.create_org_event.h3
                             | + NEW ORGANIZATION
 
-                .col-xs-5.col-md-5.top-header
+                .col-xs-5.col-md-4.top-header
                   .col-xs-12.col-md-12.zero-padding
                     ul.nav.nav-pills.zero-padding
                       - unless (current_page? setup_1_path) or (current_page? setup_2_path)
