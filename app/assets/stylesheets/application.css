@@ -22,7 +22,6 @@ body {
 }
 .logo-small{
    height: 70px;
-   padding: 1%;
 }
 
 .anchor-menu {
@@ -485,8 +484,16 @@ hr{
 .mobile_show{
   display:none;
 }
-
+.nav-pills{
+  padding: 1vmin;
+  padding-top: 10vmin;
+  width: 100%;
+}
 @media only screen and (max-device-width: 480px) {
+  .top-header{
+    padding-left: 2vmin;
+    padding-right: 0vmin;
+  }
   .h1.black{
     margin-left: 2vmin;
   }
@@ -513,6 +520,7 @@ hr{
   .logo-small{
     height: 11vmin;
     padding: 1%;
+    padding-left: 2vmin;
   }
   .headline{
     margin-bottom: 2vh;
@@ -539,9 +547,6 @@ hr{
   }
   .label{
     font-size: 3vmin;
-  }
-  .nav-pills.top-header{
-    padding-top:0;
   }
   .confirmation_success{
     font-size: 5vmin;
@@ -579,12 +584,6 @@ hr{
   .introjs-tooltip{
     min-width:85vw;
     min-height:35vh;
-  }
-  .top_nav_bar{
-    padding-left: 2vmin;
-    padding-right: 0vmin;
-    margin-top:3vmin;
-    margin-bottom: 3vmin;
   }
   .navbar-default{
     background:  rgb(28, 39, 51);
@@ -668,10 +667,6 @@ hr{
   }
   .row.slide-down-anchor{
     bottom: 7%;
-  }
-  .nav-pills{
-    padding: 1vmin;
-    padding-top: 10vmin;
   }
   .zero-right-padding{
     padding-right: 0 !important;
