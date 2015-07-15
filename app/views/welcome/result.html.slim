@@ -1,22 +1,28 @@
 .row.zero-padding
-  .col-md-8.alert_half.full-percent-height-content.zero-padding.mobile_hide
+  .col-xs-12.col-md-8.alert_half.full-percent-height-content.zero-padding
     .row.header.bline
-      .col-xs-9.col-md-9.zero-padding
+      .col-xs-3.col-md-9.zero-padding
         span.h1.black
           | GROUPS
         span.h2
-          |&nbsp#{@current_org.escalation_rules.count}
-
+          |&nbsp&nbsp#{@current_org.escalation_rules.count}
 
       .col-xs-3.col-md-3
         .btn.solid.grey.btn-primary.create_rule.float-right.plus-button
           | + NEW
+      .col-xs-3.col-xs-offset-3.hidden-md.hidden-lg
+        #group_menu_up.fa_menu_icon.float-right onclick="menu_icon_click_handle('group_up');"
+          =fa_icon 'angle-up'
+        #group_menu_down.fa_menu_icon.float-right.hide onclick="menu_icon_click_handle('group_down');"
+          =fa_icon 'angle-down'
+
     table.table.groups-table
       thead.light-padding
         tr
           th
-            .label GROUP NAME
-          th
+            .label.hidden-sm.hidden-xs GROUP NAME
+            .label.hidden-md.hidden-lg GROUP NAME & API KEY
+          th.hidden-sm.hidden-xs
             .label API KEY
           th
             .label QUEUE 1 MEMBERS
@@ -27,7 +33,9 @@
             td
               .h3.font-black
                 = escalation_rule.name
-            td
+              .rule_key.hidden-md.hidden-lg
+                | #{escalation_rule.rule_key}
+            td.hidden-xs.hidden-sm
               .rule_key
                 | #{escalation_rule.rule_key}
             td
@@ -37,91 +45,23 @@
               .edit_button.edit_rule_button id="#{escalation_rule.id}"
                  = fa_icon 'pencil'
 
-  .col-md-4.users_half.full-percent-height-content.zero-padding.mobile_hide
-    .row.header.bline
-      .col-md-9.zero-padding
+  .col-xs-12.col-md-4.users_half.full-percent-height-content.zero-padding
+    #team_table_header.row.header.bline.force_at_bottom
+      .col-xs-6.col-md-9.zero-padding
         span.h1.black
           | TEAM MEMBERS
         span.h2
-          |&nbsp#{@contacts.count}
-      .col-md-3
+          |&nbsp&nbsp#{@contacts.count}
+      .col-xs-3.col-md-3
         .btn.solid.grey.btn-primary.create_contact.float-right.plus-button
           | + NEW
-    table.table.light-padding.tm-table
-      thead
-        tr
-          th
-            .label NAME
-          th
-            .label GROUPS
-          th
-      - @contacts.each do |contact|
-        tr
-          td
-            .h3.font-black
-              span
-                = contact.name
-              span
-                |
-              span
-                - if contact.unverified?
-                  = fa_icon 'phone', class: 'back-red', "data-toggle" => "tooltip", "data-placement" => "right", title: "#{contact.phone_number}"
-                - else
-                  = fa_icon 'phone', class: 'back-grey', "data-toggle" => "tooltip", "data-placement" => "right", title: "#{contact.phone_number}"
-          td
-            .rk
-              | #{contact.levels.map(&:escalation_rule).compact.to_set.count}
-          td
-            .edit_button.contact_edit_button id="#{contact.id}"
-              = fa_icon 'pencil'
-
-  .col-xs-12.mobile_show
-    .row.header.bline
-      .col-xs-12.zero-padding
-        span.h1.black
-          | GROUPS
-        span.h2
-          |&nbsp#{@current_org.escalation_rules.count}
-        .btn.solid.grey.btn-primary.create_rule.plus-button
-          | + NEW
-        #group_menu_up.fa_menu_icon.float-right onclick="menu_icon_click_handle('group_up');"
-          =fa_icon 'angle-up'
-        #group_menu_down.fa_menu_icon.float-right.hide onclick="menu_icon_click_handle('group_down');"
-          =fa_icon 'angle-down'
-    table.table.groups-table
-      thead.light-padding.scrollable
-        tr
-          th
-            .label GROUP NAME & API KEY
-          th
-            .label QUEUE 1 MEMBERS
-          th
-      tbody.light-padding.scrollable
-        - @escalation_rules.each_with_index do | escalation_rule, i|
-          tr
-            td
-              .h3.font-black
-                = escalation_rule.name
-              .rule_key
-                | #{escalation_rule.rule_key}
-            td
-              = escalation_rule.queue_one_members.map(&:name).join(', ')
-            td
-              .edit_button.edit_rule_button.float-right id="#{escalation_rule.id}"
-                 = fa_icon 'pencil'
-    #team_table_header.row.header.bline.tline.force_at_bottom
-      .col-xs-12.zero-padding
-        span.h1.black
-          | TEAM MEMBERS
-        span.h2
-          |&nbsp#{@contacts.count}
-        .btn.solid.grey.btn-primary.create_contact.plus-button
-          | + NEW
+      .col-xs-3.hidden-md.hidden-lg
         #team_menu_up.fa_menu_icon.float-right.hide onclick="menu_icon_click_handle('team_up');"
           =fa_icon 'angle-up'
         #team_menu_down.fa_menu_icon.float-right onclick="menu_icon_click_handle('team_down');"
           =fa_icon 'angle-down'
-    table.table.light-padding.tm-table.hide
+
+    table.table.light-padding.tm-table
       thead
         tr
           th
@@ -148,7 +88,6 @@
           td
             .edit_button.contact_edit_button.float-right id="#{contact.id}"
               = fa_icon 'pencil'
-
 
 // create alert group modal
 .modal.fade.create_alert_rule role="dialog" aria-labelledby="ModalLabel"
