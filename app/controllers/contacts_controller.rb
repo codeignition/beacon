@@ -54,6 +54,8 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
+        @contact.phone_number = "0"+contact_params["phone_number"].gsub(/\s+/,"").slice(-10,10)
+        @contact.save
         format.html { redirect_to settings_path, notice: 'Contact was successfully updated.' }
         format.json { render :show, status: :ok, location: @contact }
       else
