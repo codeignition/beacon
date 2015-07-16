@@ -70,6 +70,7 @@ RSpec.describe CallUserController, :type => :controller do
         level = Level.create! level_valid_attributes
         level.save
         get :caller, {:rule_key => escalation_rule.rule_key, :text => 'jon snow is dead'}
+        assigns(:complaint).reload
         expect(assigns(:complaint)).to be_a(Complaint)
         expect(assigns(:complaint).status).to eq("airplane_mode_on")
       end
