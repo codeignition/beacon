@@ -125,8 +125,9 @@
                   option value="0"
                       | Select A Contact
                   - @contacts.each do |c|
-                    option value="#{c.id}"
-                      | #{c.name}
+                    -if !c.confirmed_at.nil?
+                      option value="#{c.id}"
+                        | #{c.name}
           .row
             .col-md-2
               .label ESCALATION TREE
@@ -209,8 +210,9 @@
                     option value="0"
                         | Select A Contact
                     - @contacts.each do |c|
-                      option value="#{c.id}"
-                        | #{c.name}
+                      -if !c.confirmed_at.nil?
+                        option value="#{c.id}"
+                          | #{c.name}
             .row
               .col-md-2
                 .label ADDED USERS
