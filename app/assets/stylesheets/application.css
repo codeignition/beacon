@@ -239,7 +239,7 @@ hr{
 }
 
 .feature-image{
-  width: 10vw;
+  width: 12vmin;
 }
 select {
   width: 100%;
@@ -490,6 +490,15 @@ hr{
   padding-top: 10vmin;
   width: 100%;
 }
+.tour-step-backdrop{
+  background-color: black;
+}
+@media only screen and (min-device-width: 768px){
+  .popover{
+    height: 20vmin;
+    max-width: 40vmin;
+  }
+}
 @media only screen and (max-device-width: 480px) {
   .full-percent-height-content {
     height: inherit;
@@ -586,8 +595,8 @@ hr{
     margin-bottom:0;
   }
   .introjs-tooltip{
-    min-width:85vw;
-    min-height:35vh;
+    min-width: 80vmin;
+    min-height: 45vmin;
   }
   .navbar-default{
     background:  rgb(28, 39, 51);

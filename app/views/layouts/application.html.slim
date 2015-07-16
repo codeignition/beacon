@@ -165,6 +165,6 @@ html[lang="en"]
             .col-md-4
               .edit_actions
                 = f.submit "CREATE ORGANIZATION", class: "btn solid create_org_button" ,id: "new_organization"
-- if current_user and !current_user.tour_taken and !(current_page? setup_1_path) and !(current_page? confirmed_email_path)              
+- if current_user and !current_user.tour_taken and !(current_page? setup_1_path) and !(current_page? confirmed_email_path)
   input.show_tour type='hidden'
 
