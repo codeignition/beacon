@@ -1,8 +1,7 @@
 class OrganizationsController < ApplicationController
   def update
-    
     respond_to do |format|
-      if Organization.find(params[:id]).update(name: params[:organization][:name])
+      if Organization.find(params[:id]).update(name: params[:name])
         format.html { redirect_to root_path, notice: 'Organization Was saved successfully.' }
         format.json { render json: {message: 'success'} }
       end
@@ -15,7 +14,6 @@ class OrganizationsController < ApplicationController
       if params[:organization][:name] and !params[:organization][:name].empty?
         @org = Organization.create(name: params[:organization][:name])
         @orgUser = OrganizationUser.create(user: current_user, organization: @org, is_admin: true)
-     
         format.html { redirect_to root_path, notice: 'Organization Was saved successfully.' }
         format.json { render json: {message: 'success'} }
       end
@@ -25,7 +23,6 @@ class OrganizationsController < ApplicationController
   def destroy
     respond_to do |format|
       Organization.find(params[:id]).destroy
-     
       format.html { redirect_to root_path, notice: 'Organization Was deleted successfully.' }
       format.json { render json: {message: 'success'} }
     end

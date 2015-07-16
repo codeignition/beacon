@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
   
   def toggle_tour
-    current_user.update(tour_taken: !current_user.tour_taken)
+    current_user.update_attribute(:tour_taken,!current_user.tour_taken)
     sign_in(current_user, :bypass => true)
     render json: {message: 'success'}
   end
