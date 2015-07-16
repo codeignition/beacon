@@ -211,7 +211,8 @@ $( document ).ready(function() {
       end_time = $('#end_time_picker').timepicker('getSecondsFromMidnight')
     }
     else{
-      er_id = this.id.substring(this.id.length-2, this.id.length)
+      er_id = this.id.split('_')[3]
+      console.log(er_id)
       airplane_mode = $('#airplane_mode_switch_edit_'+er_id).prop('checked')
       if(airplane_mode==true){
         start_time = $('#start_time_picker_edit_'+er_id).timepicker('getSecondsFromMidnight')
