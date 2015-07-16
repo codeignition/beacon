@@ -66,6 +66,17 @@ RSpec.describe ContactsController, :type => :controller do
         expect(assigns(:contact)).to be_persisted
       end
 
+      it 'saves phone number starting with 0' do
+        post :create, {:contact => valid_attributes}, valid_session
+        assigns(:contact).reload
+        expect(assigns(:contact).phone_number).to eq("0"+valid_attributes[:phone_number])
+
+        valid_attributes[:phone_number] = "0"+valid_attributes[:phone_number]
+        post :create, {:contact => valid_attributes}, valid_session
+        assigns(:contact).reload
+        expect(assigns(:contact).phone_number).to eq(valid_attributes[:phone_number])
+      end
+
       it "redirects to the created contact" do
         post :create, {:contact => valid_attributes}, valid_session
        expect(response).to redirect_to(settings_path)
