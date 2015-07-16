@@ -495,8 +495,8 @@ hr{
 }
 @media only screen and (min-device-width: 768px){
   .popover{
-    height: 20vmin;
-    max-width: 40vmin;
+    height: 26vmin;
+    max-width: 46vmin;
   }
 }
 @media only screen and (max-device-width: 480px) {
