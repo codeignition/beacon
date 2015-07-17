@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
   def update
     respond_to do |format|
-      if Organization.find(params[:id]).update(name: params[:name])
+      if Organization.find(params[:id]).update(name: params[:organization][:name])
         format.html { redirect_to root_path, notice: 'Organization Was saved successfully.' }
         format.json { render json: {message: 'success'} }
       end
