@@ -594,10 +594,6 @@ hr{
     bottom: 0;
     margin-bottom:0;
   }
-  .introjs-tooltip{
-    min-width: 80vmin;
-    min-height: 45vmin;
-  }
   .navbar-default{
     background:  rgb(28, 39, 51);
     margin-bottom: 0;
