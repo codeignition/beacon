@@ -24,4 +24,14 @@ class EscalationRule < ActiveRecord::Base
   	end
   	levels
   end
+
+  def contact_present? contact
+    present=false
+    self.rule_contacts.each_value do |value|
+      if value.include? contact
+        present = true
+      end
+    end
+    present
+  end
 end

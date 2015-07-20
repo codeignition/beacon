@@ -210,8 +210,8 @@
                     option value="0"
                         | Select A Contact
                     - @contacts.each do |c|
-                      -if !c.confirmed_at.nil?
-                        option value="#{c.id}"
+                      -if !er.contact_present? c and !c.confirmed_at.nil?
+                        option value = "#{c.id}"
                           | #{c.name}
             .row
               .col-md-2
@@ -221,16 +221,16 @@
                   .table.zero-padding.added_contacts_edit id="added_contacts_#{er.id}"
                     - er.levels.map{|l| [l,l.contact]}.each do |x|
                       .col-md-5
-                        span 
-                          select.level_select 
+                        span
+                          select.level_select
                             option value="#{x[0].level_number}" Q#{x[0].level_number}
-                            option value="1" Q1 
+                            option value="1" Q1
                             option value="2" Q2
                             option value="3" Q3
                             option value="4" Q4
                             option value="5" Q5
                         span id="#{x[1].id}" class="contact_name"
-                          | #{x[1].name} 
+                          | #{x[1].name}
                         span.minus-circle.float-right
                          = fa_icon "minus-circle", class: "delete_contact"
             .row

@@ -162,6 +162,8 @@ $( document ).ready(function() {
         "<i class='fa fa_arrow float-right'><i></select></span>" +
         "<span class='contact_name' id='" + _this.value + "'>"+ contact + "</span>" +
         "<span class='minus-circle'> <i id='" + newId + "' class='fa fa-minus-circle delete_contact float-right'></i></span></div>")
+      if(added_contacts_class.split('_').length==3) $('.add_contact_edit option:selected').remove()
+      else $('.add_contact option:selected').remove()
     }
     _this.value = 0
     $('.delete_contact').on('click', function(){
@@ -173,7 +175,6 @@ $( document ).ready(function() {
     addContact(this, '.added_contacts')
   });
   $('.add_contact_edit').on('change', function(){
-
     addContact(this, '#added_contacts_'+ this.id)
   });
   var create_escalation_rule = function(data){
