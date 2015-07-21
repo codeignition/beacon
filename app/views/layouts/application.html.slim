@@ -42,7 +42,7 @@ html[lang="en"]
                             li.zero_padding id="#{org.id}" class="#{@current_org == org ? 'active': ''}"
                               .row
                                 .col-xs-9.col-md-9.h3
-                                  | #{org.name}
+                                  = link_to "#{org.name}", organization_path("#{org.id}"), class:"#{@current_org == org ? 'active': ''}"
                                 .col-xs-3.col-md-3.h3
                                   = fa_icon 'pencil', id: "#{org.id}", class: "edit_org"
                             hr.dark.zero-padding
@@ -65,8 +65,6 @@ html[lang="en"]
                         = link_to "SIGN OUT", :destroy_user_session, :method => :delete, class: "hidden-xs hidden-sm"
                         = link_to :destroy_user_session, :method => :delete, class: "hidden-md hidden-lg" do
                           =fa_icon 'sign-out', style: "font-size: 4vmin"
-
-
     - else
       .navbar.navbar-top.dark-green.fixed
         .navbar-inner

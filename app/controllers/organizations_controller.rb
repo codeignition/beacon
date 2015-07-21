@@ -1,4 +1,9 @@
 class OrganizationsController < ApplicationController
+  def show
+    self.current_org = params[:id].to_i
+    redirect_to settings_path, notice: 'Organization was switched successfully.'
+  end
+
   def update
     respond_to do |format|
       if Organization.find(params[:id]).update(name: params[:organization][:name])
