@@ -22,9 +22,7 @@
         .input
           .row.zero-padding
             .col-md-6.zero-padding
-              = f.text_field :name, class: "input", value: "#{@current_org.name}"
-
-
+              = f.text_field :name, class: "input", value: "#{@current_org.name}", required: true
 
     = form_for(@new_contact) do |f|
       .row
@@ -36,7 +34,7 @@
           .input
             .row.zero-padding
               .col-md-6.zero-padding
-                = f.text_field :name, class: "input", placeholder: "me"
+                = f.text_field :name, class: "input", placeholder: "me", required: true
               .col-md-6.left-padding.italic.confirmation_info_text
                 | To recieve Beacon notifications add yourself & verify your phone number. 
 
@@ -50,12 +48,12 @@
           .input
               .row.zero-padding
                 .col-md-6.zero-padding
-                  = f.text_field :phone_number, class: "input", placeholder: "+1 1234567890"
+                  = f.text_field :phone_number, class: "input", placeholder: "+1 1234567890", required: true
                 .col-md-6.left-padding.italic.confirmation_info_text
                   | Phone numbers must be verified by giving a missed call to +91 8067037500.
 
       = f.text_field :email_id, class: "input", value: "#{current_user.email}", type: "hidden"
-      .row 
+      .row
         .col-xs-4.col-md-4
         .col-xs-8.col-md-8
           .col-xs-12.col-md-6.zero-padding
