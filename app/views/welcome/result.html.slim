@@ -325,7 +325,7 @@
                 .label PHONE NUMBER
             .col-md-4
               .input
-                = f.text_field :phone_number, class: "input", placeholder: "+1 1234567890", required: true
+                = f.text_field :phone_number, class: "input", placeholder: "1234567890", required: true, minlength: 10, pattern: "\\d+"
           .row
             .col-md-4.zero-padding
             .col-md-4
@@ -391,7 +391,7 @@
                   .label PHONE NUMBER
               .col-md-4
                 .input
-                  = f.text_field :phone_number, class: "input", value: "#{contact.phone_number}", required: true
+                  = f.text_field :phone_number, class: "input", value: "#{contact.phone_number}", required: true, minlength: 10, pattern: "\\d+"
           
           .modal-footer
             .row
