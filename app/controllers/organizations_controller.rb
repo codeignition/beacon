@@ -19,6 +19,7 @@ class OrganizationsController < ApplicationController
       if params[:organization][:name] and !params[:organization][:name].empty?
         @org = Organization.create(name: params[:organization][:name])
         @orgUser = OrganizationUser.create(user: current_user, organization: @org, is_admin: true)
+        self.current_org = @org.id
         format.html { redirect_to root_path, notice: 'Organization Was saved successfully.' }
         format.json { render json: {message: 'success'} }
       end
