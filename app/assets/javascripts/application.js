@@ -150,7 +150,7 @@ $( document ).ready(function() {
   var addContact = function(_this, added_contacts_class){
     newId = makeId(10)
     contact = _this.selectedOptions[0].text
-    if (_this.value != 0){
+    if (_this.value != ""){
       current_contacts = $(added_contacts_class).html()
       $(added_contacts_class).html(current_contacts + '<div class="col-md-5 contact_'+ newId +'"><span>'+
         "<select class='level_select'>" + 
@@ -189,7 +189,7 @@ $( document ).ready(function() {
     });
   }
 
-  var sendRequest = function(url, typeOfRequest,data){
+  var sendRequest = function(url, typeOfRequest,data, form_id){
     $.ajax({
       type: typeOfRequest,
       url: url,
@@ -197,11 +197,19 @@ $( document ).ready(function() {
       success: function(){
         location.reload()
       },
+      error: function(xhr){
+        setFormErrors(xhr.responseText, form_id)
+      },
       dataType: 'json'
     });
   }
 
-  $(".create_group_button").on('click', function(event){
+  var setFormErrors = function(errors, form_id){
+    var error_keys = Object.keys(errors)
+    $('#errors_'+form_id).append(errors)
+  }
+
+  $('[id*="escalation_rule"]').on('submit', function(event){
     event.preventDefault()
     form = $('form#'+ this.id)
     edit = this.id.match(/edit_escalation_rule_(\d+)/)
@@ -213,7 +221,6 @@ $( document ).ready(function() {
     }
     else{
       er_id = this.id.split('_')[3]
-      console.log(er_id)
       airplane_mode = $('#airplane_mode_switch_edit_'+er_id).prop('checked')
       if(airplane_mode==true){
         start_time = $('#start_time_picker_edit_'+er_id).timepicker('getSecondsFromMidnight')
@@ -233,9 +240,9 @@ $( document ).ready(function() {
     })
     data = {escalation_rule: {name: name, airplane_mode_on: airplane_mode, airplane_mode_start_time: start_time, airplane_mode_end_time: end_time, contacts: added_contacts}}
     if (edit != null) {
-      sendRequest( root_path + "/escalation_rules/" + edit[1], 'PUT', data)
+      sendRequest( root_path + "/escalation_rules/" + edit[1], 'PUT', data, this.id)
     }else{
-      sendRequest( root_path + "/escalation_rules/" , 'POST', data)
+      sendRequest( root_path + "/escalation_rules/" , 'POST', data, this.id)
     }
   })
 

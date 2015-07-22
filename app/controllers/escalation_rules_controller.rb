@@ -34,7 +34,7 @@ class EscalationRulesController < ApplicationController
         format.json { render :show, status: :created, location: @escalation_rule }
       else
         format.html { render :new }
-        format.json { render json: @escalation_rule.errors, status: :unprocessable_entity }
+        format.json { render json: { errors: @escalation_rule.errors.full_messages, status: :unprocessable_entity } }
       end
     end
   end

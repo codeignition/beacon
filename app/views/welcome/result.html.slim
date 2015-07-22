@@ -110,8 +110,8 @@
               .field-text.top-margin.mobile_hide
                 | Group's API key will be #{@current_org.token}/group_name
             .col-md-4
-              .input.top-margin
-                = f.text_field :name, class: "input", placeholder: "eg. Datadog Alert 1 or Mail Server Alert"
+              .input.top-margin required=""
+                = f.text_field :name, class: "input", placeholder: "eg. Datadog Alert 1 or Mail Server Alert", required: true
           hr
           .row
             .col-md-4
@@ -121,8 +121,8 @@
                   | Only with verified numbers
             .col-md-4
               .input.top-margin
-                select.add_contact
-                  option value="0"
+                select.add_contact required=""
+                  option value=""
                       | Select A Contact
                   - @contacts.each do |c|
                     -if !c.confirmed_at.nil?
@@ -188,6 +188,9 @@
         = form_for(er) do |f|
           .modal-body
             .row
+              .div
+                p id="errors_edit_escalation_rule_#{er.id}"
+            .row
               .col-md-4
                 .label GROUP NAME
                 .field-text.top-margin.mobile_hide
@@ -196,7 +199,7 @@
                   | Group's API key is #{er.rule_key}
               .col-md-4
                 .input.top-margin
-                  = f.text_field :name, class: "input", value: "#{er.name}"
+                  = f.text_field :name, class: "input", value: "#{er.name}", required: true
             hr
             .row
               .col-md-4
@@ -207,7 +210,7 @@
               .col-md-4
                 .input.top-margin
                   select.add_contact_edit id="#{er.id}"
-                    option value="0"
+                    option value=""
                         | Select A Contact
                     - @contacts.each do |c|
                       -if !er.contact_present? c and !c.confirmed_at.nil?
@@ -304,7 +307,7 @@
                 .label NAME
             .col-md-4
               .input
-                = f.text_field :name, class: "input", placeholder: "John Doe or Jane Doe"
+                = f.text_field :name, class: "input", placeholder: "John Doe or Jane Doe", required: true
           .row
             .col-md-4
               .field.align-right.mobile_hide
@@ -313,7 +316,7 @@
                 .label EMAIL
             .col-md-4
               .input
-                = f.text_field :email_id, class: "input", placeholder: "john.doe@emaple.com or jane.doe@example.com"
+                = f.text_field :email_id, class: "input", type: "email", placeholder: "john.doe@emaple.com or jane.doe@example.com", required: true
           .row
             .col-md-4
               .field.align-right.mobile_hide
@@ -322,7 +325,7 @@
                 .label PHONE NUMBER
             .col-md-4
               .input
-                = f.text_field :phone_number, class: "input", placeholder: "+1 1234567890"
+                = f.text_field :phone_number, class: "input", placeholder: "+1 1234567890", required: true
           .row
             .col-md-4.zero-padding
             .col-md-4
@@ -370,7 +373,7 @@
                   .label NAME
               .col-md-4
                 .input
-                  = f.text_field :name, class: "input", value: "#{contact.name}"
+                  = f.text_field :name, class: "input", value: "#{contact.name}", required: true
             .row
               .col-md-4
                 .field.align-right.mobile_hide
@@ -379,7 +382,7 @@
                   .label EMAIL
               .col-md-4
                 .input
-                  = f.text_field :email_id, class: "input", value: "#{contact.email_id}"
+                  = f.text_field :email_id, class: "input", value: "#{contact.email_id}", required: true
             .row
               .col-md-4
                 .field.align-right.mobile_hide
@@ -388,7 +391,7 @@
                   .label PHONE NUMBER
               .col-md-4
                 .input
-                  = f.text_field :phone_number, class: "input", value: "#{contact.phone_number}"
+                  = f.text_field :phone_number, class: "input", value: "#{contact.phone_number}", required: true
           
           .modal-footer
             .row
