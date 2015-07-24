@@ -32,7 +32,7 @@ class ContactsController < ApplicationController
     @contact.phone_number = "0"+contact_params["phone_number"].gsub(/\s+/,"").slice(-10,10)
     respond_to do |format|
       if @contact.save
-        if current_org.escalation_rules.empty?
+        if current_org.escalation_rules.empty? and !@user.tour_taken
           @escalation_rule = current_org.escalation_rules.create(name: 'Sample Rule')
           Level.create(escalation_rule: @escalation_rule, contact_id: @contact.id, level_number: 1)
         end

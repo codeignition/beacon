@@ -2,7 +2,7 @@ class EscalationRule < ActiveRecord::Base
   belongs_to :organization
   has_many :levels
   has_many :complaints
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
 
   before_save :create_rule_key
 

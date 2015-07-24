@@ -77,6 +77,15 @@ RSpec.describe ContactsController, :type => :controller do
         expect(assigns(:contact).phone_number).to eq(valid_attributes[:phone_number])
       end
 
+      it 'makes a sample rule when user logs in for the first time' do
+        post :create, {:contact => valid_attributes}, valid_session
+        assigns(:escalation_rule).reload
+        expect(assigns(:escalation_rule)).to be_a(EscalationRule)
+        expect(assigns(:escalation_rule)).to be_persisted
+      end
+
+      pending it 'does not make any sample rule once user has taken tour'
+
       it "redirects to the created contact" do
         post :create, {:contact => valid_attributes}, valid_session
        expect(response).to redirect_to(settings_path)
