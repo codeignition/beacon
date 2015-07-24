@@ -19,7 +19,13 @@ body {
   font-weight: 200;
   color: #8c8c8c;
   font-family: 'Roboto', sans-serif;
-  background: whitesmoke;
+  background: ghostwhite;
+}
+.background_white{
+  background: white;
+}
+.black{
+  color: black;
 }
 .logo-small{
    height: 70px;
@@ -98,7 +104,18 @@ ul.anchor-menu {
 .color-red {
   color: rgb(228, 31, 68);
 }
-
+.color-lightgrey{
+  color: lightgrey;
+}
+.link_underline{
+  text-decoration: underline !important;
+}
+.background_transparent{
+  background-color: transparent !important;
+}
+.background_ghostwhite{
+  background: ghostwhite;
+}
 .row {
   margin: 0px;
 }
@@ -209,7 +226,7 @@ h1, .h1{
 }
 .header{
   padding: 20px 0%;
-  background: ghostwhite;
+  background: whitesmoke;
 }
 .h2 {
   margin-top: 0px;

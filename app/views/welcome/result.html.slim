@@ -16,7 +16,7 @@
         #group_menu_down.fa_menu_icon.float-right.hide onclick="menu_icon_click_handle('group_down');"
           =fa_icon 'angle-down'
 
-    table.table.groups-table
+    table.table.groups-table.background_ghostwhite
       thead.light-padding
         tr
           th
@@ -44,6 +44,16 @@
             td
               .edit_button.edit_rule_button id="#{escalation_rule.id}"
                  = fa_icon 'pencil'
+    div.background_white.light-padding.align-center class=(@contacts.order(confirmed_at: :desc).first.confirmed_at ? 'hide': 'active')
+      .row
+        .col-xs-122.col-md-12
+          div.unverified_message.background_white
+            h3.black Ready to get your first Beacon alert?
+            span.h4 Verify your number first by giving a missed call to:&nbsp&nbsp&nbsp&nbsp
+            span.h2.color-red +918067037500 
+            br
+            span.h4 Refresh page after verification or 
+            span.h4 =link_to 'click here', {}, class:"link_underline background_transparent", style: "color: grey"
 
   .col-xs-12.col-md-4.users_half.full-percent-height-content.zero-padding
     #team_table_header.row.header.bline
