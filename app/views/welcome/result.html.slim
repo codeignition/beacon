@@ -44,7 +44,7 @@
             td
               .edit_button.edit_rule_button id="#{escalation_rule.id}"
                  = fa_icon 'pencil'
-    div.background_white.light-padding.align-center class=(@contacts.order(confirmed_at: :desc).first.confirmed_at ? 'hide': 'active')
+    div.background_white.light-padding.align-center class=(@contacts.order(confirmed_at: :desc).last.confirmed_at ? 'hide': 'active')
       .row
         .col-xs-122.col-md-12
           div.unverified_message.background_white
