@@ -31,9 +31,14 @@ class OrganizationsController < ApplicationController
 
   def destroy
     respond_to do |format|
-      Organization.find(params[:id]).destroy
-      format.html { redirect_to root_path, notice: 'Organization Was deleted successfully.' }
-      format.json { render json: {message: 'success'} }
+      if @current_user.organizations.first.id == params[:id].to_i
+        format.html { redirect_to root_path, notice: 'First organization can not be deleted'}
+        format.json { render json: {message: 'First organization can not be deleted'} }
+      else
+        Organization.find(params[:id]).destroy
+        format.html { redirect_to root_path, notice: 'Organization Was deleted successfully.' }
+        format.json { render json: {message: 'success'} }
+      end
     end
   end
 

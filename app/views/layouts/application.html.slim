@@ -127,7 +127,7 @@ html[lang="en"]
                   .col-md-4
                     .edit_actions
                       = f.submit "SAVE CHANGES", class: "btn solid create_org_button" ,id: "edit_organization_#{org.id}"
-                      div
+                      div class=(@current_user.organizations.first.id=="#{org.id}".to_i ? 'hide' : 'active')
                         button class="btn no-border show_confirmation"
                           | DELETE ORGANIZATION  
                 .confirmation

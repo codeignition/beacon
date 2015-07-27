@@ -26,4 +26,12 @@ RSpec.describe OrganizationsController, :type => :controller do
       expect(assigns(:org).contacts.first.phone_number).to eq( Contact.where(user: subject.current_user).order(confirmed_at: :desc).first.phone_number)
     end
   end
+
+  describe 'DELETE destroy' do
+    it 'does not let user destroy his first organization' do
+      expect{
+        delete :destroy, {id: subject.current_user.organizations.first.id}
+      }.to change(Organization, :count).by(0)
+    end
+  end
 end
