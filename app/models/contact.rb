@@ -16,4 +16,13 @@ class Contact < ActiveRecord::Base
     self.confirmed_at = Time.now
     self.save!
   end
+
+  def self.at_least_one_contact_verified? contacts
+    contacts.each do |contact|
+      if !contact.unverified?
+        return true
+      end
+    end
+    return false
+  end
 end

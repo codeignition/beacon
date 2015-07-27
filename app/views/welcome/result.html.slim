@@ -54,7 +54,7 @@
             span.h4.create_rule.link_underline click here
             br
             br
-    div.background_white.light-padding.align-center class=(@contacts.order(confirmed_at: :desc).last.confirmed_at ? 'hide': 'active')
+    div.background_white.light-padding.align-center class=( Contact.at_least_one_contact_verified?(@contacts) ? 'hide': 'active')
       .row
         .col-xs-12.col-md-12
           div.unverified_message.background_white
