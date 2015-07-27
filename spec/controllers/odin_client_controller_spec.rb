@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe OdinClientController, :type => :controller do
+  login_user
   let (:complaint){create :complaint}
 
   let(:valid_attributes){
@@ -27,7 +28,7 @@ RSpec.describe OdinClientController, :type => :controller do
   context "POST verify phonenumber" do
     it "should verify the given contact number" do
       number = "9716810944"
-      contact = create :contact,phone_number: "0#{number}"
+      contact = subject.current_user.contacts.create({name: "Hari", email_id: subject.current_user.email, phone_number: "0#{number}"})
       expect(contact.confirmed_at).to be_nil
       post :verify_contact, {:phone_number => number}, valid_session
       contact.reload

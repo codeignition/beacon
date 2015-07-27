@@ -29,7 +29,9 @@ class ContactsController < ApplicationController
     OrganizationUser.where(user_id: @user.id, organization_id: current_org.id).first_or_create
     @contact = @user.contacts.new(contact_params)
     @contact.organization = current_org
-    @contact.phone_number = "0"+contact_params["phone_number"].gsub(/\s+/,"").slice(-10,10)
+    if contact_params["phone_number"]!=nil
+      @contact.phone_number = "0"+contact_params["phone_number"].gsub(/\s+/,"").slice(-10,10)
+    end
     respond_to do |format|
       if @contact.save
         if current_org.escalation_rules.empty? and !@user.tour_taken

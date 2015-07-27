@@ -51,25 +51,66 @@ RSpec.describe EscalationRulesController, :type => :controller do
   describe "POST create" do
     describe "with valid params" do
       it "creates a new EscalationRule" do
-        contact = subject.current_user.contacts.create
-        valid_attributes[:contacts] = Hash.new(contact)
+        contact = subject.current_user.contacts.create({name: "Hari", email_id: subject.current_user.email, phone_number: "09999999999"})
+        contact.confirmed_at = Time.now
+        contact.save
+        valid_attributes[:contacts] = {}
+        valid_attributes[:contacts][:contact1] = Hash.new()
+        valid_attributes[:contacts][:contact1]['id'] = contact.id
+        valid_attributes[:contacts][:contact1]['level'] = "1"
+
         expect {
           post :create, {:escalation_rule => valid_attributes}, valid_session
         }.to change(EscalationRule, :count).by(1)
       end
 
       it "assigns a newly created escalation_rule as @escalation_rule" do
-        contact = subject.current_user.contacts.create
-        valid_attributes[:contacts] = Hash.new(contact)
+        contact = subject.current_user.contacts.create({name: "Hari", email_id: subject.current_user.email, phone_number: "09999999999"})
+        contact.confirmed_at = Time.now
+        contact.save
+        valid_attributes[:contacts] = {}
+        valid_attributes[:contacts][:contact1] = Hash.new()
+        valid_attributes[:contacts][:contact1]['id'] = contact.id
+        valid_attributes[:contacts][:contact1]['level'] = "1"
         post :create, {:escalation_rule => valid_attributes}, valid_session
         expect(assigns(:escalation_rule)).to be_a(EscalationRule)
         expect(assigns(:escalation_rule)).to be_persisted
       end
 
       it "redirects to the created escalation_rule" do
-        contact = subject.current_user.contacts.create
-        valid_attributes[:contacts] = Hash.new(contact)
+        contact = subject.current_user.contacts.create({name: "Hari", email_id: subject.current_user.email, phone_number: "09999999999"})
+        contact.confirmed_at = Time.now
+        contact.save
+        valid_attributes[:contacts] = {}
+        valid_attributes[:contacts][:contact1] = Hash.new()
+        valid_attributes[:contacts][:contact1]['id'] = contact.id
+        valid_attributes[:contacts][:contact1]['level'] = "1"
         post :create, {:escalation_rule => valid_attributes}, valid_session
+        expect(response).to redirect_to(EscalationRule.last)
+      end
+
+      it 'does not add an unverified contact to the escalation rule' do
+        contact = subject.current_user.contacts.create({name: "Hari", email_id: subject.current_user.email, phone_number: "09999999999"})
+        valid_attributes[:contacts] = {}
+        valid_attributes[:contacts][:contact1] = Hash.new()
+        valid_attributes[:contacts][:contact1]['id'] = contact.id
+        valid_attributes[:contacts][:contact1]['level'] = "1"
+        post :create, {escalation_rule: valid_attributes}, valid_session
+        expect(response.status).to eq(422)
+      end
+
+      it 'adds a verified contact to the esalation rule' do
+        contact = subject.current_user.contacts.create({name: "Hari", email_id: subject.current_user.email, phone_number: "09999999999"})
+        contact.confirmed_at = Time.now
+        contact.save
+        valid_attributes[:contacts] = {}
+        valid_attributes[:contacts][:contact1] = Hash.new()
+        valid_attributes[:contacts][:contact1]['id'] = contact.id
+        valid_attributes[:contacts][:contact1]['level'] = "1"
+        post :create, {escalation_rule: valid_attributes}, valid_session
+        expect(EscalationRule.count).to eq(1)
+        expect(assigns(:escalation_rule)).to be_a(EscalationRule)
+        expect(assigns(:escalation_rule)).to be_persisted
         expect(response).to redirect_to(EscalationRule.last)
       end
     end

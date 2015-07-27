@@ -26,6 +26,12 @@ class EscalationRulesController < ApplicationController
   def create
     @escalation_rule = current_org.escalation_rules.new(escalation_rule_params)
     params[:escalation_rule][:contacts].each do |i, contact|
+      if Contact.find(contact['id']).unverified?
+        return respond_to do |format|
+          format.html { render :new }
+          format.json { render json: {message: "Contacts should be verified", status: :unprocessable_entity} }
+        end
+      end
       Level.create(escalation_rule: @escalation_rule, contact_id: contact['id'], level_number: contact['level'])
     end
     respond_to do |format|
