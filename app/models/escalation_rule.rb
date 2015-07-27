@@ -3,6 +3,7 @@ class EscalationRule < ActiveRecord::Base
   has_many :levels
   has_many :complaints
   validates :name, presence: true
+  validates_uniqueness_of :name, scope: :organization_id
 
   before_save :create_rule_key
 
