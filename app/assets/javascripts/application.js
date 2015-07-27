@@ -164,8 +164,9 @@ $( document ).ready(function() {
         "<span class='minus-circle'> <i id='" + newId + "' class='fa fa-minus-circle delete_contact float-right'></i></span></div>")
       if(added_contacts_class.split('_').length==3) $('.add_contact_edit option:selected').remove()
       else $('.add_contact option:selected').remove()
+      $('.add_contact').removeAttr('required');
     }
-    _this.value = 0
+    _this.value = ""
     $('.delete_contact').on('click', function(){
       $('.contact_'+ this.id).remove()
 

@@ -159,7 +159,7 @@
                   option value=""
                       | Select A Contact
                   - @contacts.each do |c|
-                    -if !c.confirmed_at.nil?
+                    -if !c.unverified?
                       option value="#{c.id}"
                         | #{c.name}
           .row
