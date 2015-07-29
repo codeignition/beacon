@@ -187,11 +187,13 @@
               = form_for("user", as: "user", url: session_path("user")) do |f|
                 .input-group.login.center-block
                   div
-                    = f.text_field :login, placeholder: "EMAIL"
+                    = f.email_field :login, placeholder: "EMAIL"
                   div
                     = f.password_field :password, autocomplete: "off", placeholder: "PASSWORD"
 
                   = f.submit "SIGN IN" , class:  "sign-in button"
+                  br
+                  =link_to "FORGOT PASSWORD", new_user_password_path
             .tab-pane.sign-up-form role="tabpanel" id="sign-up-form"
               = form_for("user", as: "user", url: user_registration_path) do |f|
                 .input-group.login.center-block
@@ -206,7 +208,6 @@
             | Let us know your feedback & queries
             .btn
               | Tweet to @codeignition
-
 ul.anchor-menu
     li data-anchor="landing"
       a href="#landing"

@@ -353,7 +353,6 @@ $( document ).ready(function() {
         console.log(data)
     if (data['user']['password_confirmation'] === data['user']['password']){
       if (data['user']['password'].length >= 8){
-        console.log(data)
         $.ajax({
           type: 'POST',
           url: '/users',
@@ -361,8 +360,15 @@ $( document ).ready(function() {
           success: function(){
             window.location.pathname = '/setup/1'
           },
-          error: function(){ $('.flash').show();
-            $('.flash .message').html('Email Address already exists.')},
+          error: function(xhr){
+            xhr = JSON.parse(xhr.responseText)
+            if(xhr.errors.sign_in_count=="User exists but never Signed in!"){
+              window.location = '/users/password/new?login='+xhr.errors.email_id
+            }else{
+              $('.flash').show();
+              $('.flash .message').html('Email Address already exists.')
+            }
+          },
           dataType: 'json'
         });
       }else{
@@ -387,11 +393,13 @@ $( document ).ready(function() {
       success: function(){
         window.location.pathname = '/setup/1/'
       },
-      error: function(){ $('.flash').show();
+      error: function(){
+        $('.flash').show();
         $('.flash .message').html('Email & password combo does not exist.')},
       dataType: 'json'
     });
   })
+
   $('.close_flash_button').on('click', function(){
     $('.flash').slideUp()
   })
