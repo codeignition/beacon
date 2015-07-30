@@ -135,9 +135,9 @@ $( document ).ready(function() {
   });
 
   $('.delete_contact').on('click', function(){
-    $('.contact_'+ this.id).remove()
-
+    $('#contact_'+ this.id.split('_')[1] + "_" + this.id.split('_')[2]).remove()
   });
+
   $('.contact_edit_button').on('click', function(){
     openModal('#edit_contact_modal_' + this.id)
   });
@@ -169,7 +169,6 @@ $( document ).ready(function() {
     _this.value = ""
     $('.delete_contact').on('click', function(){
       $('.contact_'+ this.id).remove()
-
     });
   }
   $('.add_contact').on('change', function(){

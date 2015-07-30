@@ -247,7 +247,7 @@
                     option value=""
                         | Select A Contact
                     - @contacts.each do |c|
-                      -if !er.contact_present? c and !c.confirmed_at.nil?
+                      -if !er.contact_present? c and !c.unverified?
                         option value = "#{c.id}"
                           | #{c.name}
             .row
@@ -257,7 +257,7 @@
                 .input
                   .table.zero-padding.added_contacts_edit id="added_contacts_#{er.id}"
                     - er.levels.map{|l| [l,l.contact]}.each do |x|
-                      .col-md-5
+                      .col-md-5 id="contact_#{er.id}_#{x[1].id}"
                         span
                           select.level_select
                             option value="#{x[0].level_number}" Q#{x[0].level_number}
@@ -267,9 +267,9 @@
                             option value="4" Q4
                             option value="5" Q5
                         span id="#{x[1].id}" class="contact_name"
-                          | #{x[1].name}
+                          | "#{x[1].name}"
                         span.minus-circle.float-right
-                         = fa_icon "minus-circle", class: "delete_contact"
+                          = fa_icon "minus-circle", class: "delete_contact", id:"circle_#{er.id}_#{x[1].id}"
             .row
               .col-md-4
                 .label
