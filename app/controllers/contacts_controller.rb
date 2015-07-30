@@ -38,10 +38,11 @@ class ContactsController < ApplicationController
           @escalation_rule = current_org.escalation_rules.create(name: 'Sample Rule')
           Level.create(escalation_rule: @escalation_rule, contact_id: @contact.id, level_number: 1)
         end
-        @user.send_confirmation_instructions if @old_user.nil?
-        OnboardingMailer.send_invitation_email(
-          @user, @contact.name, current_user.contacts.first.name,
-          @contact.phone_number, current_org.name).deliver!
+        if !current_user.contacts.first.email_id == @user.email
+          OnboardingMailer.send_invitation_email(
+            @user, @contact.name, current_user.contacts.first.name,
+            @contact.phone_number, current_org.name).deliver!
+        end
         format.html { redirect_to settings_path, notice: 'Team Member was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else
@@ -78,13 +79,13 @@ class ContactsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_contact
-      @contact = Contact.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_contact
+    @contact = Contact.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def contact_params
-      params.require(:contact).permit(:name, :phone_number, :email_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def contact_params
+    params.require(:contact).permit(:name, :phone_number, :email_id)
+  end
 end
