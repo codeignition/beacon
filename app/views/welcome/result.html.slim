@@ -164,7 +164,7 @@
                         | #{c.name}
           .row
             .col-md-2
-              .label ESCALATION TREE
+              .label CALLING QUEUE
             .col-md-10
               .input.top-margin
                 .table.zero-padding.added_contacts
@@ -252,7 +252,7 @@
                           | #{c.name}
             .row
               .col-md-2
-                .label ADDED USERS
+                .label CALLING QUEUE
               .col-md-10 
                 .input
                   .table.zero-padding.added_contacts_edit id="added_contacts_#{er.id}"
@@ -341,7 +341,7 @@
                 .label NAME
             .col-md-4
               .input
-                = f.text_field :name, class: "input", placeholder: "John Doe or Jane Doe", required: true
+                = f.text_field :name, class: "input", placeholder: "John Doe", required: true
           .row
             .col-md-4
               .field.align-right.mobile_hide
@@ -350,7 +350,7 @@
                 .label EMAIL
             .col-md-4
               .input
-                = f.text_field :email_id, class: "input", type: "email", placeholder: "john.doe@emaple.com or jane.doe@example.com", required: true
+                = f.text_field :email_id, class: "input", type: "email", placeholder: "john.doe@emaple.com", required: true
           .row
             .col-md-4
               .field.align-right.mobile_hide

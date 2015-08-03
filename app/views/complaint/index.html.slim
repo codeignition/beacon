@@ -4,7 +4,6 @@
       | ALERTS 
     span.h2
       | #{@complaints.count} 
-          
 
 .row.light-margin
   .span4
@@ -31,3 +30,12 @@
             span.time
               =complaint.created_at
 
+    div.light_padding.align-center class=(@complaints.count==0 ? 'active' : 'hide')
+      .row
+        .col-xs-12.col-md-12
+          div.first_group_message
+            br
+            br
+            span.h4 We couldn't find any alerts triggered for this organization.
+            br
+            br

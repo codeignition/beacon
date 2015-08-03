@@ -23,6 +23,9 @@ $( document ).ready(->
 
   $('#start_time_picker').timepicker(step:15)
   $('#end_time_picker').timepicker(step:15)
+  $('#start_time_picker').timepicker('setTime', new Date(2015,1,1,10,0,0))
+  $('#end_time_picker').timepicker('setTime', new Date(2015,1,1,18,0,0))
+
 
   $('.contact_form input').on('keyup', ->
     redButton = ($('#contact_phone_number').val() != '') * ($('#contact_email_id').val() != '') * ($('#contact_name').val() != '')
