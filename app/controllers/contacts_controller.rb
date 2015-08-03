@@ -34,7 +34,7 @@ class ContactsController < ApplicationController
     end
     respond_to do |format|
       if @contact.save
-        if current_org.escalation_rules.empty? and !@user.tour_taken
+        if current_org.escalation_rules.empty? and !current_user.tour_taken
           @escalation_rule = current_org.escalation_rules.create(name: 'Sample Rule')
           Level.create(escalation_rule: @escalation_rule, contact_id: @contact.id, level_number: 1)
         end
