@@ -135,7 +135,13 @@ $( document ).ready(function() {
   });
 
   $('.delete_contact').on('click', function(){
+    var contact_selector = document.getElementById("select_"+this.id.split('_')[1]);
+    var option_to_be_deleted = document.createElement("option");
+    option_to_be_deleted.text = document.getElementById("added_contact_"+this.id.split('_')[2]).innerHTML.split('"')[1];
+    option_to_be_deleted.value = this.id.split('_')[2]
+    contact_selector.add(option_to_be_deleted);
     $('#contact_'+ this.id.split('_')[1] + "_" + this.id.split('_')[2]).remove()
+    if($('#added_contacts_'+ this.id.split('_')[1])[0].children.length == 0) $('#select_'+ this.id.split('_')[1])[0].setAttribute('required', 'required')
   });
 
   $('.contact_edit_button').on('click', function(){
@@ -148,11 +154,11 @@ $( document ).ready(function() {
 
 
   var addContact = function(_this, added_contacts_class){
-    newId = makeId(10)
+    er_id = added_contacts_class.split('_')[2]
     contact = _this.selectedOptions[0].text
     if (_this.value != ""){
       current_contacts = $(added_contacts_class).html()
-      $(added_contacts_class).html(current_contacts + '<div class="col-md-5 contact_'+ newId +'"><span>'+
+      $(added_contacts_class).html(current_contacts + '<div class="col-md-5 contact_'+ er_id + '_' + _this.value +'"><span>'+
         "<select class='level_select'>" + 
         "<option class='level_select' value='1'>Q1</option>"+
         "<option class='level_select' value='2'>Q2</option>" + 
@@ -160,22 +166,44 @@ $( document ).ready(function() {
         "<option class='level_select' value='4'>Q4</option>" +
         "<option class='level_select' value='5'>Q5</option>" +
         "<i class='fa fa_arrow float-right'><i></select></span>" +
-        "<span class='contact_name' id='" + _this.value + "'>"+ contact + "</span>" +
-        "<span class='minus-circle'> <i id='" + newId + "' class='fa fa-minus-circle delete_contact float-right'></i></span></div>")
-      if(added_contacts_class.split('_').length==3) $('.add_contact_edit option:selected').remove()
-      else $('.add_contact option:selected').remove()
-      $('.add_contact').removeAttr('required');
+        "<span class='contact_name' id='added_contact_" + _this.value + "'>"+ contact + "</span>" +
+        "<span class='minus-circle'> <i id='circle_" + er_id + '_' + _this.value + "' class='fa fa-minus-circle delete_contact float-right'></i></span></div>")
+      if(added_contacts_class.split('_').length==3){
+        $('#select_'+added_contacts_class.split('_')[2]+ ' option:selected').remove()
+        $('#select_'+added_contacts_class.split('_')[2]).removeAttr('required')
+      }
+      else{
+        $('.add_contact option:selected').remove()
+        $('.add_contact').removeAttr('required');
+      }
     }
     _this.value = ""
     $('.delete_contact').on('click', function(){
-      $('.contact_'+ this.id).remove()
+      if(added_contacts_class.split('_').length == 3){
+        var contact_selector = document.getElementById("select_"+added_contacts_class.split('_')[2]);
+      }
+      else{
+        var contact_selector = $('.add_contact')[0];
+      }
+      var option_to_be_deleted = document.createElement("option");
+      option_to_be_deleted.text = document.getElementById("added_contact_"+this.id.split('_')[2]).innerHTML;
+      option_to_be_deleted.value = this.id.split('_')[2]
+      contact_selector.add(option_to_be_deleted);
+      $('.contact_'+ this.id.split('_')[1] + '_' + this.id.split('_')[2]).remove()
+      if(added_contacts_class.split('_').length==3){
+        if($('#added_contacts_'+added_contacts_class.split('_')[2])[0].children.length == 0) $('#select_'+added_contacts_class.split('_')[2])[0].setAttribute('required', 'required')
+      }
+      else{
+        if($('.added_contacts')[0].children.length == 0) $('.add_contact')[0].setAttribute('required', 'required')
+      }
     });
   }
+
   $('.add_contact').on('change', function(){
     addContact(this, '.added_contacts')
   });
   $('.add_contact_edit').on('change', function(){
-    addContact(this, '#added_contacts_'+ this.id)
+    addContact(this, '#added_contacts_'+ this.id.split('_')[1])
   });
   var create_escalation_rule = function(data){
     $.ajax({

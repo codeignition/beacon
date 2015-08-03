@@ -243,7 +243,7 @@
                     | Only with verified numbers
               .col-md-4
                 .input.top-margin
-                  select.add_contact_edit id="#{er.id}"
+                  select.add_contact_edit id="select_#{er.id}"
                     option value=""
                         | Select A Contact
                     - @contacts.each do |c|
@@ -266,7 +266,7 @@
                             option value="3" Q3
                             option value="4" Q4
                             option value="5" Q5
-                        span id="#{x[1].id}" class="contact_name"
+                        span id="added_contact_#{x[1].id}" class="contact_name"
                           | "#{x[1].name}"
                         span.minus-circle.float-right
                           = fa_icon "minus-circle", class: "delete_contact", id:"circle_#{er.id}_#{x[1].id}"
