@@ -244,8 +244,14 @@ $( document ).ready(function() {
     name = form.find('#escalation_rule_name').val()
     if(edit === null){
       airplane_mode = $('#airplane_mode_switch').prop('checked')
-      start_time = $('#start_time_picker').timepicker('getSecondsFromMidnight')
-      end_time = $('#end_time_picker').timepicker('getSecondsFromMidnight')
+      if(airplane_mode==true){
+        start_time = $('#start_time_picker').timepicker('getSecondsFromMidnight')
+        end_time = $('#end_time_picker').timepicker('getSecondsFromMidnight')
+      }
+      else{
+        start_time = 0
+        end_time = 0
+      }
     }
     else{
       er_id = this.id.split('_')[3]
@@ -255,14 +261,14 @@ $( document ).ready(function() {
         end_time = $('#end_time_picker_edit_'+er_id).timepicker('getSecondsFromMidnight')
       }
       else{
-        start_time=0
-        end_time=0
+        start_time = 0
+        end_time = 0
       }
     }
     added_contacts = []
     form.find(".table .col-md-5").each(function(i, el){
       added_contacts.push({
-        id: $(el).find('.contact_name')[0].id ,
+        id: $(el).find('.contact_name')[0].id.split('_')[2] ,
         level: $(el).find('.level_select').val()
       })
     })

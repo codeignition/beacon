@@ -29,7 +29,7 @@ class EscalationRulesController < ApplicationController
       if Contact.find(contact['id']).unverified?
         return respond_to do |format|
           format.html { render :new }
-          format.json { render json: {message: "Contacts should be verified", status: :unprocessable_entity} }
+          format.json { render json: { error: "Contacts should be verified"}, status: :unprocessable_entity }
         end
       end
       Level.create(escalation_rule: @escalation_rule, contact_id: contact['id'], level_number: contact['level'])
@@ -40,7 +40,7 @@ class EscalationRulesController < ApplicationController
         format.json { render :show, status: :created, location: @escalation_rule }
       else
         format.html { render :new }
-        format.json { render json: { errors: @escalation_rule.errors.full_messages, status: :unprocessable_entity } }
+        format.json { render json: { error: @escalation_rule.errors.full_messages }, status: :unprocessable_entity  }
       end
     end
   end

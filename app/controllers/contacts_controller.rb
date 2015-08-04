@@ -46,8 +46,7 @@ class ContactsController < ApplicationController
         format.html { redirect_to settings_path, notice: 'Team Member was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else
-        format.html { redirect_to settings_path,  notice: 'Could not create Team Member.' }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        format.json { render json: {error: @contact.errors.full_messages }, status: :unprocessable_entity }
       end
     end
   end
