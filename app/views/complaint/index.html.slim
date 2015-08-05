@@ -11,6 +11,12 @@
       - @complaints.each do |complaint|
         tr
           td
+            span.time
+              =complaint.created_at
+          td
+            .escalation_rule
+              = complaint.escalation_rule.name
+          td
             .escalation_rule
               - if complaint.status == 'notified'
                 = fa_icon "check"
@@ -22,14 +28,7 @@
                 = fa_icon "phone"
 
           td = complaint.status
-          td
-            .escalation_rule
-              = complaint.escalation_rule.name
-          td = complaint.call_log
           td = complaint.ip_address
-          td
-            span.time
-              =complaint.created_at
 
     div.light_padding.align-center class=(@complaints.count==0 ? 'active' : 'hide')
       .row
