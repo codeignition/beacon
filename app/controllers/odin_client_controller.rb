@@ -1,7 +1,6 @@
 class OdinClientController < ApplicationController
   def call_log
-    call_log_params = params[:call_log]
-    @odin_client = CallLog.create! phone_number: call_log_params[:phone_number],answered_at: call_log_params[:answered_at],escalation_rule_key: call_log_params[:escalation_rule_key], level_number: call_log_params[:level_number],complaint_id: call_log_params[:complaint_id]
+    @odin_client = CallLog.create! call_log_params
     @notify_complaint = ComplaintController.notify call_log_params[:complaint_id]
     render nothing: true
   end
@@ -12,4 +11,7 @@ class OdinClientController < ApplicationController
     render nothing: true
   end
 
+  def call_log_params
+    params.require(:call_log).permit(:phone_number, :answered_at, :escalation_rule_key, :level_number, :complaint_id)
+  end
 end
