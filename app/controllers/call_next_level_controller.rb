@@ -7,7 +7,7 @@ class CallNextLevelController < ApplicationController
     else
       @level = @escalation_rule.levels.where(level_number: (params[:level_number].to_i + 1))
       if @level.blank?
-        complaint = Complaint.find(id: params[:complaint_id])
+        complaint = Complaint.find_by id: params[:complaint_id]
         complaint.status = 'failed'
         complaint.save
         head :bad_request
