@@ -11,10 +11,10 @@
       - @complaints.each do |complaint|
         tr
           td
-            .escalation_rule  
-              - if complaint.status == 'success'
+            .escalation_rule
+              - if complaint.status == 'notified'
                 = fa_icon "check"
-              - elsif complaint.status == 'failure'
+              - elsif complaint.status == 'failed'
                 = fa_icon "times"
               - elsif complaint.status == 'airplane_mode_on'
                 =fa_icon 'plane'
