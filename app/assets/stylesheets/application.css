@@ -23,7 +23,7 @@ body {
   line-height: inherit;
 }
 .landing{
-  background-image: url('beacon-bg.jpg');
+  background-image: url('beacon-background.jpg');
   background-repeat: round;
 }
 .error{
