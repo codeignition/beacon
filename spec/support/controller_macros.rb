@@ -10,7 +10,8 @@ module ControllerMacros
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       user = FactoryGirl.create(:user)
-      user.contacts.create(email_id: user.email)
+      contact = create :contact, {name: user.username, email_id: user.email, phone_number: "1234567890"}
+      user.contacts.push(contact)
       organization = create :organization
       user.organizations = [organization]
       user.save
