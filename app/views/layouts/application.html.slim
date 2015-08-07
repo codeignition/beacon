@@ -9,7 +9,8 @@ html[lang="en"]
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,300,300italic,400italic,500italic' rel='stylesheet' type='text/css'>
-
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
     = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
     = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
@@ -26,8 +27,8 @@ html[lang="en"]
         .navbar-inner
             .row
               .col-xs-2.col-md-5.top-header
-                = image_tag "beacon-logo-transparent.png", href: "/", class: "logo-small hidden-xs hidden-sm"
-                = image_tag "favicon-header.png", href: "/", class: "logo-small hidden-md hidden-lg"
+                = image_tag "beacon-logo.png", href: "/", class: "logo-small hidden-xs hidden-sm"
+                = image_tag "beacon-logo-icon.png", href: "/", class: "logo-small hidden-md hidden-lg"
 
               - unless current_page? confirmed_email_path or current_page? check_phone_number_verification_status_path
                 .col-xs-5.col-md-3.top-header
@@ -65,14 +66,14 @@ html[lang="en"]
                         = link_to "SIGN OUT", :destroy_user_session, :method => :delete, class: "hidden-xs hidden-sm"
                         = link_to :destroy_user_session, :method => :delete, class: "hidden-md hidden-lg" do
                           =fa_icon 'sign-out', style: "font-size: 4vmin"
-    - else
+    /- else
       .navbar.navbar-top.dark-green.fixed
         .navbar-inner
           .row
             .col-xs-4.col-md-5
               = image_tag "beacon-logo-transparent.png", href: "/", class: "logo-small"
 
-            .col-xs-8.col-xs-offset-0.col-md-4.col-md-offset-3
+            /.col-xs-8.col-xs-offset-0.col-md-4.col-md-offset-3
               .col-xs-11.col-md-8.zero-padding
                 ul.nav.nav-pills.no-border.nav-justified.top-header.list-inline
                   li.zero-padding.signin.float-right
@@ -87,12 +88,10 @@ html[lang="en"]
         = bootstrap_flash
         = yield
       - if current_user.nil? 
-        footer
+        footer.footer-landing
           .row
-            .col-xs-3.col-md-2.take_tour
-              | TAKE TOUR
-            .col-xs-9.col-md-4.col-md-offset-6.align-right.copyright
-              | © CodeIgnition Software Solution Pvt. Ltd. 2015
+            .col-md-12.col-xs-12.align-center.copyright
+              | © CodeIgnition
     - unless current_user.nil? 
       footer
         .row

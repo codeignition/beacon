@@ -1,227 +1,54 @@
-.full_page_scroll
-  .section.dark-green 
-    .row
-      .col-md-6.col-md-offset-3.center-block
-        .logo-landing.align-center
-          = image_tag "beacon-logo-transparent.png", href: "/", class: "logo"
-        .tagline.align-center
+.full_height.landing
+  .row.full-percent-height
+    .col-md-6.col-md-offset-1.col-xs-10.col-xs-offset-1
+      .col-md-11.col-md-offset-1.col-xs-11.col-xs-offset-1
+        = image_tag "beacon-logo.png", href: "/", class: "logo-landing"
+        br
+        br.hidden-xs.hidden-sm
+        br
+        .headline
           span
-            | Real Time Voice Call 
-          span.teal
-            | Alerts
-        .trial.align-center
-          | 1 month free trial
-        a href="#signin"
-          .btn.solid.login-anchor.center-block 
-              | GET STARTED
-
-    .row.slide-down-anchor
-      a.learn-more href="#features#1"
-        | LEARN MORE 
-        = fa_icon "angle-down"
-
-  .section
-    .col-md-10.col-md-offset-1
-      .row.feature
-        .col-md-8.col-md-offset-2.center-block
-          .h1.large.font-black.align-center
-            | Downtime's Enemy
-          .tagline.small.teal.align-center
-            | Voice Call Layer for IT Incedent Management 
-      hr.light-padding
-    .row
-      .col-md-10.col-md-offset-1.align-center.font-black
-        .headline
-          | Beacon is a simple API driven service that calls you & your IT team in real time with voice alerts.
-        .col-md-6
-          .row
-            .col-xs-3.col-xs-offset-1.col-md-6.col-md-offset-0
-              = image_tag "lp-1.svg", class: "feature-image" 
-            .col-xs-6.col-md-6.align-left.h4
-              | Beacon is an API add-on that sits as a layer on top of your existing monitoring setup, that makes Voice Recorded Calls to you & your team with calling rules that you control
-        .col-md-6
-          .row
-            .col-xs-3.col-xs-offset-1.col-md-6.col-md-offset-0
-              = image_tag "lp-2.svg", class: "feature-image" 
-            .col-xs-6.col-md-6.align-left.h4
-              | Beacon isn’t a replacement for your existing monitoring setup, and only makes calls when notifications for your Email, SMS & Apps are also triggered
-    .row.slide-down-anchor
-      a href="#features#2"
-        = fa_icon "angle-down"
-
-  .section.back-ghostwhite 
-    .col-md-10.col-md-offset-1
-      .row.feature
-        .col-md-8.col-md-offset-2.center-block
-          .h1.large.font-black.align-center
-            | It’s Easy
-          .tagline.small.teal.align-center
-            | Setup & Integrate Beacon in Minutes
-      hr.light-padding
-    .row
-      .col-md-10.col-md-offset-1.align-center.font-black
-        .headline
-          | Integrate Beacon in your monitoring setup right away in 9 simple steps. It’s Free.
-        .row
-          .col-xs-3.col-xs-offset-1.col-md-2.col-md-offset-0
-            = image_tag "lp-3.svg", class: "feature-image" 
-          .col-xs-6.col-md-2.align-left.h4
-            div
-              = fa_icon 'check' , class: 'teal'
-              |  Free Email Sign Up
-
-            div
-              = fa_icon 'check', class: 'teal'
-              |  Add Organization & Team Members
-            div
-              = fa_icon 'check', class: 'teal'
-              |  Free Missed Call Verification
-          .col-xs-3.col-xs-offset-1.col-md-2.col-md-offset-0
-            = image_tag "lp-4.svg", class: "feature-image" 
-          .col-xs-6.col-md-2.align-left.h4
-            div
-              = fa_icon 'check', class: 'teal'
-              |  Create a Group for an IT incident
-            div
-              = fa_icon 'check', class: 'teal'
-              |  Copy auto-generated API key
-            div
-              = fa_icon 'check', class: 'teal'
-              |  Set up Escalation Tree & Recipent Levels
-          .col-xs-3.col-xs-offset-1.col-md-2.col-md-offset-0
-            = image_tag "lp-5.svg", class: "feature-image" 
-          .col-xs-6.col-md-2.align-left.h4
-            div
-              = fa_icon 'check', class: 'teal'
-              |  Add API key to existing alerts
-            div
-              = fa_icon 'check', class: 'teal'
-              |  Customize voice message
-            div
-              = fa_icon 'check', class: 'teal'
-              |  Get Voice Call Alerts
-    .row.slide-down-anchor
-      a href="#features#3"
-        = fa_icon "angle-down"
-
-  .section 
-    .col-md-10.col-md-offset-1
-      .row.feature
-        .col-md-8.col-md-offset-2.center-block
-          .h1.large.font-black.align-center
-            | Fast, Flexible
-          .tagline.small.teal.align-center
-            | And did we mention Free?
-      hr.light-padding
-    .row
-      .col-md-10.col-md-offset-1.align-center.font-black
-        .headline
-          | This is Beacon’s Beta Release with the Features below. More to come soon.
-        .row
-          .col-xs-6.col-md-4
-            .col-xs-4.col-md-5
-              = image_tag "lp-6.svg", class: "feature-image" 
-            .col-xs-8.col-md-7.align-left.h4.zero-right-padding
-              | Real Time
-              .br
-              | Beacon Calls are activated as soon as the Incident API is triggered & stop when call is picked
-
-          .col-xs-6.col-md-4
-            .col-xs-4.col-md-5
-              = image_tag "lp-7.svg", class: "feature-image" 
-            .col-xs-8.col-md-7.align-left.h4.zero-right-padding
-              | Custom Escalations
-              .br
-              | Assign Team Members to Calling Queues for every Group in your Organization
-
-          .col-xs-6.col-md-4
-            .col-xs-4.col-md-5
-              = image_tag "lp-8.svg", class: "feature-image" 
-            .col-xs-8.col-md-7.align-left.h4.zero-right-padding
-              | No Spam Calls
-              .br
-              | Beacon Calls are only made to Verified Numbers & stop as soon as Any Team Member answers them
-
-          .col-xs-6.col-md-4
-            .col-xs-4.col-md-5
-              = image_tag "lp-9.svg", class: "feature-image" 
-            .col-xs-8.col-md-7.align-left.h4.zero-right-padding
-              | Tracking
-              .br
-              | Beacon tracks IP address of Incident API & also which Team Members answered Calls and when
-
-          .col-xs-6.col-md-4
-            .col-xs-4.col-md-5
-              = image_tag "lp-10.svg", class: "feature-image" 
-            .col-xs-8.col-md-7.align-left.h4.zero-right-padding
-              | Voice Message
-              .br
-              | Customize the recorded voice message played for each Beacon when it is answered
-
-          .col-xs-6.col-md-4
-            .col-xs-4.col-md-5
-              = image_tag "lp-11-2.svg", class: "feature-image" 
-            .col-xs-8.col-md-7.align-left.h4.zero-right-padding
-              | Airplane Mode
-              .br
-              | Beacon lets you set daily hours for each incident when you don't want to receive any calls
-    .row.slide-down-anchor
-      a href="#signin"
-        = fa_icon "angle-down"
-
-  .section.dark-green
-      .center-block.align-center.full-percent-height
-        .row
-          .col-md-6.col-md-offset-3.center-block
-            .logo.align-center
-              = image_tag "beacon-logo-transparent.png", href: "/", class: "logo-signin"
-            .tagline.small.align-center
-              span.gainsboro
-                | Login to your Beacon Account
-        .col-xs-12.col-xs-offset-0.col-md-6.col-md-offset-3
-          ul.nav.nav-pills.nav-justified.center-block
-            li.active role="tab" aria-controls="sign-in-form" data-toggle="tab"  data-target="#sign-in-form" SIGN IN
-            li role="tab" aria-controls="sign-up-form" data-toggle="tab" data-target="#sign-up-form" SIGN UP
-          .tab-content
-            .tab-pane.sign-in-form.active role="tabpanel" id="sign-in-form"
-              = form_for("user", as: "user", url: session_path("user")) do |f|
-                .input-group.login.center-block
-                  div
-                    = f.email_field :login, placeholder: "EMAIL"
-                  div
-                    = f.password_field :password, autocomplete: "off", placeholder: "PASSWORD"
-
+            | Never Miss A Downtime
+        br.hidden-xs.hidden-sm
+        br.hidden-xs.hidden-sm
+        .body-text
+          | Get IT incidents alerts with a simpe phone call.
+          br
+          br
+          | Manage teams, calling escalation rules & voice messages
+          br
+          | for each incident you manage.
+          br
+          br
+          | Stay sharp & respond faster to every downtime.
+    .col-md-3.col-md-offset-0.col-xs-10.col-xs-offset-1
+      div.sign-in-box
+        ul.nav.nav-pills.nav-justified.zero-padding
+          li.login-label.active role="tab" aria-controls="sign-up-form" data-toggle="tab" data-target="#sign-up-form" SIGN UP
+          li.login-label.align-right role="tab" aria-controls="sign-in-form" data-toggle="tab"  data-target="#sign-in-form" LOGIN
+        .tab-content
+          .tab-pane.sign-up-form.active role="tabpanel" id="sign-up-form"
+            = form_for("user", as: "user", url: user_registration_path) do |f|
+              .input-group.login
+                div
+                  = f.email_field :email, autofocus: true, placeholder: "Email", class: 'login-field'
+                div
+                  div.flex
+                    = f.password_field :password, autocomplete: "off", placeholder: "Password", class: 'login-field'
+                    = f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: 'login-field password-field'
+                div
+                  = f.submit "GET STARTED" , class:  "sign-up button"
+                div.text.align-center
+                  | 1 Month Free Trial. No Credit Card.
+          .tab-pane.sign-in-form role="tabpanel" id="sign-in-form"
+            = form_for("user", as: "user", url: session_path("user")) do |f|
+              .input-group.login
+                div
+                  = f.email_field :login, placeholder: "Email", class: 'login-field'
+                div
+                  div#login_password_field
+                    = f.password_field :password, autocomplete: "off", placeholder: "Password", class: 'login-field'
+                div
                   = f.submit "SIGN IN" , class:  "sign-in button"
-                  br
+                div.align-center
                   =link_to "FORGOT PASSWORD", new_user_password_path
-            .tab-pane.sign-up-form role="tabpanel" id="sign-up-form"
-              = form_for("user", as: "user", url: user_registration_path) do |f|
-                .input-group.login.center-block
-                  div
-                    = f.email_field :email, autofocus: true, placeholder: "EMAIL"
-                  div
-                    = f.password_field :password, autocomplete: "off", placeholder: "PASSWORD"
-                  div
-                    = f.password_field :password_confirmation, autocomplete: "off", placeholder: "RE-ENTER PASSWORD"
-                  = f.submit "SIGN UP" , class:  "sign-up button"
-          .headline
-            | Let us know your feedback & queries
-            .btn
-              | Tweet to @codeignition
-ul.anchor-menu
-    li data-anchor="landing"
-      a href="#landing"
-        = fa_icon "circle"
-    li data-anchor="features#1"
-      a href="#features#1"
-        = fa_icon "circle"
-    li data-anchor="features#2"
-      a href="#features#2"
-        = fa_icon "circle"
-    li data-anchor="features#3"
-      a href="#features#3"
-        = fa_icon "circle"
-    li data-anchor="signin"
-      a href="#signin"
-        = fa_icon "circle"
-

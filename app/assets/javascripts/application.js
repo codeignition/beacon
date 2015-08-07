@@ -347,70 +347,111 @@ $( document ).ready(function() {
     })
     $(_this).addClass('active')
   }
-  if ($('.full_page_scroll').length > 0  ){
-  $('.full_page_scroll').fullpage({
-    menu: '.annchor-menu',
-    anchors: ['landing', 'features#1', 'features#2', 'features#3', 'signin'],
-    showActiveTooltips: false,
-    slidesNavigation: true,
-    slidesNavPosition: 'right',
-    afterLoad: function(anchorLink, index){
-      activateMenu($("li a[href='#"+ anchorLink +"']").first().parent().first())
-      if (anchorLink == 'landing') {
-        $('.navbar.fixed img').slideUp()
-        $('li.signup').slideUp()
-      }else if (anchorLink == 'signin'){ 
-        $('.navbar.fixed img').slideUp()
-        $('li.signin').slideUp()
-        $('li.signup').slideUp()
-      }else{
-        $('.navbar.fixed img').show()
-        $('li.signin').slideDown()
-        $('li.signup').slideDown()
-      }
+  //if ($('.full_page_scroll').length > 0  ){
+  //$('.full_page_scroll').fullpage({
+    //menu: '.annchor-menu',
+    //anchors: ['landing', 'features#1', 'features#2', 'features#3', 'signin'],
+    //showActiveTooltips: false,
+    //slidesNavigation: true,
+    //slidesNavPosition: 'right',
+    //afterLoad: function(anchorLink, index){
+      //activateMenu($("li a[href='#"+ anchorLink +"']").first().parent().first())
+      //if (anchorLink == 'landing') {
+        //$('.navbar.fixed img').slideUp()
+        //$('li.signup').slideUp()
+      //}else if (anchorLink == 'signin'){ 
+        //$('.navbar.fixed img').slideUp()
+        //$('li.signin').slideUp()
+        //$('li.signup').slideUp()
+      //}else{
+        //$('.navbar.fixed img').show()
+        //$('li.signin').slideDown()
+        //$('li.signup').slideDown()
+      //}
 
-    },
+    //},
 
-  });
-  }
+  //});
+  //}
   $('.anchor-menu li').on('click', function(){
     activateMenu(this)
   })
+
   $('.sign-up').on('click', function(event){
+    console.log('In sign up');
     event.preventDefault()
     data = {user: {
       email: $(this).parents('form').find('#user_email').val(),
       password: $(this).parents('form').find('#user_password').val(),
       password_confirmation: $(this).parents('form').find('#user_password_confirmation').val()
     }}
-        console.log(data)
-    if (data['user']['password_confirmation'] === data['user']['password']){
-      if (data['user']['password'].length >= 8){
-        $.ajax({
-          type: 'POST',
-          url: '/users',
-          data: data,
-          success: function(){
-            window.location.pathname = '/setup/1'
-          },
-          error: function(xhr){
-            xhr = JSON.parse(xhr.responseText)
-            if(xhr.errors.sign_in_count=="User exists but never Signed in!"){
-              window.location = '/users/password/new?login='+xhr.errors.email_id
-            }else{
-              $('.flash').show();
-              $('.flash .message').html('Email Address already exists.')
-            }
-          },
-          dataType: 'json'
-        });
-      }else{
-        $('.flash').show();
-        $('.flash .message').html('Password must be atleast 8 characters long')
+    var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+    if( emailReg.test(data['user']['email']) && data['user']['email'].length > 0){
+      $('#user_email').removeClass('error');
+      $('#email_error_message').addClass('hide');
+
+      if (data['user']['password_confirmation'] === data['user']['password']){
+        $('#confirm_password_error_message').addClass('hide');
+
+        if (data['user']['password'].length >= 8){
+          $('#password_error_message').addClass('hide');
+          $.ajax({
+            type: 'POST',
+            url: '/users',
+            data: data,
+            success: function(){
+              window.location.pathname = '/setup/1'
+            },
+            error: function(xhr){
+              xhr = JSON.parse(xhr.responseText)
+              if(xhr.errors.sign_in_count=="User exists but never Signed in!"){
+                window.location = '/users/password/new?login='+xhr.errors.email_id
+              }else{
+                var error_message = document.createElement('div');
+                error_message.innerHTML = 'Email Address already exists.';
+                error_message.setAttribute('id', 'user_exists_error_message');
+                $('#user_email').addClass('error');
+                $('#user_email').parent()[0].appendChild(error_message);
+                $('#user_exists_error_message').addClass('error-message');
+                $('#user_exists_error_message').addClass('align-center');
+                $('#user_exists_error_message').addClass('min-padding');
+              }
+            },
+            dataType: 'json'
+          });
+        }
+        else{
+          var error_message = document.createElement('div');
+          error_message.innerHTML = 'Password must be at least 8 characters long.';
+          error_message.setAttribute('id', 'password_error_message');
+          $('#user_password').parent().parent()[0].appendChild(error_message);
+          $('#password_error_message').addClass('error-message');
+          $('#password_error_message').addClass('align-center');
+          $('#password_error_message').addClass('min-padding');
+        }
       }
-    }else{
-      $('.flash').show();
-      $('.flash .message').html('Password and password confirmation fields do not match.')
+      else{
+        var error_message = document.createElement('div');
+        error_message.innerHTML = 'Password and password confirmation fields do not match.';
+        error_message.setAttribute('id', 'confirm_password_error_message');
+        $('#user_password').parent().parent()[0].appendChild(error_message);
+        $('#confirm_password_error_message').addClass('error-message');
+        $('#confirm_password_error_message').addClass('align-center');
+        $('#confirm_password_error_message').addClass('min-padding');
+      }
+    }
+    else{
+      if(!$('#user_email').hasClass('error')){
+        $('#user_email').addClass('error');
+        var error_message = document.createElement('div');
+        error_message.innerHTML = 'Enter valid email address';
+        error_message.setAttribute('id', 'email_error_message');
+        $('#user_email').parent()[0].appendChild(error_message);
+        $('#email_error_message').addClass('error-message');
+        $('#email_error_message').addClass('align-center');
+        $('#email_error_message').addClass('min-padding');
+      }
     }
   })
   $('.sign-in').on('click', function(event){
@@ -427,14 +468,26 @@ $( document ).ready(function() {
         window.location.pathname = '/setup/1/'
       },
       error: function(){
-        $('.flash').show();
-        $('.flash .message').html('Email & password combo does not exist.')},
+        if(!$('#user_login').hasClass('error')){
+          $('#user_login').addClass('error');
+          var error_message = document.createElement('div');
+          error_message.innerHTML = 'Email & password combo does not exist.';
+          error_message.setAttribute('id', 'login_error_message');
+          $('#login_password_field').parent()[0].appendChild(error_message);
+          $('#login_error_message').addClass('error-message');
+          $('#login_error_message').addClass('align-center');
+        }
+      },
       dataType: 'json'
     });
   })
 
   $('.close_flash_button').on('click', function(){
     $('.flash').slideUp()
+  })
+
+  $('.copyright').on('click', function(){
+    window.open('http://www.codeignition.co', '_blank')
   })
 });
 

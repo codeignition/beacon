@@ -9,11 +9,7 @@
 }
 
 .input-group.login {
-  width: 90%
-}
-
-.login {
-  padding-top: 5vh;
+  width: 100%
 }
 
 input {
@@ -27,7 +23,7 @@ input {
 }
 
 .login input {
-  width: 75%;
+  width: 100%;
   color: lightgray;
 }
 
@@ -42,8 +38,7 @@ input:focus {
 }
 
 input.button {
-  background: #e73d4d;
-  border: 1px solid #e73d4d;
+  background: #0da1b5;
   color: white
 }
 

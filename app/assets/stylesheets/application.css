@@ -20,10 +20,26 @@ body {
   color: #8c8c8c;
   font-family: 'Roboto', sans-serif;
   background: ghostwhite;
+  line-height: inherit;
+}
+.landing{
+  background-image: url('beacon-bg.jpg');
+  background-repeat: round;
+}
+.error{
+  color: #ed2348 !important;
+}
+.min-padding{
+  padding: 1%;
+}
+.error-message{
+  color: #ed2348;
+  font-family: 'Open Sans';
+  font-weight: 400;
+  font-size: 1.5vmin;
 }
 .background-dark-green{
   background-color: #1c2733 !important;
-;
 }
 .background_white{
   background: white;
@@ -33,8 +49,8 @@ body {
 }
 .logo-small{
    height: 70px;
+   padding: 1%;
 }
-
 .anchor-menu {
   position: fixed;
   right: 25px;
@@ -44,10 +60,61 @@ body {
   padding: 0px !important;
   margin: 0px !important;
 }
+.footer-landing{
+  background: transparent;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 1.8vmin;
+  color: #cccccc;
+  bottom: 5%
+}
 .container {
   width: 100%;
 }
-
+.sign-in-box{
+  padding: 1.8vmin;
+  margin-top: 28vmin;
+  background-color: rgba(34,34,34,0.66);
+}
+.flex{
+  display: flex;
+}
+.button{
+  background: #0da1b5;
+  font-family: Montserrat;
+  font-size: 2vmin;
+  color: #ffffff;
+}
+.button:hover{
+  background: #33c0d0;
+}
+li.login-label{
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 2vmin;
+  color: #888888;
+}
+li.login-label.active{
+  border-bottom: 0;
+  color: #ffffff;
+}
+.text{
+  font-family: 'Open Sans';
+  font-weight: 400;
+  font-size: 1.57vmin;
+  color: #eeeeee;
+}
+.login-field{
+  background: #ffffff;
+  margin-bottom: 0.8vmin;
+  padding: 1vmin;
+  font-family: 'Open Sans';
+  font-weight: 400;
+  font-size: 1.8vmin;
+}
+.password-field{
+  margin-left: 0.5vmin;
+}
 ul.anchor-menu a {
   color: lightgray;
   font-size: 0.6em;
@@ -68,7 +135,8 @@ ul.anchor-menu {
 }
 
 .logo-landing {
-  margin-top: 15vh;
+  margin-top: 18vmin;
+  width: 17.91vmax;
 }
 
 .row .tagline{
@@ -274,8 +342,19 @@ select {
   -moz-appearance: none;
 }
 .headline{
-  margin-bottom: 8vh;
-  font-size: 2vh;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-size: 4.36vmin;
+  color: #33c0d0;
+  /*padding-top: 2vmin;*/
+}
+.body-text{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 2vmin;
+  color: #eeeeee;
+  line-height: 1.3x !important;
+  /*padding-top: 2vmin;*/
 }
 .modal-footer {
   text-align: center;
@@ -521,6 +600,9 @@ hr{
   }
 }
 @media only screen and (max-device-width: 480px) {
+  ul{
+    display: flex;
+  }
   .full-percent-height-content {
     height: inherit;
   }
@@ -544,6 +626,12 @@ hr{
   }
   .mobile_show{
     display:inline;
+  }
+  li.login-label.active{
+    border-bottom: 0 !important;
+  }
+  li.login-label{
+   width: 50%;
   }
   .table > thead > tr > th {
     /*padding: 1vmin;*/
