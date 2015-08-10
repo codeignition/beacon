@@ -39,3 +39,4 @@ gem "twitter-bootstrap-rails"
 gem "uuidtools"
 gem 'faraday'
 gem 'hashie'
+gem 'rails_12factor', group: :production
