@@ -75,10 +75,13 @@ html[lang="en"]
     - unless current_user.nil? 
       footer
         .row
-          .col-xs-3.col-md-2.take_tour
+          .col-xs-3.col-md-3.take_tour
             | TAKE TOUR
-          .col-xs-9.col-md-4.col-md-offset-6.align-right.copyright
-            | © CodeIgnition Software Solution Pvt. Ltd. 2015
+          .col-xs-6.col-md-6.align-center
+            span Send Feedback & Queries to 
+            u beacon@codeignition.co
+          .col-xs-3.col-md-3.align-right.copyright
+            =link_to "© CodeIgnition", 'http://www.codeignition.co', class: 'copyright text'
 
     = render 'layouts/footer'
 - if current_user
