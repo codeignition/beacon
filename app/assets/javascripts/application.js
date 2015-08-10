@@ -486,9 +486,6 @@ $( document ).ready(function() {
     $('.flash').slideUp()
   })
 
-  $('.copyright').on('click', function(){
-    window.open('http://www.codeignition.co', '_blank')
-  })
 });
 
 

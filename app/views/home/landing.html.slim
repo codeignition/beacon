@@ -3,9 +3,9 @@
     .col-md-6.col-md-offset-1.col-xs-12.col-xs-offset-0
       .col-md-11.col-md-offset-1.col-xs-12.col-xs-offset-0.landing-info
         = image_tag "beacon-logo.png", href: "/", class: "logo-landing"
-        br
         br.hidden-xs.hidden-sm
-        br
+        br.hidden-xs.hidden-sm
+        br.hidden-xs.hidden-sm
         .headline
           span
             | Never Miss A Downtime
@@ -15,9 +15,9 @@
           | Get IT incidents alerts with a simpe phone call.
           br
           br
-          | Manage teams, calling escalation rules & voice messages
+          | Manage teams, calling escalation rules & voice
           br
-          | for each incident you manage.
+          | messages for each incident you manage.
           br
           br
           | Stay sharp & respond faster to every downtime.
@@ -51,4 +51,6 @@
                 div
                   = f.submit "SIGN IN" , class:  "sign-in button"
                 div.align-center
-                  =link_to "FORGOT PASSWORD", new_user_password_path, class: 'forgot-password'
+                  =link_to "FORGOT PASSWORD", new_user_password_path, class: 'text'
+    .col-md-12.col-xs-12.align-center.copyright-landing
+      = link_to "© CodeIgnition", 'http://www.codeignition.co', class: 'copyright text'

@@ -17,16 +17,10 @@ html[lang="en"]
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
-    /! Google Analytics
     javascript:
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-51540710-4', 'auto');
       ga('send', 'pageview');
-    /! End Google Analytics
 
   body
     .flash.fixed.center-aligned
@@ -98,11 +92,6 @@ html[lang="en"]
       .row.zero-padding
         = bootstrap_flash
         = yield
-      - if current_user.nil? 
-        footer.footer-landing
-          .row
-            .col-md-12.col-xs-12.align-center.copyright
-              | © CodeIgnition
     - unless current_user.nil? 
       footer
         .row
@@ -111,6 +100,10 @@ html[lang="en"]
           .col-xs-9.col-md-4.col-md-offset-6.align-right.copyright
             | © CodeIgnition Software Solution Pvt. Ltd. 2015
 
+    javascript:
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-51540710-4', 'auto');
+      ga('send', 'pageview');
 - if current_user
   - current_user.organizations.each do |org|
       .modal.fade.edit_org role="dialog" aria-labelledby="ModalLabel" id="edit_org_modal_#{org.id}"  

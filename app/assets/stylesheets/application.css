@@ -595,6 +595,9 @@ hr{
 .tour-step-backdrop{
   background-color: black;
 }
+.copyright-landing{
+  margin-top: 30vmin;
+}
 @media only screen and (min-device-width: 768px){
   .popover{
     height: 26vmin;
@@ -606,44 +609,53 @@ hr{
     text-align: center;
   }
   .logo-landing{
-    margin-top: 5vmin;
-    width: 24vmax;
+    margin-top: 8vmin;
+    margin-bottom: 8vmin;
+    width: 38vmax;
   }
   .headline{
     font-size: 7.5vmin;
   }
   .body-text{
     padding-top: 2vmin;
-    font-size: 3.5vmin;
+    font-size: 4.2vmin;
   }
   .error-message{
-    font-size: 3vmin;
+    font-size: 3.5vmin;
   }
   .sign-in-box{
-    margin-top: 5vmin;
+    margin-top: 6vmin;
     margin-left: 3vmin;
     margin-right: 3vmin;
   }
   li.login-label{
-    font-size: 3.5vmin;
+    padding: 0;
+    margin: 5%;
+    margin-bottom: 8%;
+    font-size: 5.5vmin;
   }
   .login-field{
-    font-size: 3vmin;
+    font-size: 4.5vmin;
+    margin-bottom: 3vmin;
+  }
+  .password-field{
+    margin-left: 2vmin;
   }
   .sign-up.button{
-    font-size: 4vmin;
+    font-size: 4.5vmin;
   }
   .sign-in.button{
-    font-size: 4vmin;
+    font-size: 4.5vmin;
   }
   .text{
-    font-size: 3vmin;
+    font-size: 3.5vmin;
   }
   .forgot-password{
     color: #eeeeee;
   }
-  .footer-landing{
-    bottom: 0;
+  .copyright-landing{
+    margin-top: 6vmin;
+    bottom: 2%
   }
   ul{
     display: flex;
