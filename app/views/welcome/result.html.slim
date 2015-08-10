@@ -64,7 +64,16 @@
             br
             span.h4 Refresh page after verification or 
             span.h4 =link_to 'click here', {}, class:"link_underline background_transparent", style: "color: grey"
-
+    div.background_white.light-padding.align-center class=( ( Contact.at_least_one_contact_verified?(@contacts) && Complaint.count == 0 && @escalation_rules.count != 0) ? 'active': 'hide')
+      .row
+        .col-xs-12.col-md-12
+          div.unverified_message.background_white
+            h3.black Ready to get your first Beacon call?
+            span.h4 Click the link below-
+            br
+            span.h4 =link_to 'http://getbeacon.in/call.json?rule_key=#{@escalation_rules.first.rule_key}&text=server%20down', 'http://getbeacon.in/call.json?rule_key=#{@escalation_rules.first.rule_key}&text=server%20down', class:"link_underline background_transparent", style: "color: grey"
+            br
+            span.h4 Hint: Copy-paste the link in a new browser tab, change the recorded text message & refresh!
 
   .col-xs-12.col-md-4.users_half.full-percent-height-content.zero-padding
     #team_table_header.row.header.bline
