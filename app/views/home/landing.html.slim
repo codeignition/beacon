@@ -1,7 +1,7 @@
 .full_height.landing
   .row.full-percent-height
-    .col-md-6.col-md-offset-1.col-xs-10.col-xs-offset-1
-      .col-md-11.col-md-offset-1.col-xs-11.col-xs-offset-1
+    .col-md-6.col-md-offset-1.col-xs-12.col-xs-offset-0
+      .col-md-11.col-md-offset-1.col-xs-12.col-xs-offset-0.landing-info
         = image_tag "beacon-logo.png", href: "/", class: "logo-landing"
         br
         br.hidden-xs.hidden-sm
@@ -21,7 +21,7 @@
           br
           br
           | Stay sharp & respond faster to every downtime.
-    .col-md-3.col-md-offset-0.col-xs-10.col-xs-offset-1
+    .col-md-3.col-md-offset-0.col-xs-12.col-xs-offset-0
       div.sign-in-box
         ul.nav.nav-pills.nav-justified.zero-padding
           li.login-label.active role="tab" aria-controls="sign-up-form" data-toggle="tab" data-target="#sign-up-form" SIGN UP
@@ -51,4 +51,4 @@
                 div
                   = f.submit "SIGN IN" , class:  "sign-in button"
                 div.align-center
-                  =link_to "FORGOT PASSWORD", new_user_password_path
+                  =link_to "FORGOT PASSWORD", new_user_password_path, class: 'forgot-password'

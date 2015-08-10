@@ -152,7 +152,8 @@ ul.anchor-menu {
 }
 
 .logo-signin{
-  height: 26vmin;
+  margin-top: 5vmin;
+  height: 15vmin;
 }
 .btn.login-anchor{
   margin-top: 32vh;
@@ -601,6 +602,49 @@ hr{
   }
 }
 @media only screen and (max-device-width: 480px) {
+  .landing-info{
+    text-align: center;
+  }
+  .logo-landing{
+    margin-top: 5vmin;
+    width: 24vmax;
+  }
+  .headline{
+    font-size: 7.5vmin;
+  }
+  .body-text{
+    padding-top: 2vmin;
+    font-size: 3.5vmin;
+  }
+  .error-message{
+    font-size: 3vmin;
+  }
+  .sign-in-box{
+    margin-top: 5vmin;
+    margin-left: 3vmin;
+    margin-right: 3vmin;
+  }
+  li.login-label{
+    font-size: 3.5vmin;
+  }
+  .login-field{
+    font-size: 3vmin;
+  }
+  .sign-up.button{
+    font-size: 4vmin;
+  }
+  .sign-in.button{
+    font-size: 4vmin;
+  }
+  .text{
+    font-size: 3vmin;
+  }
+  .forgot-password{
+    color: #eeeeee;
+  }
+  .footer-landing{
+    bottom: 0;
+  }
   ul{
     display: flex;
   }
