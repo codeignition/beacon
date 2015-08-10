@@ -17,10 +17,6 @@ html[lang="en"]
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
-    javascript:
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-51540710-4', 'auto');
-      ga('send', 'pageview');
 
   body
     .flash.fixed.center-aligned
@@ -71,23 +67,7 @@ html[lang="en"]
                         = link_to "SIGN OUT", :destroy_user_session, :method => :delete, class: "hidden-xs hidden-sm"
                         = link_to :destroy_user_session, :method => :delete, class: "hidden-md hidden-lg" do
                           =fa_icon 'sign-out', style: "font-size: 4vmin"
-    /- else
-      .navbar.navbar-top.dark-green.fixed
-        .navbar-inner
-          .row
-            .col-xs-4.col-md-5
-              = image_tag "beacon-logo-transparent.png", href: "/", class: "logo-small"
 
-            /.col-xs-8.col-xs-offset-0.col-md-4.col-md-offset-3
-              .col-xs-11.col-md-8.zero-padding
-                ul.nav.nav-pills.no-border.nav-justified.top-header.list-inline
-                  li.zero-padding.signin.float-right
-                    a href="#signin" 
-                      | SIGN IN
-                  li.zero-padding.signup.float-right
-                    a href="#signin"
-                      | SIGN UP
-                    
     .container.zero-padding class="#{current_user.nil? ? 'full-height no-overflow' : 'full-percent-height-content'}"
       .row.zero-padding
         = bootstrap_flash
@@ -101,10 +81,6 @@ html[lang="en"]
             | © CodeIgnition Software Solution Pvt. Ltd. 2015
 
     = render 'layouts/footer'
-    javascript:
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-51540710-4', 'auto');
-      ga('send', 'pageview');
 - if current_user
   - current_user.organizations.each do |org|
       .modal.fade.edit_org role="dialog" aria-labelledby="ModalLabel" id="edit_org_modal_#{org.id}"  

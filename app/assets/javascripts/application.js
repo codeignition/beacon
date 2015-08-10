@@ -347,32 +347,7 @@ $( document ).ready(function() {
     })
     $(_this).addClass('active')
   }
-  //if ($('.full_page_scroll').length > 0  ){
-  //$('.full_page_scroll').fullpage({
-    //menu: '.annchor-menu',
-    //anchors: ['landing', 'features#1', 'features#2', 'features#3', 'signin'],
-    //showActiveTooltips: false,
-    //slidesNavigation: true,
-    //slidesNavPosition: 'right',
-    //afterLoad: function(anchorLink, index){
-      //activateMenu($("li a[href='#"+ anchorLink +"']").first().parent().first())
-      //if (anchorLink == 'landing') {
-        //$('.navbar.fixed img').slideUp()
-        //$('li.signup').slideUp()
-      //}else if (anchorLink == 'signin'){ 
-        //$('.navbar.fixed img').slideUp()
-        //$('li.signin').slideUp()
-        //$('li.signup').slideUp()
-      //}else{
-        //$('.navbar.fixed img').show()
-        //$('li.signin').slideDown()
-        //$('li.signup').slideDown()
-      //}
 
-    //},
-
-  //});
-  //}
   $('.anchor-menu li').on('click', function(){
     activateMenu(this)
   })
