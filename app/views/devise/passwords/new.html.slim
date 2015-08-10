@@ -9,18 +9,18 @@
       br
       span.gainsboro.h3 And follow instructions sent to you in the mail to join your team on Beacon.
     .tagline.small class=(!params[:login].nil? ? 'hide' : 'active')
-      span.gainsboro Send Reset Password Instructions
+      span.gainsboro Forgot Password
   .col-xs-12.col-xs-offset-0.col-md-4.col-md-offset-4.align-center
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
       = devise_error_messages!
       br
       div
-        = f.label :login
         br
-        = f.text_field :login, placeholder: "EMAIL", value: params[:login]
+        = f.text_field :login, placeholder: "Registered Email", value: params[:login]
       div
-        = f.submit "Send me reset password instructions", class: "button"
-
+        = f.submit "Email Reset Password Link", class: "button"
+      div.align-center
+        =link_to "BACK", '/', class: 'text'
   .row
     .col-xs-12.col-xs-offset-0.col-md-8.col-md-offset-2
       .headline class=(params[:login].nil? ? 'hide' : 'active')

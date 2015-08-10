@@ -549,7 +549,6 @@ a .btn:hover, a:-webkit-any-link{
 
 footer {
   background: rgb(28, 39, 51);
-  height: 30px;
   color: lightgray;
   padding: 6px;
   position: fixed;

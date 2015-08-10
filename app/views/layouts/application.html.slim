@@ -75,12 +75,14 @@ html[lang="en"]
     - unless current_user.nil? 
       footer
         .row
-          .col-xs-3.col-md-3.take_tour
+          .col-xs-12.col-md-3.align-center.take_tour
             | TAKE TOUR
-          .col-xs-6.col-md-6.align-center
+          br.hidden-md.hidden-lg
+          .col-xs-12.col-md-6.align-center
             span Send Feedback & Queries to 
             u beacon@codeignition.co
-          .col-xs-3.col-md-3.align-right.copyright
+          br.hidden-md.hidden-lg
+          .col-xs-12.col-md-3.align-center.copyright
             =link_to "© CodeIgnition", 'http://www.codeignition.co', class: 'copyright text'
 
     = render 'layouts/footer'
