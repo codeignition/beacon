@@ -8,13 +8,11 @@ class Contact < ActiveRecord::Base
 
   before_destroy { |record| Level.destroy_all "contact_id = #{record.id}"   }
   def unverified?
-    id = User.where(email: self.email_id).first.id
-    Contact.where(user: id).order(confirmed_at: :desc).last.confirmed_at ? false : true
+    Contact.where(phone_number: self.phone_number).order(confirmed_at: :desc).first.confirmed_at ? false : true
   end
 
   def confirm
-    self.confirmed_at = Time.now
-    self.save!
+    Contact.where(phone_number: self.phone_number, confirmed_at: nil).update_all(confirmed_at: Time.now)
   end
 
   def self.at_least_one_contact_verified? contacts

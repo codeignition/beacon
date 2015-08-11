@@ -31,6 +31,9 @@ class ContactsController < ApplicationController
     @contact.organization = current_org
     if contact_params["phone_number"]!=nil
       @contact.phone_number = "0"+contact_params["phone_number"].gsub(/\s+/,"").slice(-10,10)
+      if !Contact.where(phone_number: @contact.phone_number).empty? 
+        @contact.confirmed_at = Contact.where(phone_number: @contact.phone_number).order(confirmed_at: :desc).last.confirmed_at
+      end
     end
     respond_to do |format|
       if @contact.save
