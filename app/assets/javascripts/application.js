@@ -242,6 +242,7 @@ $( document ).ready(function() {
     form = $('form#'+ this.id)
     edit = this.id.match(/edit_escalation_rule_(\d+)/)
     name = form.find('#escalation_rule_name').val()
+    voice_message = form.find('#escalation_rule_voice_message').val()
     if(edit === null){
       airplane_mode = $('#airplane_mode_switch').prop('checked')
       if(airplane_mode==true){
@@ -272,7 +273,7 @@ $( document ).ready(function() {
         level: $(el).find('.level_select').val()
       })
     })
-    data = {escalation_rule: {name: name, airplane_mode_on: airplane_mode, airplane_mode_start_time: start_time, airplane_mode_end_time: end_time, contacts: added_contacts}}
+    data = {escalation_rule: {name: name, voice_message: voice_message, airplane_mode_on: airplane_mode, airplane_mode_start_time: start_time, airplane_mode_end_time: end_time, contacts: added_contacts}}
     if (edit != null) {
       sendRequest( root_path + "/escalation_rules/" + edit[1], 'PUT', data, this.id)
     }else{
@@ -459,6 +460,12 @@ $( document ).ready(function() {
 
   $('.close_flash_button').on('click', function(){
     $('.flash').slideUp()
+  })
+
+  $('.fire-alert').on('click', function(){
+    var alert_id = this.id.split('fire_')[1].split('&&')[0]
+    var voice_message = $('#edit_escalation_rule_'+this.id.split('fire_')[1].split('&&')[1]).find('#escalation_rule_voice_message').val()
+    window.open(encodeURI('http://getbeacon.in/call.json?rule_key='+alert_id+'&text='+voice_message),'_blank');
   })
 
 });

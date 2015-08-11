@@ -156,6 +156,14 @@
             .col-md-4
               .input.top-margin required=""
                 = f.text_field :name, class: "input", placeholder: "eg. Datadog Alert 1 or Mail Server Alert", required: true
+          .row
+            .col-md-4
+              .label VOICE MESSAGE
+              .field-text
+                | Default voice message is- 'Server Down'
+            .col-md-4
+              .input.top-margin
+                = f.text_field :voice_message, class: 'input', placeholder: 'eg. Mail Server Down'
           hr
           .row
             .col-md-4
@@ -247,6 +255,15 @@
             hr
             .row
               .col-md-4
+                .label.top-margin VOICE MESSAGE
+                br
+                .btn.solid.grey.top-margin.btn-primary.plus-button.fire-alert id="fire_#{er.rule_key}&&#{er.id}"
+                  | + TEST
+              .col-md-4
+                .input.top-margin
+                  = f.text_field :voice_message, class: 'input', value: "#{er.voice_message}"
+            .row
+              .col-md-4
                   .label
                     | TEAM MEMBERS
                   .field-text.top-margin
@@ -314,8 +331,7 @@
 
             .modal-footer
               .row
-                .col-md-4
-                .col-md-4
+                .col-md-4.col-md-offset-4.col-xs-12.col-xs-offset-0
                   .edit_actions
                     = f.submit "EDIT GROUP", class: "btn solid create_group_button" ,id: "edit_escalation_rule_#{er.id}"
                     div

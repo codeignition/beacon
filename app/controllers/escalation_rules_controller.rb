@@ -82,6 +82,6 @@ class EscalationRulesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def escalation_rule_params
-    params.require(:escalation_rule).permit(:name, :airplane_mode_on, :airplane_mode_start_time, :airplane_mode_end_time)
+    params.require(:escalation_rule).permit(:name, :airplane_mode_on, :airplane_mode_start_time, :airplane_mode_end_time, :voice_message)
   end
 end
