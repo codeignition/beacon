@@ -150,7 +150,9 @@ ul.anchor-menu {
 .tagline.small{
   font-size: 3.5vh;
 }
-
+.font-heavy-weight{
+  font-weight: 400 !important;
+}
 .logo-signin{
   margin-top: 5vmin;
   height: 15vmin;
@@ -161,11 +163,9 @@ ul.anchor-menu {
   padding-left: 0;
   padding-right: 0;
 }
-
 .logo-side {
   background: whitesmoke;
 }
-
 .color-red {
   color: rgb(228, 31, 68);
 }

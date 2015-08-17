@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811100910) do
+ActiveRecord::Schema.define(version: 20150814123001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,9 +54,13 @@ ActiveRecord::Schema.define(version: 20150811100910) do
     t.datetime "updated_at"
     t.integer  "organization_id"
     t.boolean  "airplane_mode_on"
-    t.integer  "airplane_mode_start_time"
-    t.integer  "airplane_mode_end_time"
-    t.string   "voice_message",            default: "server down"
+    t.string   "voice_message",                    default: "server down"
+    t.boolean  "weekday_airplane_mode_on"
+    t.boolean  "weekend_airplane_mode_on"
+    t.float    "weekday_airplane_mode_start_time"
+    t.float    "weekday_airplane_mode_end_time"
+    t.float    "weekend_airplane_mode_start_time"
+    t.float    "weekend_airplane_mode_end_time"
   end
 
   create_table "levels", force: true do |t|

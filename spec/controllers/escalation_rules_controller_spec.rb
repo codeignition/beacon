@@ -6,6 +6,9 @@ RSpec.describe EscalationRulesController, :type => :controller do
   let(:valid_attributes) {
     {:name=>"Akash",
      :organization=>(create :organization),
+     airplane_mode_on: true,
+     weekday_airplane_mode_on: true,
+     weekend_airplane_mode_on: true
   }
   }
 
@@ -75,6 +78,21 @@ RSpec.describe EscalationRulesController, :type => :controller do
         post :create, {:escalation_rule => valid_attributes}, valid_session
         expect(assigns(:escalation_rule)).to be_a(EscalationRule)
         expect(assigns(:escalation_rule)).to be_persisted
+      end
+
+      it 'assigns parameters sent with post request to @escalation rule' do
+        contact = subject.current_user.contacts.first
+        contact.confirmed_at = Time.now
+        contact.save
+        valid_attributes[:contacts] = {}
+        valid_attributes[:contacts][:contact1] = Hash.new()
+        valid_attributes[:contacts][:contact1]['id'] = contact.id
+        valid_attributes[:contacts][:contact1]['level'] = "1"
+        post :create, {:escalation_rule => valid_attributes}, valid_session
+        expect(assigns(:escalation_rule).name).to eq("Akash")
+        expect(assigns(:escalation_rule).airplane_mode_on).to eq(true)
+        expect(assigns(:escalation_rule).weekend_airplane_mode_on).to eq(true)
+        expect(assigns(:escalation_rule).weekday_airplane_mode_on).to eq(true)
       end
 
       it "redirects to the created escalation_rule" do

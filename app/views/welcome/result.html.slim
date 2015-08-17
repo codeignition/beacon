@@ -194,37 +194,56 @@
               .label
                 | AIRPLANE MODE
           .row
-            .col-md-4
+            .col-md-3
               .field-text
-                #off_mode_message
-                  | Receive calls round the clock
-                #on_mode_message.hide
-                  | Beacon will NOT make calls between these hours.
-            .col-md-1
-            .col-xs-offset-3.col-md-2.col-md-offset-0
-              .onoffswitch.light_padding
-                input#airplane_mode_switch.onoffswitch-checkbox name="onoffswitch" type="checkbox" /
-                label.onoffswitch-label for="airplane_mode_switch"
-                  span.onoffswitch-inner
-                  span.onoffswitch-switch
+                | Set daily time periods to stop all incoming beacon calls
+            .col-md-4.col-md-offset-0
+              .col-md-8.col-xs-6
+                .field-text.float-right.black.top-margin.font-heavy-weight
+                  | Monday to Friday
+              .col-md-4.col-xs-6
+                .onoffswitch.light_padding
+                  input#airplane_mode_switch_weekday.onoffswitch-checkbox name="onoffswitch" type="checkbox" /
+                  label.onoffswitch-label for="airplane_mode_switch_weekday"
+                    span.onoffswitch-inner
+                    span.onoffswitch-switch
           .row
-            .col-md-9
-              .col-xs-0.col-md-3
-              .col-md-9
+            .col-xs-12.col-md-9
+              .col-xs-12.col-xs-offset-0.col-md-9.col-md-offset-3
                 .row
-                  #timepickers.hide
-                    .col-xs-0.col-md-3
-                    .col-xs-5.col-md-3
-                      input#start_time_picker.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
+                  #timepickers_weekday.hide
+                    .col-xs-5.col-xs-offset-0.col-md-3.col-md-offset-3
+                      input#start_time_picker_weekday.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
                     .col-xs-2.col-md-1
                       .bottom-margin to
                     .col-xs-5.col-md-3
-                      input#end_time_picker.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
+                      input#end_time_picker_weekday.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
+          .row
+            .col-md-4.col-md-offset-3
+              .col-xs-6.col-md-8
+                .field-text.float-right.black.top-margin.font-heavy-weight
+                  | Saturday & Sunday
+              .col-xs-6.col-md-4
+                .onoffswitch.light_padding
+                  input#airplane_mode_switch_weekend.onoffswitch-checkbox name="onoffswitch" type="checkbox" /
+                  label.onoffswitch-label for="airplane_mode_switch_weekend"
+                    span.onoffswitch-inner
+                    span.onoffswitch-switch
+          .row
+            .col-xs-12.col-md-9
+              .col-xs-12.col-xs-offset-0.col-md-9.col-md-offset-3
+                .row
+                  #timepickers_weekend.hide
+                    .col-xs-5.col-xs-offset-0.col-md-3.col-md-offset-3
+                      input#start_time_picker_weekend.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
+                    .col-xs-2.col-md-1
+                      .bottom-margin to
+                    .col-xs-5.col-md-3
+                      input#end_time_picker_weekend.time.ui-timepicker-input autocomplete="on" style=("min-height: 30px") type="text"
 
           .modal-footer
             .row
-              .col-md-4
-              .col-md-4
+              .col-xs-12.col-md-4.col-md-offset-4
                   = f.submit "CREATE RULE", class: "btn solid create_group_button", id: "new_escalation_rule"
 
 - @escalation_rules.each do |er|
@@ -245,6 +264,7 @@
             .row
               .col-md-4
                 .label GROUP NAME
+                br.visible-xs.visible-sm
                 .field-text.top-margin.mobile_hide
                   | Group's API key is #{er.rule_key}
                 .field-text.mobile_show
@@ -255,8 +275,8 @@
             hr
             .row
               .col-md-4
-                .label.top-margin VOICE MESSAGE
-                br
+                .label.top-margin VOICE MESSAGE&nbsp&nbsp
+                br.hidden-xs.hidden-sm
                 .btn.solid.grey.top-margin.btn-primary.plus-button.fire-alert id="fire_#{er.rule_key}&&#{er.id}"
                   | + TEST
               .col-md-4
@@ -297,37 +317,58 @@
                           | "#{x[1].name}"
                         span.minus-circle.float-right
                           = fa_icon "minus-circle", class: "delete_contact", id:"circle_#{er.id}_#{x[1].id}"
+
             .row
               .col-md-4
                 .label
                   | AIRPLANE MODE
             .row
-              .col-md-4
+              .col-md-3
                 .field-text.top-margin
-                  div.hide id="off_mode_message_edit_#{er.id}"
-                    | Receive calls round the clock
-                  div.hide id="on_mode_message_edit_#{er.id}"
-                    | Beacon will NOT make calls between these hours.
-              .col-md-1
-              .col-xs-offset-3.col-md-2.col-md-offset-0
-                .onoffswitch
-                  input.onoffswitch-checkbox id="airplane_mode_switch_edit_#{er.id}" onclick="airplane_mode_edit_switch_handle('#{er.id}');" name="onoffswitch_edit" type="checkbox" data-er_mode="#{er.airplane_mode_on}" data-er_mode_start_time="#{er.airplane_mode_start_time}" data-er_mode_end_time="#{er.airplane_mode_end_time}"
-                  label.onoffswitch-label for="airplane_mode_switch_edit_#{er.id}"
-                    span.onoffswitch-inner
-                    span.onoffswitch-switch
+                  | Set daily time periods to stop all incoming Beacon calls
+              .col-md-4.col-md-offset-0
+                .col-xs-6.col-md-8
+                  .field-text.float-right.black.top-margin.font-heavy-weight
+                    | Monday to Friday
+                .col-xs-6.col-md-4
+                  .onoffswitch
+                    input.onoffswitch-checkbox id="airplane_mode_switch_edit_weekday_#{er.id}" onclick="airplane_mode_edit_switch_handle('#{er.id}','weekday');" name="onoffswitch_edit" type="checkbox" data-er_mode="#{er.weekday_airplane_mode_on}" data-er_mode_start_time="#{er.weekday_airplane_mode_start_time}" data-er_mode_end_time="#{er.weekday_airplane_mode_end_time}"
+                    label.onoffswitch-label for="airplane_mode_switch_edit_weekday_#{er.id}"
+                      span.onoffswitch-inner
+                      span.onoffswitch-switch
             .row
-              .col-md-9
-                .col-xs-0.col-md-3
-                .col-md-9
+              .col-xs-12.col-md-9
+                .col-xs-12.col-xs-offset-0.col-md-9.col-md-offset-3
                   .row
-                    div.hide id="timepickers_edit_#{er.id}"
-                      .col-xs-0.col-md-3
-                      .col-xs-5.col-md-3
-                        input.time.ui-timepicker-input id="start_time_picker_edit_#{er.id}" autocomplete="on" style=("min-height: 30px") type="text"
+                    div.hide id="timepickers_edit_weekday_#{er.id}"
+                      .col-xs-5.col-xs-offset-0.col-md-3.col-md-offset-3
+                        input.time.ui-timepicker-input id="start_time_picker_edit_weekday_#{er.id}" autocomplete="on" style=("min-height: 30px") type="text"
                       .col-xs-2.col-md-1
                         .bottom-margin to
                       .col-xs-5.col-md-3
-                        input.time.ui-timepicker-input id="end_time_picker_edit_#{er.id}" autocomplete="on" style=("min-height: 30px") type="text"
+                        input.time.ui-timepicker-input id="end_time_picker_edit_weekday_#{er.id}" autocomplete="on" style=("min-height: 30px") type="text"
+            .row
+              .col-md-4.col-md-offset-3
+                .col-xs-6.col-md-8
+                  .field-text.float-right.black.top-margin.font-heavy-weight
+                    | Saturday & Sunday
+                .col-xs-6.col-md-4
+                  .onoffswitch
+                    input.onoffswitch-checkbox id="airplane_mode_switch_edit_weekend_#{er.id}" onclick="airplane_mode_edit_switch_handle('#{er.id}','weekend');" name="onoffswitch_edit" type="checkbox" data-er_mode="#{er.weekend_airplane_mode_on}" data-er_mode_start_time="#{er.weekend_airplane_mode_start_time}" data-er_mode_end_time="#{er.weekend_airplane_mode_end_time}"
+                    label.onoffswitch-label for="airplane_mode_switch_edit_weekend_#{er.id}"
+                      span.onoffswitch-inner
+                      span.onoffswitch-switch
+            .row
+              .col-xs-12.col-md-9
+                .col-xs-12.col-xs-offset-0.col-md-9.col-md-offset-3
+                  .row
+                    div.hide id="timepickers_edit_weekend_#{er.id}"
+                      .col-xs-5.col-xs-offset-0.col-md-3.col-md-offset-3
+                        input.time.ui-timepicker-input id="start_time_picker_edit_weekend_#{er.id}" autocomplete="on" style=("min-height: 30px") type="text"
+                      .col-xs-2.col-md-1
+                        .bottom-margin to
+                      .col-xs-5.col-md-3
+                        input.time.ui-timepicker-input id="end_time_picker_edit_weekend_#{er.id}" autocomplete="on" style=("min-height: 30px") type="text"
 
             .modal-footer
               .row

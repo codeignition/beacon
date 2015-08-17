@@ -21,11 +21,11 @@ var root_path = ''
 
 var airplane_mode_edit_switch_handle;
 
-airplane_mode_edit_switch_handle = function(er_id) {
-  if (!$('#airplane_mode_switch_edit_' + er_id).prop('checked')) {
-    change_onoffswitch_state(er_id, true);
+airplane_mode_edit_switch_handle = function(er_id, day) {
+  if (!$('#airplane_mode_switch_edit_'+ day + '_' + er_id).prop('checked')) {
+    change_onoffswitch_state(er_id, day, true);
   } else {
-    change_onoffswitch_state(er_id, false);
+    change_onoffswitch_state(er_id, day, false);
   }
 };
 
@@ -33,50 +33,65 @@ var set_onoffswitch;
 
 set_onoffswitch = function(er_id) {
   var end_time_hours, end_time_minutes, end_time_seconds_since_midnight, start_time_hours, start_time_minutes, start_time_seconds_since_midnight;
-  if ($('#airplane_mode_switch_edit_'+er_id).data('er_mode') == true) {
-    $('#airplane_mode_switch_edit_' + er_id).prop('checked', true);
-    $('#on_mode_message_edit_' + er_id).removeClass('hide');
-    $('#off_mode_message_edit_' + er_id).addClass('hide');
-    $('#timepickers_edit_' + er_id).removeClass('hide');
-    $('#start_time_picker_edit_' + er_id).timepicker({
+  if ($('#airplane_mode_switch_edit_weekday_'+er_id).data('er_mode') == true) {
+    $('#airplane_mode_switch_edit_weekday_' + er_id).prop('checked', true);
+    $('#timepickers_edit_weekday_' + er_id).removeClass('hide');
+    $('#start_time_picker_edit_weekday_' + er_id).timepicker({
       step: 15
     });
-    $('#end_time_picker_edit_' + er_id).timepicker({
+    $('#end_time_picker_edit_weekday_' + er_id).timepicker({
       step: 15
     });
-    start_time_seconds_since_midnight = $('#airplane_mode_switch_edit_'+er_id).data('er_mode_start_time');
+    start_time_seconds_since_midnight = $('#airplane_mode_switch_edit_weekday_'+er_id).data('er_mode_start_time');
     start_time_hours = parseInt(start_time_seconds_since_midnight / 3600);
     start_time_minutes = parseInt(start_time_seconds_since_midnight % 3600 / 60);
-    end_time_seconds_since_midnight = $('#airplane_mode_switch_edit_'+er_id).data('er_mode_end_time');
+    end_time_seconds_since_midnight = $('#airplane_mode_switch_edit_weekday_'+er_id).data('er_mode_end_time');
     end_time_hours = parseInt(end_time_seconds_since_midnight / 3600);
     end_time_minutes = parseInt(end_time_seconds_since_midnight % 3600 / 60);
-    $('#start_time_picker_edit_' + er_id).timepicker('setTime', new Date(2015, 1, 1, start_time_hours, start_time_minutes, 0));
-    $('#end_time_picker_edit_' + er_id).timepicker('setTime', new Date(2015, 1, 1, end_time_hours, end_time_minutes, 0));
+    $('#start_time_picker_edit_weekday_' + er_id).timepicker('setTime', new Date(2015, 1, 1, start_time_hours, start_time_minutes, 0));
+    $('#end_time_picker_edit_weekday_' + er_id).timepicker('setTime', new Date(2015, 1, 1, end_time_hours, end_time_minutes, 0));
   } else {
-    $('#airplane_mode_switch_edit_' + er_id).prop('checked', false);
-    $('#on_mode_message_edit_' + er_id).addClass('hide');
-    $('#off_mode_message_edit_' + er_id).removeClass('hide');
-    $('#timepickers_edit_' + er_id).addClass('hide');
+    $('#airplane_mode_switch_edit_weekday_' + er_id).prop('checked', false);
+    $('#timepickers_edit_weekday_' + er_id).addClass('hide');
+  }
+  if ($('#airplane_mode_switch_edit_weekend_'+er_id).data('er_mode') == true) {
+    $('#airplane_mode_switch_edit_weekend_' + er_id).prop('checked', true);
+    $('#timepickers_edit_weekend_' + er_id).removeClass('hide');
+    $('#start_time_picker_edit_weekend_' + er_id).timepicker({
+      step: 15
+    });
+    $('#end_time_picker_edit_weekend_' + er_id).timepicker({
+      step: 15
+    });
+    start_time_seconds_since_midnight = $('#airplane_mode_switch_edit_weekend_'+er_id).data('er_mode_start_time');
+    start_time_hours = parseInt(start_time_seconds_since_midnight / 3600);
+    start_time_minutes = parseInt(start_time_seconds_since_midnight % 3600 / 60);
+    end_time_seconds_since_midnight = $('#airplane_mode_switch_edit_weekend_'+er_id).data('er_mode_end_time');
+    end_time_hours = parseInt(end_time_seconds_since_midnight / 3600);
+    end_time_minutes = parseInt(end_time_seconds_since_midnight % 3600 / 60);
+    $('#start_time_picker_edit_weekend_' + er_id).timepicker('setTime', new Date(2015, 1, 1, start_time_hours, start_time_minutes, 0));
+    $('#end_time_picker_edit_weekend_' + er_id).timepicker('setTime', new Date(2015, 1, 1, end_time_hours, end_time_minutes, 0));
+  } else {
+    $('#airplane_mode_switch_edit_weekend_' + er_id).prop('checked', false);
+    $('#timepickers_edit_weekend_' + er_id).addClass('hide');
   }
 };
 
 var change_onoffswitch_state;
 
-change_onoffswitch_state = function(er_id, bool) {
+change_onoffswitch_state = function(er_id, day, bool) {
   if (!bool) {
-    $('#on_mode_message_edit_' + er_id).removeClass('hide');
-    $('#off_mode_message_edit_' + er_id).addClass('hide');
-    $('#timepickers_edit_' + er_id).removeClass('hide');
-    $('#start_time_picker_edit_' + er_id).timepicker({
+    $('#timepickers_edit_'+ day + '_' + er_id).removeClass('hide');
+    $('#start_time_picker_edit_'+ day + '_' + er_id).timepicker({
       step: 15
     });
-    $('#end_time_picker_edit_' + er_id).timepicker({
+    $('#start_time_picker_edit_'+ day + '_' + er_id).timepicker('setTime', new Date(2015, 1, 1, 10, 0, 0));
+    $('#end_time_picker_edit_' + day + '_' + er_id).timepicker({
       step: 15
     });
+    $('#end_time_picker_edit_'+ day + '_' + er_id).timepicker('setTime', new Date(2015, 1, 1, 18, 0, 0));
   } else {
-    $('#on_mode_message_edit_' + er_id).addClass('hide');
-    $('#off_mode_message_edit_' + er_id).removeClass('hide');
-    $('#timepickers_edit_' + er_id).addClass('hide');
+    $('#timepickers_edit_' + day + '_' + er_id).addClass('hide');
   }
 };
 
@@ -244,26 +259,44 @@ $( document ).ready(function() {
     name = form.find('#escalation_rule_name').val()
     voice_message = form.find('#escalation_rule_voice_message').val()
     if(edit === null){
-      airplane_mode = $('#airplane_mode_switch').prop('checked')
-      if(airplane_mode==true){
-        start_time = $('#start_time_picker').timepicker('getSecondsFromMidnight')
-        end_time = $('#end_time_picker').timepicker('getSecondsFromMidnight')
+      weekday_airplane_mode = $('#airplane_mode_switch_weekday').prop('checked')
+      weekend_airplane_mode = $('#airplane_mode_switch_weekend').prop('checked')
+      if(weekday_airplane_mode==true){
+        weekday_start_time = $('#start_time_picker_weekday').timepicker('getSecondsFromMidnight')
+        weekday_end_time = $('#end_time_picker_weekday').timepicker('getSecondsFromMidnight')
       }
       else{
-        start_time = 0
-        end_time = 0
+        weekday_start_time = 0
+        weekday_end_time = 0
+      }
+      if(weekend_airplane_mode==true){
+        weekend_start_time = $('#start_time_picker_weekend').timepicker('getSecondsFromMidnight')
+        weekend_end_time = $('#end_time_picker_weekend').timepicker('getSecondsFromMidnight')
+      }
+      else{
+        weekend_start_time = 0
+        weekend_end_time = 0
       }
     }
     else{
       er_id = this.id.split('_')[3]
-      airplane_mode = $('#airplane_mode_switch_edit_'+er_id).prop('checked')
-      if(airplane_mode==true){
-        start_time = $('#start_time_picker_edit_'+er_id).timepicker('getSecondsFromMidnight')
-        end_time = $('#end_time_picker_edit_'+er_id).timepicker('getSecondsFromMidnight')
+      weekday_airplane_mode = $('#airplane_mode_switch_edit_weekday_'+er_id).prop('checked')
+      weekend_airplane_mode = $('#airplane_mode_switch_edit_weekend_'+er_id).prop('checked')
+      if(weekday_airplane_mode==true){
+        weekday_start_time = $('#start_time_picker_edit_weekday_'+er_id).timepicker('getSecondsFromMidnight')
+        weekday_end_time = $('#end_time_picker_edit_weekday_'+er_id).timepicker('getSecondsFromMidnight')
       }
       else{
-        start_time = 0
-        end_time = 0
+        weekday_start_time = 0
+        weekday_end_time = 0
+      }
+      if(weekend_airplane_mode==true){
+        weekend_start_time = $('#start_time_picker_edit_weekend_'+er_id).timepicker('getSecondsFromMidnight')
+        weekend_end_time = $('#end_time_picker_edit_weekend_'+er_id).timepicker('getSecondsFromMidnight')
+      }
+      else{
+        weekend_start_time = 0
+        weekend_end_time = 0
       }
     }
     added_contacts = []
@@ -273,7 +306,7 @@ $( document ).ready(function() {
         level: $(el).find('.level_select').val()
       })
     })
-    data = {escalation_rule: {name: name, voice_message: voice_message, airplane_mode_on: airplane_mode, airplane_mode_start_time: start_time, airplane_mode_end_time: end_time, contacts: added_contacts}}
+    data = {escalation_rule: {name: name, voice_message: voice_message, weekday_airplane_mode_on: weekday_airplane_mode, weekday_airplane_mode_start_time: weekday_start_time, weekday_airplane_mode_end_time: weekday_end_time, weekend_airplane_mode_on: weekend_airplane_mode, weekend_airplane_mode_start_time: weekend_start_time, weekend_airplane_mode_end_time: weekend_end_time, contacts: added_contacts}}
     if (edit != null) {
       sendRequest( root_path + "/escalation_rules/" + edit[1], 'PUT', data, this.id)
     }else{

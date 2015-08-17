@@ -43,4 +43,19 @@ RSpec.describe EscalationRule, :type => :model do
       }.to change(EscalationRule, :count).by(1)
     end
   end
+
+  describe 'time_lies_in_airplane_mode? time' do
+    it 'returns true if time lies in airplane mode else false' do
+      organization = Organization.create(name: 'Organization')
+      escalation_rule = EscalationRule.create(name: 'Sample', organization: organization, airplane_mode_on: true, weekend_airplane_mode_on: true)
+      escalation_rule.weekend_airplane_mode_start_time = (Time.now - 3600).seconds_since_midnight
+      escalation_rule.weekend_airplane_mode_end_time = (Time.now + 3600).seconds_since_midnight
+      escalation_rule.save
+      if Time.now.wday == 0 or Time.now.wday == 6
+        expect(escalation_rule.airplane_mode_in_progress?).to eq(true)
+      else
+        expect(escalation_rule.airplane_mode_in_progress?).to eq(false)
+      end
+    end
+  end
 end

@@ -1,31 +1,40 @@
 $( document ).ready(->
 
-  $('#airplane_mode_switch').prop('checked', false)
-  if $('#airplane_mode_switch').prop('checked') == true
-    $('#on_mode_message').removeClass 'hide'
-    $('#off_mode_message').addClass 'hide'
-    $('#timepickers').removeClass 'hide'
+  $('#airplane_mode_switch_weekday').prop('checked', false)
+  if $('#airplane_mode_switch_weekday').prop('checked') == true
+    $('#timepickers_weekday').removeClass 'hide'
   else
-    $('#off_mode_message').removeClass 'hide'
-    $('#on_mode_message').addClass 'hide'
-    $('#timepickers').addClass 'hide'
+    $('#timepickers_weekday').addClass 'hide'
 
-  $('#airplane_mode_switch').change ->
-    if $('#airplane_mode_switch').prop('checked') == true
-      $('#on_mode_message').removeClass 'hide'
-      $('#off_mode_message').addClass 'hide'
-      $('#timepickers').removeClass 'hide'
+  $('#airplane_mode_switch_weekday').change ->
+    if $('#airplane_mode_switch_weekday').prop('checked') == true
+      $('#timepickers_weekday').removeClass 'hide'
     else
-      $('#off_mode_message').removeClass 'hide'
-      $('#on_mode_message').addClass 'hide'
-      $('#timepickers').addClass 'hide'
+      $('#timepickers_weekday').addClass 'hide'
     return
 
-  $('#start_time_picker').timepicker(step:15)
-  $('#end_time_picker').timepicker(step:15)
-  $('#start_time_picker').timepicker('setTime', new Date(2015,1,1,10,0,0))
-  $('#end_time_picker').timepicker('setTime', new Date(2015,1,1,18,0,0))
+  $('#start_time_picker_weekday').timepicker(step:15)
+  $('#end_time_picker_weekday').timepicker(step:15)
+  $('#start_time_picker_weekday').timepicker('setTime', new Date(2015,1,1,10,0,0))
+  $('#end_time_picker_weekday').timepicker('setTime', new Date(2015,1,1,18,0,0))
 
+  $('#airplane_mode_switch_weekend').prop('checked', false)
+  if $('#airplane_mode_switch_weekend').prop('checked') == true
+    $('#timepickers_weekend').removeClass 'hide'
+  else
+    $('#timepickers_weekend').addClass 'hide'
+
+  $('#airplane_mode_switch_weekend').change ->
+    if $('#airplane_mode_switch_weekend').prop('checked') == true
+      $('#timepickers_weekend').removeClass 'hide'
+    else
+      $('#timepickers_weekend').addClass 'hide'
+    return
+
+  $('#start_time_picker_weekend').timepicker(step:15)
+  $('#end_time_picker_weekend').timepicker(step:15)
+  $('#start_time_picker_weekend').timepicker('setTime', new Date(2015,1,1,10,0,0))
+  $('#end_time_picker_weekend').timepicker('setTime', new Date(2015,1,1,18,0,0))
 
   $('.contact_form input').on('keyup', ->
     redButton = ($('#contact_phone_number').val() != '') * ($('#contact_email_id').val() != '') * ($('#contact_name').val() != '')

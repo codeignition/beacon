@@ -36,4 +36,20 @@ class EscalationRule < ActiveRecord::Base
     end
     present
   end
+
+  def airplane_mode_in_progress?
+    timestamp = Time.now
+    if self.airplane_mode_on
+      if self.weekend_airplane_mode_on
+        if (timestamp.wday == 0 or timestamp.wday == 6) and (timestamp.seconds_since_midnight >= self.weekend_airplane_mode_start_time and timestamp.seconds_since_midnight <= self.weekend_airplane_mode_end_time)
+          return true
+        end
+      elsif self.weekday_airplane_mode_on
+        if (timestamp.wday > 0 and timestamp.wday < 6) and (timestamp.seconds_since_midnight >= self.weekday_airplane_mode_start_time and timestamp.seconds_since_midnight <= self.weekday_airplane_mode_end_time)
+          return true
+        end
+      end
+    end
+    return false
+  end
 end
