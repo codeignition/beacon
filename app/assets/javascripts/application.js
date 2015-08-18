@@ -387,7 +387,6 @@ $( document ).ready(function() {
   })
 
   $('.sign-up').on('click', function(event){
-    console.log('In sign up');
     event.preventDefault()
     data = {user: {
       email: $(this).parents('form').find('#user_email').val(),
@@ -395,10 +394,13 @@ $( document ).ready(function() {
       password_confirmation: $(this).parents('form').find('#user_password_confirmation').val()
     }}
     var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if($('#user_exists_error_message').length > 0) $('#user_exists_error_message').remove();
+    if($('#password_error_message').length > 0) $('#password_error_message').remove();
+    if($('#confirm_password_error_message').length > 0) $('#confirm_password_error_message').remove();
+    if($('#email_error_message').length > 0) $('#email_error_message').remove();
 
     if( emailReg.test(data['user']['email']) && data['user']['email'].length > 0){
       $('#user_email').removeClass('error');
-      $('#email_error_message').addClass('hide');
 
       if (data['user']['password_confirmation'] === data['user']['password']){
         $('#confirm_password_error_message').addClass('hide');
@@ -417,41 +419,47 @@ $( document ).ready(function() {
               if(xhr.errors.sign_in_count=="User exists but never Signed in!"){
                 window.location = '/users/password/new?login='+xhr.errors.email_id
               }else{
-                var error_message = document.createElement('div');
-                error_message.innerHTML = 'Email Address already exists.';
-                error_message.setAttribute('id', 'user_exists_error_message');
-                $('#user_email').addClass('error');
-                $('#user_email').parent()[0].appendChild(error_message);
-                $('#user_exists_error_message').addClass('error-message');
-                $('#user_exists_error_message').addClass('align-center');
-                $('#user_exists_error_message').addClass('min-padding');
+                if($('#user_exists_error_message').length == 0){
+                  var error_message = document.createElement('div');
+                  error_message.innerHTML = 'Email Address already exists.';
+                  error_message.setAttribute('id', 'user_exists_error_message');
+                  $('#user_email').addClass('error');
+                  $('#user_email').parent()[0].appendChild(error_message);
+                  $('#user_exists_error_message').addClass('error-message');
+                  $('#user_exists_error_message').addClass('align-center');
+                  $('#user_exists_error_message').addClass('min-padding');
+                }
               }
             },
             dataType: 'json'
           });
         }
         else{
-          var error_message = document.createElement('div');
-          error_message.innerHTML = 'Password must be at least 8 characters long.';
-          error_message.setAttribute('id', 'password_error_message');
-          $('#user_password').parent().parent()[0].appendChild(error_message);
-          $('#password_error_message').addClass('error-message');
-          $('#password_error_message').addClass('align-center');
-          $('#password_error_message').addClass('min-padding');
+          if($('#password_error_message').length == 0){
+            var error_message = document.createElement('div');
+            error_message.innerHTML = 'Password must be at least 8 characters long.';
+            error_message.setAttribute('id', 'password_error_message');
+            $('#user_password').parent().parent()[0].appendChild(error_message);
+            $('#password_error_message').addClass('error-message');
+            $('#password_error_message').addClass('align-center');
+            $('#password_error_message').addClass('min-padding');
+          }
         }
       }
       else{
-        var error_message = document.createElement('div');
-        error_message.innerHTML = 'Password and password confirmation fields do not match.';
-        error_message.setAttribute('id', 'confirm_password_error_message');
-        $('#user_password').parent().parent()[0].appendChild(error_message);
-        $('#confirm_password_error_message').addClass('error-message');
-        $('#confirm_password_error_message').addClass('align-center');
-        $('#confirm_password_error_message').addClass('min-padding');
+        if($('#confirm_password_error_message').length == 0){
+          var error_message = document.createElement('div');
+          error_message.innerHTML = 'Password and password confirmation fields do not match.';
+          error_message.setAttribute('id', 'confirm_password_error_message');
+          $('#user_password').parent().parent()[0].appendChild(error_message);
+          $('#confirm_password_error_message').addClass('error-message');
+          $('#confirm_password_error_message').addClass('align-center');
+          $('#confirm_password_error_message').addClass('min-padding');
+        }
       }
     }
     else{
-      if(!$('#user_email').hasClass('error')){
+      if($('#email_error_message').length == 0){
         $('#user_email').addClass('error');
         var error_message = document.createElement('div');
         error_message.innerHTML = 'Enter valid email address';
