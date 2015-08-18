@@ -19,7 +19,7 @@ class OrganizationsController < ApplicationController
       if params[:organization][:name] and !params[:organization][:name].empty?
         @org = Organization.create(name: params[:organization][:name])
         @orgUser = OrganizationUser.create(user: current_user, organization: @org, is_admin: true)
-        admin_contact_attributes = Contact.where(user: @current_user).order(confirmed_at: :desc).first.attributes
+        admin_contact_attributes = Contact.where(user: @current_user).order(confirmed_at: :desc).last.attributes
         admin_contact_attributes.delete("id")
         @org.contacts.create(admin_contact_attributes)
         self.current_org= @org.id
