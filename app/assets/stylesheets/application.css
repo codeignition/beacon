@@ -833,6 +833,7 @@ hr{
   }
   .modal-body{
     padding: 2vmin;
+    max-height: 400px !important;
   }
   .width_one_third{
     width: 33.33%;
