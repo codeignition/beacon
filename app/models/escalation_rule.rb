@@ -16,15 +16,15 @@ class EscalationRule < ActiveRecord::Base
   end
 
   def rule_contacts
-  	levels = {}
-  	self.levels.each do |level|
+    levels = {}
+    self.levels.each do |level|
       if levels[level.level_number]
-         levels[level.level_number] << level.contact
+        levels[level.level_number] << level.contact
       else
-         levels[level.level_number] = [level.contact] 
+        levels[level.level_number] = [level.contact] 
       end
-  	end
-  	levels
+    end
+    levels
   end
 
   def contact_present? contact
@@ -39,15 +39,13 @@ class EscalationRule < ActiveRecord::Base
 
   def airplane_mode_in_progress?
     timestamp = Time.now
-    if self.airplane_mode_on
-      if self.weekend_airplane_mode_on
-        if (timestamp.wday == 0 or timestamp.wday == 6) and (timestamp.seconds_since_midnight >= self.weekend_airplane_mode_start_time and timestamp.seconds_since_midnight <= self.weekend_airplane_mode_end_time)
-          return true
-        end
-      elsif self.weekday_airplane_mode_on
-        if (timestamp.wday > 0 and timestamp.wday < 6) and (timestamp.seconds_since_midnight >= self.weekday_airplane_mode_start_time and timestamp.seconds_since_midnight <= self.weekday_airplane_mode_end_time)
-          return true
-        end
+    if self.weekend_airplane_mode_on
+      if (timestamp.wday == 0 or timestamp.wday == 6) and (timestamp.seconds_since_midnight >= self.weekend_airplane_mode_start_time and timestamp.seconds_since_midnight <= self.weekend_airplane_mode_end_time)
+        return true
+      end
+    elsif self.weekday_airplane_mode_on
+      if (timestamp.wday > 0 and timestamp.wday < 6) and (timestamp.seconds_since_midnight >= self.weekday_airplane_mode_start_time and timestamp.seconds_since_midnight <= self.weekday_airplane_mode_end_time)
+        return true
       end
     end
     return false
