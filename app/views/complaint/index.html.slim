@@ -27,10 +27,10 @@
               - else
                 = fa_icon "phone"
 
-          td = complaint.status
           td
+            = complaint.status
             -if complaint.status == 'notified'
-              | Answered by
+              |  to 
               = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number).first.name
               |  , 
               = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number).first.email_id
