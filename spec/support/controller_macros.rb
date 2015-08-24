@@ -13,6 +13,7 @@ module ControllerMacros
       contact = create :contact, {name: user.username, email_id: user.email, phone_number: "1234567890"}
       user.contacts.push(contact)
       organization = create :organization
+      OrganizationUser.create(user: user, organization: organization, is_admin: true)
       user.organizations = [organization]
       user.save
       sign_in user

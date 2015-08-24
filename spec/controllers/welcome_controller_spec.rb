@@ -20,16 +20,29 @@ describe WelcomeController do
     get 'result'
     expect(response.code).to eq "200"
   end
-  describe "GET result" do
-    xit "should assign current user's contacts and escalation_rules to the variables " do
-      contact =Contact.create! valid_attributes_contacts
-      contact.user=subject.current_user
-      contact.save
 
-      escalation_rule = EscalationRule.create(name: "rule", organization: organization)
+  describe "GET result" do
+    it 'redirects to alert page if current user is not admin of current org' do
+      user = User.create(email: 'another@example.com')
+      organization = Organization.create(name: 'Another Organization')
+      org_user = OrganizationUser.new(user: user, organization: organization, is_admin: true)
+      org_user.save
+      subject.current_org=(organization.id)
+      get :result
+      expect(response).to redirect_to('/alerts')
+    end
+
+    it "should assign current user's contacts and escalation_rules to the variables " do
+      escalation_rule1 = EscalationRule.new(name: "rule", organization: organization)
+      escalation_rule1.save
+      escalation_rule = EscalationRule.create(name: "rule", organization: subject.current_org)
+      contact = Contact.create valid_attributes_contacts
+      contact.organization = subject.current_org
+      contact.save
       get :result
       expect(assigns(:escalation_rules)).to eq([escalation_rule])
       expect(assigns(:contacts)).to eq([contact])
+      expect(response.status).to eq(200)
     end
 
   end
