@@ -3,7 +3,9 @@ p
 p
   | We just tried calling everyone in #{@escalation_rule.name}’s calling queue but sadly no one answered :(
 p
-  | Here are the details: Organization: #{@organization.name}
+  | Here are the details:
+p
+  | Organization: #{@organization.name}
 p
   | Alert Group: #{@escalation_rule.name}
 p
@@ -13,11 +15,11 @@ p
 p
   | IP address: #{@complaint.ip_address}
 p
-  =link_to 'Click here', 'getbeacon.in/alerts'
+  =link_to 'Click here ', 'getbeacon.in/alerts'
   | to open web app.
 p
   | Thanks,
 p
   | Team Beacon
-  a href="https://twitter.com/codeignition"
-    | @CodeIgnition
+a href="https://twitter.com/codeignition"
+  | @CodeIgnition
