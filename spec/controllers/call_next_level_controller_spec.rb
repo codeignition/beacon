@@ -35,7 +35,7 @@ RSpec.describe CallNextLevelController, :type => :controller do
     :contact_id => '1',
     :level_number => nil
   }}
-  describe "GET next caller ", :vcr do
+  describe "GET next_call ", :vcr do
     it "calls the next user with the matching uuid" do
       escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
       escalation_rule.save
@@ -50,6 +50,7 @@ RSpec.describe CallNextLevelController, :type => :controller do
       expect(OdinClient).to receive(:call_user)
       get :next_call, {:escalation_rule_key => escalation_rule.rule_key, :text => 'you know nothing jon snow', :level_number => level.level_number}
     end
+
     it "gets wrong uuid and gives error message" do
       escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
       escalation_rule.save
@@ -70,6 +71,57 @@ RSpec.describe CallNextLevelController, :type => :controller do
       level.save
       response = get :next_call, {:rule_key => escalation_rule.rule_key, :text => 'you know nothing jon snow'}
       expect(response.status).to eq 400
+    end
+
+    describe 'when there are no more contacts to call' do
+      it 'sets complaint status to "failed"' do
+        user = User.create(email: 'person1@example.com')
+        escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
+        escalation_rule.save
+        org_user = OrganizationUser.new(user: user, organization: escalation_rule.organization, is_admin: true)
+        org_user.save
+        contact = Contact.create! contact_valid_attributes
+        contact.save
+        level = Level.create! level_valid_attributes
+        level.save
+        complaint = Complaint.create(escalation_rule_id: escalation_rule)
+        expect(OdinClient).to_not receive(:call_user)
+        get :next_call, {:escalation_rule_key => escalation_rule.rule_key, :text => 'you know nothing jon snow', :level_number => level.level_number, complaint_id: complaint.id}
+        complaint.reload
+        expect(complaint.status).to eq('failed')
+      end
+
+      it 'does not call user' do
+        user = User.create(email: 'person1@example.com')
+        escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
+        escalation_rule.save
+        org_user = OrganizationUser.new(user: user, organization: escalation_rule.organization, is_admin: true)
+        org_user.save
+        contact = Contact.create! contact_valid_attributes
+        contact.save
+        level = Level.create! level_valid_attributes
+        level.save
+        complaint = Complaint.create(escalation_rule_id: escalation_rule)
+        expect(OdinClient).to_not receive(:call_user)
+        get :next_call, {:escalation_rule_key => escalation_rule.rule_key, :text => 'you know nothing jon snow', :level_number => level.level_number, complaint_id: complaint.id}
+      end
+
+      it 'sends a mail to admin about the incident' do
+        user = User.create(email: 'person1@example.com')
+        escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
+        escalation_rule.save
+        org_user = OrganizationUser.new(user: user, organization: escalation_rule.organization, is_admin: true)
+        org_user.save
+        contact = Contact.create! contact_valid_attributes
+        contact.save
+        level = Level.create! level_valid_attributes
+        level.save
+        complaint = Complaint.create(escalation_rule_id: escalation_rule)
+        expect {
+        get :next_call, {
+          :escalation_rule_key => escalation_rule.rule_key, :text => 'you know nothing jon snow', :level_number => level.level_number, complaint_id: complaint.id}
+        }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
     end
   end
 end

@@ -1,0 +1,23 @@
+p
+  | Hello #{@admin.email},
+p
+  | We just tried calling everyone in #{@escalation_rule.name}’s calling queue but sadly no one answered :(
+p
+  | Here are the details: Organization: #{@organization.name}
+p
+  | Alert Group: #{@escalation_rule.name}
+p
+  | Time: #{@complaint.updated_at.hour}:#{@complaint.updated_at.min}:#{@complaint.updated_at.sec}
+p
+  | Date: #{@complaint.updated_at.day}/#{@complaint.updated_at.month}/#{@complaint.updated_at.year}
+p
+  | IP address: #{@complaint.ip_address}
+p
+  =link_to 'Click here', 'www.getbeacon.in/alerts'
+  | to open web app.
+p
+  | Thanks,
+p
+  | Team Beacon
+  a href="https://twitter.com/codeignition"
+    | @CodeIgnition
