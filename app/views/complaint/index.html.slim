@@ -27,13 +27,13 @@
               - else
                 = fa_icon "phone"
 
-          td
+          td.align-center
             = complaint.status
             -if complaint.status == 'notified'
               |  to 
-              = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number).first.name
+              = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number, organiztion: complaint.organization).first.name
               |  , 
-              = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number).first.email_id
+              = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number, organization: complaint.organization).first.email_id
           td = complaint.ip_address
 
     div.light_padding.align-center class=(@complaints.count==0 ? 'active' : 'hide')
