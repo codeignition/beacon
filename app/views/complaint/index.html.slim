@@ -31,7 +31,7 @@
             = complaint.status
             -if complaint.status == 'notified'
               |  to 
-              = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number, organiztion: complaint.organization).first.name
+              = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number, organization: complaint.organization).first.name
               |  , 
               = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number, organization: complaint.organization).first.email_id
           td = complaint.ip_address
