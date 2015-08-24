@@ -28,12 +28,18 @@
                 = fa_icon "phone"
 
           td.align-center
-            = complaint.status
-            -if complaint.status == 'notified'
-              |  to 
+            - if complaint.status == 'notified'
               = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number, organization: complaint.organization).first.name
-              |  , 
-              = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number, organization: complaint.organization).first.email_id
+              |  ( 
+              = CallLog.where(complaint_id: complaint.id).first.phone_number
+              |  ) 
+              | Answered
+            - elsif complaint.status == 'failed'
+              | No one answered :(
+            - elsif complaint.status == 'airplane_mode_on'
+              | Shh! Airplane Mode On
+            - else
+              | Calling In Progress
           td = complaint.ip_address
 
     div.light_padding.align-center class=(@complaints.count==0 ? 'active' : 'hide')
