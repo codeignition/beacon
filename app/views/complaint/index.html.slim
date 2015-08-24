@@ -33,7 +33,7 @@
               | Answered by
               = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number).first.name
               |  , 
-              = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number).first.email
+              = Contact.where(phone_number: CallLog.where(complaint_id: complaint.id).first.phone_number).first.email_id
           td = complaint.ip_address
 
     div.light_padding.align-center class=(@complaints.count==0 ? 'active' : 'hide')
