@@ -1,25 +1,32 @@
 p
-  | Hello #{@admin.email},
+  | Hello #{@name},
 p
   | We just tried calling everyone in #{@escalation_rule.name}’s calling queue but sadly no one answered :(
 p
   | Here are the details:
+pre
+  code
+    p
+      small
+        | Organization: #{@organization.name}
+    p
+      small
+        | Alert Group: #{@escalation_rule.name}
+    p
+      small
+        | Time: #{@complaint.updated_at.strftime('%r')}
+    p
+      small
+        | Date: #{@complaint.updated_at.strftime('%v')}
+    p
+      small
+        | IP address: #{@complaint.ip_address}
 p
-  | Organization: #{@organization.name}
-p
-  | Alert Group: #{@escalation_rule.name}
-p
-  | Time: #{@complaint.updated_at.hour}:#{@complaint.updated_at.min}:#{@complaint.updated_at.sec}
-p
-  | Date: #{@complaint.updated_at.day}/#{@complaint.updated_at.month}/#{@complaint.updated_at.year}
-p
-  | IP address: #{@complaint.ip_address}
-p
-  =link_to 'Click here ', 'getbeacon.in/alerts'
-  | to open web app.
+  =link_to 'Click here', 'getbeacon.in/alerts'
+  |  to open web app.
 p
   | Thanks,
 p
-  | Team Beacon
-a href="https://twitter.com/codeignition"
-  | @CodeIgnition
+  | Team Beacon 
+  a href="https://twitter.com/codeignition"
+    | @CodeIgnition

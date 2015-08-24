@@ -76,6 +76,7 @@ RSpec.describe CallNextLevelController, :type => :controller do
     describe 'when there are no more contacts to call' do
       it 'sets complaint status to "failed"' do
         user = User.create(email: 'person1@example.com')
+        user.contacts.create(name: 'admin', email_id: user.email, phone_number: '01234567890')
         escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
         escalation_rule.save
         org_user = OrganizationUser.new(user: user, organization: escalation_rule.organization, is_admin: true)
@@ -93,6 +94,7 @@ RSpec.describe CallNextLevelController, :type => :controller do
 
       it 'does not call user' do
         user = User.create(email: 'person1@example.com')
+        user.contacts.create(name: 'admin', email_id: user.email, phone_number: '01234567890')
         escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
         escalation_rule.save
         org_user = OrganizationUser.new(user: user, organization: escalation_rule.organization, is_admin: true)
@@ -108,6 +110,7 @@ RSpec.describe CallNextLevelController, :type => :controller do
 
       it 'sends a mail to admin about the incident' do
         user = User.create(email: 'person1@example.com')
+        user.contacts.create(name: 'admin', email_id: user.email, phone_number: '01234567890')
         escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
         escalation_rule.save
         org_user = OrganizationUser.new(user: user, organization: escalation_rule.organization, is_admin: true)

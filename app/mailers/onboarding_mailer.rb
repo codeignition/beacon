@@ -1,5 +1,5 @@
 class OnboardingMailer < ActionMailer::Base
-  default from: "hi@getbeacon.in"
+  default from: "Beacon <hi@getbeacon.in>"
   def send_invitation_email(user,name,invitor, phone_number, org)
     @user = user
     @invitor = invitor
@@ -14,6 +14,7 @@ class OnboardingMailer < ActionMailer::Base
     @organization = Organization.where(id: escalation_rule.organization).first
     @complaint = complaint
     @admin = User.where(id: OrganizationUser.where(organization: @organization, is_admin: true).first.user_id).first
-    mail(to: @admin.email, subject: "Missed Beacon Alert for #{@escalation_rule.name}")
+    @name = Contact.where(email_id: User.where(id: OrganizationUser.where(organization: @organization, is_admin: true).first.user_id).first.email).first.name
+    mail(to: @admin.email, subject: "Missed Alert for #{@escalation_rule.name}")
   end
 end
