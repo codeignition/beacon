@@ -28,7 +28,7 @@ class EscalationRulesController < ApplicationController
     params[:escalation_rule][:contacts].each do |i, contact|
       if Contact.find(contact['id']).unverified?
         return respond_to do |format|
-          format.html { render :new }
+          format.html { render :new , status: :unprocessable_entity}
           format.json { render json: { error: "Contacts should be verified"}, status: :unprocessable_entity }
         end
       end
@@ -39,7 +39,7 @@ class EscalationRulesController < ApplicationController
         format.html { redirect_to @escalation_rule, notice: 'Escalation rule was successfully created.' }
         format.json { render :show, status: :created, location: @escalation_rule }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: { error: @escalation_rule.errors.full_messages }, status: :unprocessable_entity  }
       end
     end

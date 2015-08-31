@@ -6,15 +6,17 @@ class CallNextLevelController < ApplicationController
       head :bad_request
     else
       @level = @escalation_rule.levels.where(level_number: (params[:level_number].to_i + 1))
+      @complaint = Complaint.find_by id: params[:complaint_id]
       if @level.blank?
-        complaint = Complaint.find_by id: params[:complaint_id]
-        complaint.status = 'failed'
-        complaint.save
-        OnboardingMailer.missed_beacon_alert_email(@escalation_rule, complaint).deliver
+        @complaint.status = 'failed'
+        @complaint.save
+        OnboardingMailer.missed_beacon_alert_email(@escalation_rule, @complaint).deliver
         head :bad_request
-      else
+      elsif @complaint.status == 'pending'
         @phone_numbers= Contact.find(@level.collect(&:contact_id)).collect(&:phone_number)
         OdinClient.call_user(@phone_numbers.join(","), params[:text],@escalation_rule.rule_key,@level.first.level_number, params[:complaint_id] )
+        render nothing: true
+      else
         render nothing: true
       end
     end

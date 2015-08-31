@@ -12,8 +12,14 @@ class CallUserController < ApplicationController
       @complaint = ComplaintController.create_complaint @escalation_rule.id, @escalation_rule.organization_id, request.ip
       @level = @escalation_rule.levels.where(level_number: 1)
       @phone_numbers= Contact.find(@level.collect(&:contact_id)).collect(&:phone_number)
-      OdinClient.call_user(@phone_numbers.join(","), params[:text],@escalation_rule.rule_key,@level.first.level_number,@complaint.id)
-      render nothing: true
+      result = OdinClient.call_user(@phone_numbers.uniq.join(","), params[:text],@escalation_rule.rule_key,@level.first.level_number,@complaint.id)
+      if result
+        @complaint.levels_called = @level.first.level_number
+        @complaint.save
+        render nothing: true
+      else
+        head :not_found
+      end
     end
   end
 

@@ -47,8 +47,9 @@ RSpec.describe CallNextLevelController, :type => :controller do
       level.save
       level_two = Level.create! level_valid_attributes_two
       level_two.save
+      complaint = Complaint.create(status: 'pending')
       expect(OdinClient).to receive(:call_user)
-      get :next_call, {:escalation_rule_key => escalation_rule.rule_key, :text => 'you know nothing jon snow', :level_number => level.level_number}
+      get :next_call, {:escalation_rule_key => escalation_rule.rule_key, :text => 'you know nothing jon snow', :level_number => level.level_number, complaint_id: complaint.id}
     end
 
     it "gets wrong uuid and gives error message" do

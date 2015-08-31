@@ -506,9 +506,13 @@ $( document ).ready(function() {
   $('.fire-alert').on('click', function(){
     var alert_id = this.id.split('fire_')[1].split('&&')[0]
     var voice_message = $('#edit_escalation_rule_'+this.id.split('fire_')[1].split('&&')[1]).find('#escalation_rule_voice_message').val()
-    window.open(encodeURI('http://getbeacon.in/call.json?rule_key='+alert_id+'&text='+voice_message),'_blank');
+    window.open(encodeURI('/call.json?rule_key='+alert_id+'&text='+voice_message),'_blank');
   })
 
+  $('.resolve-complaint-button').on('click', function(){
+    id = this.id.split('_')[1]
+    window.open('/resolve.json?complaint_id='+id, '_blank')
+  })
 });
 
 

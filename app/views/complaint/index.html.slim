@@ -20,6 +20,8 @@
             .escalation_rule
               - if complaint.status == 'notified'
                 = fa_icon "check"
+              - elsif complaint.status == 'resolved'
+                = fa_icon "check"
               - elsif complaint.status == 'failed'
                 = fa_icon "times"
               - elsif complaint.status == 'airplane_mode_on'
@@ -34,12 +36,18 @@
               = CallLog.where(complaint_id: complaint.id).first.phone_number
               |  ) 
               | Answered
+            -elsif complaint.status == 'resolved'
+              | Resolved manually
             - elsif complaint.status == 'failed'
-              | No one answered :(
+              | No one answered :( 
+              .btn.solid.grey.btn-primary.resolve-complaint-button id="resolve_#{complaint.id}"
+                | Resolve!
             - elsif complaint.status == 'airplane_mode_on'
               | Shh! Airplane Mode On
             - else
-              | Calling In Progress
+              | Calling In Progress 
+              .btn.solid.grey.btn-primary.resolve-complaint-button id="resolve_#{complaint.id}"
+                | Resolve!
           td = complaint.ip_address
 
     div.light_padding.align-center class=(@complaints.count==0 ? 'active' : 'hide')

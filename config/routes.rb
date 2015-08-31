@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
 
   resources :levels
-
   resources :escalation_rules
-
-
   resources :contacts
   resources :organizations
 
@@ -18,14 +15,13 @@ Rails.application.routes.draw do
   get '/setup/1' => 'welcome#setup_1', as: 'setup_1'
   get '/setup/2' => 'welcome#setup_2', as: 'setup_2'
   post '/set_org' => 'organizations#set_organization'
-
   get '/call', to: 'call_user#caller'
-
   post '/calllog', to: 'odin_client#call_log'
   post '/verify', to: 'odin_client#verify_contact'
-
   get '/nextcall', to: 'call_next_level#next_call'
   get '/alerts', to: 'complaint#index'
+  get '/resolve', to: 'complaint#resolve_complaint'
+
   devise_scope :user do
     get 'toggle_tour' => 'application#toggle_tour'
     get '/confirmed_email', to: 'confirmations#confirmed_email'
