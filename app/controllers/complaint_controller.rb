@@ -13,7 +13,7 @@ class ComplaintController < ApplicationController
       return head :bad_request
     else
       if @complaint.status == 'pending'
-        levels = Level.where("level_number = ? AND escalation_rule_id = ?", @complaint.levels_called, @complaint.escalation_rule_id)
+        levels = Level.where("level_number >= ? AND escalation_rule_id = ?", @complaint.levels_called, @complaint.escalation_rule_id)
         phone_numbers= Contact.find(levels.collect(&:contact_id)).collect(&:phone_number)
         @complaint.status = 'resolve status request in progress'
         @complaint.save
