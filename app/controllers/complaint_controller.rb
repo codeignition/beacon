@@ -15,12 +15,16 @@ class ComplaintController < ApplicationController
       if @complaint.status == 'pending'
         levels = Level.where("level_number >= ? AND escalation_rule_id = ?", @complaint.levels_called, @complaint.escalation_rule_id)
         phone_numbers= Contact.find(levels.collect(&:contact_id)).collect(&:phone_number)
+        @complaint.status = 'resolve status request in progress'
+        @complaint.save
         result = OdinClient.terminate_pending_calls phone_numbers.uniq.join(","), @complaint.id
         if result
           @complaint.status = 'resolved'
           @complaint.save
           return render nothing: true
         else
+          @complaint.status = 'resolve status request failed'
+          @complaint.save
           return head :not_found
         end
       else
