@@ -8,7 +8,8 @@ class OdinClientController < ApplicationController
   end
 
   def verify_contact
-    contact = Contact.where(phone_number: "0#{params[:phone_number]}").first
+    phone_number = params[:phone_number].gsub(/\s+/,"").slice(-10,10)
+    contact = Contact.where(phone_number: "0" + phone_number).first if !phone_number.nil?
     contact.confirm if  !contact.nil? and contact.unverified?
     render nothing: true
   end
