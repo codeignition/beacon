@@ -105,6 +105,24 @@ RSpec.describe CallUserController, :type => :controller do
         end
       end
 
+      it 'adds complaint message to complain ' do
+        escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
+        escalation_rule.airplane_mode_on = true
+        escalation_rule.weekday_airplane_mode_on = true
+        escalation_rule.weekday_airplane_mode_start_time = (Time.now-3600).seconds_since_midnight
+        escalation_rule.weekday_airplane_mode_end_time = (Time.now+3600).seconds_since_midnight
+        escalation_rule.save
+        contact = Contact.create! contact_valid_attributes
+        contact.save
+        level = Level.create! level_valid_attributes
+        level.save
+        get :caller, {:rule_key => escalation_rule.rule_key, :text => 'jon snow is dead'}
+        assigns(:complaint).reload
+        if Time.now.wday > 0 or Time.now.wday < 6
+          expect(assigns(:complaint)).to be_a(Complaint)
+          expect(assigns(:complaint).message).to eq("jon snow is dead")
+        end
+      end
 
     end
   end
