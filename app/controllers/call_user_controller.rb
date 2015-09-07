@@ -4,18 +4,16 @@ class CallUserController < ApplicationController
     if @escalation_rule.nil?
       head :bad_request
     elsif @escalation_rule.airplane_mode_in_progress?
-      @complaint = ComplaintController.create_complaint @escalation_rule.id, @escalation_rule.organization_id, request.ip
+      @complaint = ComplaintController.create_complaint @escalation_rule.id, @escalation_rule.organization_id, request.ip, params[:text]
       @complaint.status = "airplane_mode_on"
       @complaint.save
       render nothing: true
     else
-      @complaint = ComplaintController.create_complaint @escalation_rule.id, @escalation_rule.organization_id, request.ip
+      @complaint = ComplaintController.create_complaint @escalation_rule.id, @escalation_rule.organization_id, request.ip, params[:text]
       @level = @escalation_rule.levels.where(level_number: 1)
       @phone_numbers= Contact.find(@level.collect(&:contact_id)).collect(&:phone_number)
       result = OdinClient.call_user(@phone_numbers.uniq.join(","), params[:text],@escalation_rule.rule_key,@level.first.level_number,@complaint.id)
       if result
-        @complaint.levels_called = @level.first.level_number
-        @complaint.save
         render nothing: true
       else
         head :not_found

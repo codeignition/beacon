@@ -37,8 +37,8 @@ class ComplaintController < ApplicationController
   end
 
   class << self
-    def create_complaint escalation_rule_id, organization_id, ip_address
-      @complaint =  Complaint.create! status: "pending" , escalation_rule_id: escalation_rule_id, organization_id: organization_id, ip_address: ip_address
+    def create_complaint escalation_rule_id, organization_id, ip_address, complaint_message
+      @complaint =  Complaint.create! status: "pending" , escalation_rule_id: escalation_rule_id, organization_id: organization_id, ip_address: ip_address, message: complaint_message
     end
 
     def notify complaint_id

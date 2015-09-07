@@ -17,6 +17,8 @@
             .escalation_rule
               = complaint.escalation_rule.name
           td
+            = complaint.message
+          td
             .escalation_rule
               - if complaint.status == 'notified'
                 = fa_icon "check"
