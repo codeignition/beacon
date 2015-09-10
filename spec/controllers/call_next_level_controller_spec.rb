@@ -74,7 +74,7 @@ RSpec.describe CallNextLevelController, :type => :controller do
       expect(response.status).to eq 400
     end
 
-    describe 'when there are no more contacts to call' do
+    describe 'when there are no more contacts to call and complaint-status is pending' do
       it 'sets complaint status to "failed"' do
         user = User.create(email: 'person1@example.com')
         user.contacts.create(name: 'admin', email_id: user.email, phone_number: '01234567890')
@@ -86,7 +86,7 @@ RSpec.describe CallNextLevelController, :type => :controller do
         contact.save
         level = Level.create! level_valid_attributes
         level.save
-        complaint = Complaint.create(escalation_rule_id: escalation_rule)
+        complaint = Complaint.create(escalation_rule_id: escalation_rule, status: 'pending')
         expect(OdinClient).to_not receive(:call_user)
         get :next_call, {:escalation_rule_key => escalation_rule.rule_key, :text => 'you know nothing jon snow', :level_number => level.level_number, complaint_id: complaint.id}
         complaint.reload
@@ -104,7 +104,7 @@ RSpec.describe CallNextLevelController, :type => :controller do
         contact.save
         level = Level.create! level_valid_attributes
         level.save
-        complaint = Complaint.create(escalation_rule_id: escalation_rule)
+        complaint = Complaint.create(escalation_rule_id: escalation_rule, status: 'pending')
         expect(OdinClient).to_not receive(:call_user)
         get :next_call, {:escalation_rule_key => escalation_rule.rule_key, :text => 'you know nothing jon snow', :level_number => level.level_number, complaint_id: complaint.id}
       end
@@ -120,7 +120,7 @@ RSpec.describe CallNextLevelController, :type => :controller do
         contact.save
         level = Level.create! level_valid_attributes
         level.save
-        complaint = Complaint.create(escalation_rule_id: escalation_rule)
+        complaint = Complaint.create(escalation_rule_id: escalation_rule, status: 'pending')
         expect {
         get :next_call, {
           :escalation_rule_key => escalation_rule.rule_key, :text => 'you know nothing jon snow', :level_number => level.level_number, complaint_id: complaint.id}

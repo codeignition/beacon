@@ -5,9 +5,11 @@ class CallNextLevelController < ApplicationController
     if @escalation_rule.blank?
       head :bad_request
     else
-      @level = @escalation_rule.levels.where(level_number: (params[:level_number].to_i + 1))
       @complaint = Complaint.find_by id: params[:complaint_id]
-      if @level.blank?
+      @complaint.levels_called = params[:level_number]
+      @complaint.save
+      @level = @escalation_rule.levels.where(level_number: (params[:level_number].to_i + 1))
+      if @level.blank? and @complaint.status == 'pending'
         @complaint.status = 'failed'
         @complaint.save
         OnboardingMailer.missed_beacon_alert_email(@escalation_rule, @complaint).deliver
