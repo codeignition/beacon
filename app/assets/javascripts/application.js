@@ -511,7 +511,9 @@ $( document ).ready(function() {
 
   $('.resolve-complaint-button').on('click', function(){
     id = this.id.split('_')[1]
-    window.open('/resolve.json?complaint_id='+id, '_blank')
+    $.get('/resolve.json?complaint_id='+id, function(){
+      window.location.reload();
+    });
   })
 });
 

@@ -72,7 +72,7 @@
               h3.black Ready to get your first Beacon call?
               span.h4 Click the link below-
               br
-              span.h4 =link_to 'http://getbeacon.in/call.json?rule_key='+@escalation_rules.first.rule_key+'&text=server%20down', 'http://getbeacon.in/call.json?rule_key='+@escalation_rules.first.rule_key+'&text=server%20down', class:"link_underline background_transparent", style: "color: grey"
+              span.h4 =link_to 'http://getbeacon.in/call.json?rule_key='+@escalation_rules.first.rule_key+'&text=server%20down', '/call.json?rule_key='+@escalation_rules.first.rule_key+'&text=server%20down', target: '_blank', class:"link_underline background_transparent", style: "color: grey"
               br
               span.h4 Hint: Copy-paste the link in a new browser tab, change the recorded text message & refresh!
 
