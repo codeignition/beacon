@@ -14,7 +14,7 @@ class CallUserController < ApplicationController
       @phone_numbers= Contact.find(@level.collect(&:contact_id)).collect(&:phone_number)
       result = OdinClient.call_user(@phone_numbers.uniq.join(","), params[:text],@escalation_rule.rule_key,@level.first.level_number,@complaint.id)
       if result
-        render nothing: true
+        render json: {complaint_id: @complaint.id, rule_key: @escalation_rule.rule_key}
       else
         head :not_found
       end

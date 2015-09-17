@@ -33,6 +33,19 @@ RSpec.describe CallUserController, :type => :controller do
       get :caller, {:rule_key => escalation_rule.rule_key, :text => 'you know nothing jon snow'}
     end
 
+    it 'returns complaint_id and escalation_rule_key in response' do
+      escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
+      escalation_rule.save
+      contact = Contact.create! contact_valid_attributes
+      contact.save
+      level = Level.create! level_valid_attributes
+      level.save
+      allow(OdinClient).to receive(:call_user).and_return(true)
+      get :caller, {:rule_key => escalation_rule.rule_key, :text => 'you know nothing jon snow'}
+      expect(JSON.parse(response.body)["complaint_id"]).to eq(1)
+      expect(JSON.parse(response.body)["rule_key"]).to eq(escalation_rule.rule_key)
+    end
+
     it "gets wrong uuid and gives error message" do
       escalation_rule = EscalationRule.create! escalation_rule_valid_attributes
       escalation_rule.save
